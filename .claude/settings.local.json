@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm create:*)",
+      "Bash(cp -r /tmp/datamicron-temp/. \"c:/Users/User/Documents/Data Science/Datamicron/\")",
+      "Bash(rm -rf /tmp/datamicron-temp)"
+    ]
+  }
+}
