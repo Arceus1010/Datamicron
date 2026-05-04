@@ -4,7 +4,24 @@
       "Bash(npm install:*)",
       "Bash(npm create:*)",
       "Bash(cp -r /tmp/datamicron-temp/. \"c:/Users/User/Documents/Data Science/Datamicron/\")",
-      "Bash(rm -rf /tmp/datamicron-temp)"
+      "Bash(rm -rf /tmp/datamicron-temp)",
+      "WebSearch",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "WebFetch(domain:www.kkr.gov.my)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:www.jpm.gov.my)",
+      "WebFetch(domain:www.uem.com.my)",
+      "WebFetch(domain:www.ssm.com.my)",
+      "WebFetch(domain:www.audit.gov.my)",
+      "WebFetch(domain:aeoncredit.com.my)",
+      "WebFetch(domain:www.muamalat.com.my)",
+      "WebFetch(domain:www.miti.gov.my)",
+      "WebFetch(domain:www.icu.gov.my)",
+      "WebFetch(domain:www.kpkm.gov.my)",
+      "WebFetch(domain:www.mcis.my)",
+      "WebFetch(domain:upload.wikimedia.org)",
+      "WebFetch(domain:www.jkr.gov.my)",
+      "WebFetch(domain:hrdcorp.gov.my)"
     ]
   }
 }

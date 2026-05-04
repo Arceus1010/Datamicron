@@ -9,29 +9,18 @@
   --color-brand-navy-border: #1A3A52;
   --color-brand-navy-muted: #2A4F6A;
 
-  --font-sans: 'IBM Plex Sans', sans-serif;
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'Source Sans 3', sans-serif;
+  --font-display: 'Manrope', sans-serif;
+  --font-mono: monospace;
 }
 
 html {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
+  scroll-behavior: smooth;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 
-code, pre, kbd, samp {
-  font-family: 'IBM Plex Mono', monospace;
-}
 
-@keyframes fade-in {
-  from { opacity: 0; transform: scaleY(0.6); }
-  to   { opacity: 1; transform: scaleY(1); }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
-  transform-origin: top;
-}
