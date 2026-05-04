@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  show:   { opacity: 1, y: 0 },
+  show: { opacity: 1, y: 0 },
 }
 
 const stagger = (delay = 0.12) => ({
@@ -25,65 +25,113 @@ const LAYERS = [
     name: 'Cortexus',
     tag: 'Autonomous Agents & Orchestration',
     href: '/phoenix-aip/cortexus',
-    description: 'AI agents that plan, reason, and act — orchestrating workflows across systems without human intervention, continuously optimising toward business outcomes.',
+    description:
+      'AI agents that plan, reason, and act — orchestrating workflows across systems without human intervention, continuously optimising toward business outcomes.',
   },
   {
     step: '02',
     name: 'Phoenix Insights',
     tag: 'Business Intelligence & Decision Layer',
     href: '/phoenix-aip/phoenix-insights',
-    description: 'Surfaces decisions, forecasts, and recommendations directly to business users — closing the loop from raw data to measurable enterprise action.',
+    description:
+      'Surfaces decisions, forecasts, and recommendations directly to business users — closing the loop from raw data to measurable enterprise action.',
   },
   {
     step: '03',
     name: 'Spotlight Lakehouse',
     tag: 'Semantic & Vector Storage',
     href: '/phoenix-aip/spotlight-lakehouse',
-    description: 'A unified lakehouse combining semantic search, vector embeddings, and a knowledge graph — turning stored data into contextually queryable intelligence.',
+    description:
+      'A unified lakehouse combining semantic search, vector embeddings, and a knowledge graph — turning stored data into contextually queryable intelligence.',
   },
   {
     step: '04',
     name: 'DataForge',
     tag: 'Data Ingestion & Pipelines',
     href: '/phoenix-aip/dataforge',
-    description: 'Connects and normalises data from any source — structured, unstructured, streaming or batch — into a unified, governed pipeline ready for intelligence.',
+    description:
+      'Connects and normalises data from any source — structured, unstructured, streaming or batch — into a unified, governed pipeline ready for intelligence.',
   },
 ]
 
 const CAPABILITIES = [
   {
     title: 'Enterprise Digital Brain',
-    description: 'A unified intelligence layer that connects every data source, model, and workflow across your organisation.',
+    description:
+      'A unified intelligence layer that connects every data source, model, and workflow across your organisation.',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+        />
       </svg>
     ),
   },
   {
     title: 'Digital Twin',
-    description: 'Real-time virtual replicas of your operations — simulate, monitor, and optimise before acting in the real world.',
+    description:
+      'Real-time virtual replicas of your operations — simulate, monitor, and optimise before acting in the real world.',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25V9m11.25 0H4.5m15 0a2.25 2.25 0 012.25 2.25v7.5A2.25 2.25 0 0119.5 21H4.5a2.25 2.25 0 01-2.25-2.25v-7.5A2.25 2.25 0 014.5 9" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25V9m11.25 0H4.5m15 0a2.25 2.25 0 012.25 2.25v7.5A2.25 2.25 0 0119.5 21H4.5a2.25 2.25 0 01-2.25-2.25v-7.5A2.25 2.25 0 014.5 9"
+        />
       </svg>
     ),
   },
   {
     title: 'Autonomous AI Agents',
-    description: 'Agents that reason and act independently — handling complex decisions and multi-step tasks without human intervention.',
+    description:
+      'Agents that reason and act independently — handling complex decisions and multi-step tasks without human intervention.',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"
+        />
       </svg>
     ),
   },
   {
     title: 'Write-back to ERP & Systems',
-    description: "Decisions don't stop at insight — Phoenix AIP pushes actions directly back into your ERP, CRM, and operational systems.",
+    description:
+      "Decisions don't stop at insight — Phoenix AIP pushes actions directly back into your ERP, CRM, and operational systems.",
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
+        />
       </svg>
     ),
   },
@@ -93,7 +141,15 @@ const CAPABILITIES = [
 
 function ArrowIcon() {
   return (
-    <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="w-4 h-4"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M3 8h10M9 4l4 4-4 4" />
     </svg>
   )
@@ -101,8 +157,18 @@ function ArrowIcon() {
 
 function ImagePlaceholder({ className = 'w-10 h-10' }: { className?: string }) {
   return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5M21 12V6.75A2.25 2.25 0 0018.75 4.5H5.25A2.25 2.25 0 003 6.75V15" />
+    <svg
+      className={className}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5M21 12V6.75A2.25 2.25 0 0018.75 4.5H5.25A2.25 2.25 0 003 6.75V15"
+      />
     </svg>
   )
 }
@@ -142,10 +208,8 @@ function CyclingWord() {
 export default function Home() {
   return (
     <div className="bg-white">
-
       {/* Hero */}
       <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center">
-
         {/* Full-bleed video background */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
@@ -179,7 +243,8 @@ export default function Home() {
               transition={{ duration: 0.55, ease: EASE }}
               className="text-xl text-white/90 leading-relaxed"
             >
-              Transform your organization into an autonomous, AI-driven enterprise — from raw data to closed-loop intelligence.
+              Transform your organization into an autonomous, AI-driven enterprise — from raw data
+              to closed-loop intelligence.
             </motion.p>
 
             <motion.div
@@ -246,7 +311,6 @@ export default function Home() {
       {/* Phoenix AIP Architecture */}
       <section id="learn-more" className="bg-white">
         <div className="max-w-6xl mx-auto px-6 py-24">
-
           <motion.div
             className="max-w-2xl mb-16 flex flex-col gap-4"
             initial="hidden"
@@ -266,14 +330,16 @@ export default function Home() {
               transition={{ duration: 0.55, ease: EASE }}
               className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
             >
-              Built in layers.{' '}<span className="text-brand whitespace-nowrap">Intelligent end-to-end.</span>
+              Built in layers.{' '}
+              <span className="text-brand whitespace-nowrap">Intelligent end-to-end.</span>
             </motion.h2>
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.55, ease: EASE }}
               className="text-lg text-gray-500"
             >
-              Four integrated modules that take your enterprise from raw data to autonomous decisions.
+              Four integrated modules that take your enterprise from raw data to autonomous
+              decisions.
             </motion.p>
           </motion.div>
 
@@ -299,10 +365,16 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className={`flex flex-col gap-4 ${isEven ? 'lg:order-2 lg:pl-8' : 'lg:order-1 lg:pr-8 lg:text-right'}`}>
-                    <span className="text-xs font-bold text-gray-300 tracking-widest uppercase">{layer.step}</span>
+                  <div
+                    className={`flex flex-col gap-4 ${isEven ? 'lg:order-2 lg:pl-8' : 'lg:order-1 lg:pr-8 lg:text-right'}`}
+                  >
+                    <span className="text-xs font-bold text-gray-300 tracking-widest uppercase">
+                      {layer.step}
+                    </span>
                     <div className={`flex flex-col gap-1 ${isEven ? '' : 'lg:items-end'}`}>
-                      <span className="text-xs font-semibold text-brand bg-brand-light px-2.5 py-0.5 rounded-full w-fit">{layer.tag}</span>
+                      <span className="text-xs font-semibold text-brand bg-brand-light px-2.5 py-0.5 rounded-full w-fit">
+                        {layer.tag}
+                      </span>
                       <h3 className="text-2xl font-bold text-gray-900">{layer.name}</h3>
                     </div>
                     <p className="text-gray-500 text-base leading-relaxed">{layer.description}</p>
@@ -318,14 +390,12 @@ export default function Home() {
               )
             })}
           </div>
-
         </div>
       </section>
 
       {/* Key Capabilities */}
       <section className="bg-gray-50">
         <div className="max-w-6xl mx-auto px-6 py-24">
-
           <motion.div
             className="flex flex-col gap-3 mb-14"
             initial="hidden"
@@ -369,7 +439,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-
         </div>
       </section>
 
@@ -395,15 +464,15 @@ export default function Home() {
               transition={{ duration: 0.6, ease: EASE }}
               className="text-4xl lg:text-6xl font-bold text-gray-900 leading-[1.1] tracking-tight"
             >
-              Ready to build your{' '}
-              <span className="text-brand">Enterprise Digital Brain?</span>
+              Ready to build your <span className="text-brand">Enterprise Digital Brain?</span>
             </motion.h2>
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.6, ease: EASE }}
               className="text-lg text-gray-500 leading-relaxed"
             >
-              See how Phoenix AIP transforms your data into autonomous decisions. Talk to our team today.
+              See how Phoenix AIP transforms your data into autonomous decisions. Talk to our team
+              today.
             </motion.p>
             <motion.div
               variants={fadeUp}
@@ -427,7 +496,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
     </div>
   )
 }

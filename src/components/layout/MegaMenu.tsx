@@ -12,11 +12,7 @@ interface MegaMenuProps {
 function MenuItem({ item, onClose }: { item: NavSection['items'][number]; onClose: () => void }) {
   return (
     <motion.div initial="rest" whileHover="hover" animate="rest">
-      <Link
-        to={item.href}
-        onClick={onClose}
-        className="flex flex-col rounded-md px-3 py-2"
-      >
+      <Link to={item.href} onClick={onClose} className="flex flex-col rounded-md px-3 py-2">
         <span className="flex items-center gap-1.5">
           <motion.span
             className="h-px bg-brand shrink-0"

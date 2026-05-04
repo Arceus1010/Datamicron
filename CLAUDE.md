@@ -26,12 +26,14 @@ This is the **Datamicron** marketing/product website — a React 19 + TypeScript
 **Mega menu** — `Navbar` drives the mega menu via hover state. `MegaMenu` receives `panel` (title + description) and `sections` (array of link groups) as props. New top-level nav items with `sections` automatically get a mega menu.
 
 **Page structure** — Pages live under `src/pages/` organised by nav category:
+
 - `phoenix-aip/` — AI platform product pages
 - `platforms/` — individual platform pages (InstaBI, EagleEye, Foresight, etc.)
 - `solutions/industries/`, `solutions/department/`, `solutions/domain/` — solution pages
 - `about/` — company, contact, services
 
 **Styling** — Tailwind CSS v4 with custom theme tokens defined in [src/index.css](src/index.css) via `@theme`:
+
 - `brand` = `#117EC2`, `brand-dark` = `#0D65A0`, `brand-light` = `#EAF4FB`
 - `brand-navy` = `#0B1E2D` (dark sections)
 - `font-sans` = Source Sans 3, `font-display` = Manrope (headings)

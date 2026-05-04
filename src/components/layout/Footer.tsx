@@ -3,64 +3,64 @@ import { motion } from 'framer-motion'
 import { EASE, slidingLineVariants } from '@/lib/motion'
 
 const INDUSTRIES = [
-  { label: 'Retail',               href: '/industries/retail' },
-  { label: 'Banking',              href: '/industries/banking' },
-  { label: 'Insurance',            href: '/industries/insurance' },
-  { label: 'Airport Retail',       href: '/industries/airport-retail' },
-  { label: 'Logistics',            href: '/industries/logistics' },
-  { label: 'Telecommunications',   href: '/industries/telecommunications' },
-  { label: 'Tourism',              href: '/industries/tourism' },
-  { label: 'Real Estate',          href: '/industries/real-estate' },
-  { label: 'Oil & Gas',            href: '/industries/oil-and-gas' },
-  { label: 'Port Authority',       href: '/industries/port-authority' },
-  { label: 'Law Enforcement',      href: '/industries/law-enforcement' },
-  { label: 'Manufacturing',        href: '/industries/manufacturing' },
-  { label: 'Agriculture',          href: '/industries/agriculture' },
+  { label: 'Retail', href: '/industries/retail' },
+  { label: 'Banking', href: '/industries/banking' },
+  { label: 'Insurance', href: '/industries/insurance' },
+  { label: 'Airport Retail', href: '/industries/airport-retail' },
+  { label: 'Logistics', href: '/industries/logistics' },
+  { label: 'Telecommunications', href: '/industries/telecommunications' },
+  { label: 'Tourism', href: '/industries/tourism' },
+  { label: 'Real Estate', href: '/industries/real-estate' },
+  { label: 'Oil & Gas', href: '/industries/oil-and-gas' },
+  { label: 'Port Authority', href: '/industries/port-authority' },
+  { label: 'Law Enforcement', href: '/industries/law-enforcement' },
+  { label: 'Manufacturing', href: '/industries/manufacturing' },
+  { label: 'Agriculture', href: '/industries/agriculture' },
 ]
 
 const DEPARTMENTS = [
-  { label: 'Risk Management',         href: '/department/risk-management' },
-  { label: 'IT Services',             href: '/department/it-services' },
-  { label: 'HR Resources',            href: '/department/hr-resources' },
-  { label: 'Consulting Services',     href: '/department/consulting-services' },
-  { label: 'Cross and Up Selling',    href: '/department/cross-and-up-selling' },
-  { label: 'Energy Distribution',     href: '/department/energy-distribution' },
-  { label: 'Price Forecasting Retail',href: '/department/price-forecasting-retail' },
-  { label: 'Mobile Dashboards',       href: '/department/mobile-dashboards' },
+  { label: 'Risk Management', href: '/department/risk-management' },
+  { label: 'IT Services', href: '/department/it-services' },
+  { label: 'HR Resources', href: '/department/hr-resources' },
+  { label: 'Consulting Services', href: '/department/consulting-services' },
+  { label: 'Cross and Up Selling', href: '/department/cross-and-up-selling' },
+  { label: 'Energy Distribution', href: '/department/energy-distribution' },
+  { label: 'Price Forecasting Retail', href: '/department/price-forecasting-retail' },
+  { label: 'Mobile Dashboards', href: '/department/mobile-dashboards' },
 ]
 
 const DOMAINS = [
-  { label: 'Industry 4.0',          href: '/domain/industry-4-0' },
-  { label: 'Smart City',            href: '/domain/smart-city' },
-  { label: 'Smart Building',        href: '/domain/smart-building' },
-  { label: 'Risk Assessment Engine',href: '/domain/risk-assessment-engine' },
+  { label: 'Industry 4.0', href: '/domain/industry-4-0' },
+  { label: 'Smart City', href: '/domain/smart-city' },
+  { label: 'Smart Building', href: '/domain/smart-building' },
+  { label: 'Risk Assessment Engine', href: '/domain/risk-assessment-engine' },
 ]
 
 const PLATFORMS = [
-  { label: 'InstaBI',               href: '/platforms/instabi' },
-  { label: 'Eagle Eye',             href: '/platforms/eagle-eye' },
-  { label: 'Reporting System',      href: '/platforms/reporting-system' },
-  { label: 'Globes',                href: '/platforms/globes' },
-  { label: 'Foresight',             href: '/platforms/foresight' },
-  { label: 'Falcon',                href: '/platforms/falcon' },
-  { label: 'EzData',                href: '/platforms/ezdata' },
-  { label: 'MemDB',                 href: '/platforms/memdb' },
+  { label: 'InstaBI', href: '/platforms/instabi' },
+  { label: 'Eagle Eye', href: '/platforms/eagle-eye' },
+  { label: 'Reporting System', href: '/platforms/reporting-system' },
+  { label: 'Globes', href: '/platforms/globes' },
+  { label: 'Foresight', href: '/platforms/foresight' },
+  { label: 'Falcon', href: '/platforms/falcon' },
+  { label: 'EzData', href: '/platforms/ezdata' },
+  { label: 'MemDB', href: '/platforms/memdb' },
   { label: 'Smart Data Governance', href: '/platforms/smart-data-governance' },
-  { label: 'Excel Automation',      href: '/platforms/excel-automation' },
-  { label: 'Spotlight BDA',         href: '/platforms/spotlight-bda' },
-  { label: 'EzSync',                href: '/platforms/ezsync' },
+  { label: 'Excel Automation', href: '/platforms/excel-automation' },
+  { label: 'Spotlight BDA', href: '/platforms/spotlight-bda' },
+  { label: 'EzSync', href: '/platforms/ezsync' },
 ]
 
 const FOOTER_COLS = [
-  { heading: 'Platforms',   links: PLATFORMS },
-  { heading: 'Industries',  links: INDUSTRIES },
-  { heading: 'Department',  links: DEPARTMENTS },
-  { heading: 'Domain',      links: DOMAINS },
+  { heading: 'Platforms', links: PLATFORMS },
+  { heading: 'Industries', links: INDUSTRIES },
+  { heading: 'Department', links: DEPARTMENTS },
+  { heading: 'Domain', links: DOMAINS },
 ]
 
 const colVariants = {
   hidden: { opacity: 0, y: 20 },
-  show:   { opacity: 1, y: 0 },
+  show: { opacity: 1, y: 0 },
 }
 
 const socialTransition = { type: 'spring' as const, stiffness: 400, damping: 17 }
@@ -72,7 +72,6 @@ export default function Footer() {
     <footer className="bg-brand-navy text-gray-400 mt-auto">
       <div className="max-w-6xl mx-auto px-6 py-8">
         <div className="flex flex-col lg:flex-row gap-10">
-
           {/* Left — Logo + Socials */}
           <motion.div
             className="flex flex-col items-start gap-5 lg:w-44 shrink-0"
@@ -96,9 +95,9 @@ export default function Footer() {
                 transition={socialTransition}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                  <rect x="2" y="9" width="4" height="12"/>
-                  <circle cx="4" cy="4" r="2"/>
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
                 </svg>
               </motion.a>
               <motion.a
@@ -111,8 +110,8 @@ export default function Footer() {
                 transition={socialTransition}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
-                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a2744"/>
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a2744" />
                 </svg>
               </motion.a>
               <motion.a
@@ -124,10 +123,19 @@ export default function Footer() {
                 whileHover={{ scale: 1.15 }}
                 transition={socialTransition}
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                 </svg>
               </motion.a>
             </div>
@@ -176,7 +184,6 @@ export default function Footer() {
               </motion.div>
             ))}
           </motion.div>
-
         </div>
 
         <motion.div
@@ -188,8 +195,12 @@ export default function Footer() {
         >
           <span>© {YEAR} Datamicron. All rights reserved.</span>
           <div className="flex gap-5">
-            <Link to="/about/contact" className="hover:text-brand-light transition-colors">Privacy Policy</Link>
-            <Link to="/about/contact" className="hover:text-brand-light transition-colors">Terms of Service</Link>
+            <Link to="/about/contact" className="hover:text-brand-light transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/about/contact" className="hover:text-brand-light transition-colors">
+              Terms of Service
+            </Link>
           </div>
         </motion.div>
       </div>

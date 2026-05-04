@@ -32,7 +32,9 @@ export default function Navbar() {
   return (
     <motion.header
       className="sticky top-0 z-50 bg-white"
-      animate={{ boxShadow: scrolled ? '0 1px 12px 0 rgba(0,0,0,0.07)' : '0 1px 0 0 rgba(0,0,0,0.06)' }}
+      animate={{
+        boxShadow: scrolled ? '0 1px 12px 0 rgba(0,0,0,0.07)' : '0 1px 0 0 rgba(0,0,0,0.06)',
+      }}
       transition={{ duration: 0.25 }}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -61,7 +63,10 @@ export default function Navbar() {
                       animate={{ rotate: activeNav === entry.label ? 180 : 0 }}
                       transition={{ duration: 0.2, ease: 'easeInOut' }}
                       className="w-3.5 h-3.5"
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </motion.svg>

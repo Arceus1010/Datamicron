@@ -25,7 +25,8 @@ export const NAV_ITEMS: NavEntry[] = [
     href: '/phoenix-aip',
     panel: {
       title: 'Phoenix AIP',
-      description: 'A unified AI platform powering intelligent data products across your enterprise.',
+      description:
+        'A unified AI platform powering intelligent data products across your enterprise.',
     },
     sections: [
       {
@@ -44,7 +45,8 @@ export const NAV_ITEMS: NavEntry[] = [
     href: '/industries/retail',
     panel: {
       title: 'Solutions',
-      description: 'Industry-specific, department-focused, and domain-driven solutions tailored to your enterprise needs.',
+      description:
+        'Industry-specific, department-focused, and domain-driven solutions tailored to your enterprise needs.',
     },
     sections: [
       {

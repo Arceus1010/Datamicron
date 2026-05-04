@@ -30,28 +30,61 @@ const JOURNEY_STEPS = [
 const WHY_ITEMS = [
   {
     title: 'Expertise',
-    description: 'Deep expertise in Artificial Intelligence, Machine Learning, and Big Data enables us to deliver scalable, high-impact solutions. Our team is dedicated to pushing the boundaries of what technology can achieve.',
+    description:
+      'Deep expertise in Artificial Intelligence, Machine Learning, and Big Data enables us to deliver scalable, high-impact solutions. Our team is dedicated to pushing the boundaries of what technology can achieve.',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 3.741-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 3.741-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"
+        />
       </svg>
     ),
   },
   {
     title: 'Innovation',
-    description: 'We foster a culture of innovation through collaboration. By sharing ideas, insights, and expertise, we co-create forward-thinking solutions that address real-world challenges.',
+    description:
+      'We foster a culture of innovation through collaboration. By sharing ideas, insights, and expertise, we co-create forward-thinking solutions that address real-world challenges.',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
+        />
       </svg>
     ),
   },
   {
     title: 'Mutual Growth',
-    description: 'Our partnerships are built on shared success. We work closely with our partners to achieve common goals, unlock new opportunities, and create long-term business value.',
+    description:
+      'Our partnerships are built on shared success. We work closely with our partners to achieve common goals, unlock new opportunities, and create long-term business value.',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
+        />
       </svg>
     ),
   },
@@ -61,7 +94,15 @@ const WHY_ITEMS = [
 
 function ArrowIcon() {
   return (
-    <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="w-4 h-4"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M3 8h10M9 4l4 4-4 4" />
     </svg>
   )
@@ -72,10 +113,8 @@ function ArrowIcon() {
 export default function Partners() {
   return (
     <div className="bg-white">
-
       {/* Hero */}
       <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center bg-white">
-
         {/* Decorative brand accents */}
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-brand/6 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-24 w-72 h-72 rounded-full bg-brand/4 blur-3xl pointer-events-none" />
@@ -100,8 +139,7 @@ export default function Partners() {
               transition={{ duration: 0.55, ease: EASE }}
               className="text-5xl lg:text-7xl font-bold text-gray-900 leading-[1.05] tracking-tight"
             >
-              Build the Future.{' '}
-              <span className="text-brand">Together.</span>
+              Build the Future. <span className="text-brand">Together.</span>
             </motion.h1>
 
             <motion.p
@@ -109,7 +147,9 @@ export default function Partners() {
               transition={{ duration: 0.55, ease: EASE }}
               className="text-xl text-gray-500 leading-relaxed max-w-2xl"
             >
-              At Datamicron, we believe in the power of collaboration. We partner with organizations, institutions, and technology leaders to create a strong ecosystem that drives innovation in Artificial Intelligence, Machine Learning, and Big Data.
+              At Datamicron, we believe in the power of collaboration. We partner with
+              organizations, institutions, and technology leaders to create a strong ecosystem that
+              drives innovation in Artificial Intelligence, Machine Learning, and Big Data.
             </motion.p>
 
             <motion.div
@@ -133,13 +173,11 @@ export default function Partners() {
             </motion.div>
           </motion.div>
         </div>
-
       </section>
 
       {/* Why Partner With Datamicron */}
       <section id="benefits" className="bg-brand-navy">
         <div className="max-w-6xl mx-auto px-6 py-24">
-
           <motion.div
             className="flex flex-col gap-3 mb-14"
             initial="hidden"
@@ -183,14 +221,12 @@ export default function Partners() {
               </motion.div>
             ))}
           </div>
-
         </div>
       </section>
 
       {/* Becoming a Partner */}
       <section className="bg-white">
         <div className="max-w-6xl mx-auto px-6 py-24">
-
           <motion.div
             className="max-w-2xl mb-16 flex flex-col gap-4"
             initial="hidden"
@@ -217,7 +253,9 @@ export default function Partners() {
               transition={{ duration: 0.55, ease: EASE }}
               className="text-lg text-gray-500 leading-relaxed"
             >
-              We welcome organizations that are passionate about innovation and growth. Whether you're a technology provider, academic institution, or business, we invite you to collaborate with us and be part of a forward-thinking ecosystem.
+              We welcome organizations that are passionate about innovation and growth. Whether
+              you're a technology provider, academic institution, or business, we invite you to
+              collaborate with us and be part of a forward-thinking ecosystem.
             </motion.p>
           </motion.div>
 
@@ -263,7 +301,6 @@ export default function Partners() {
               <ArrowIcon />
             </Link>
           </motion.div>
-
         </div>
       </section>
 
@@ -289,8 +326,7 @@ export default function Partners() {
               transition={{ duration: 0.6, ease: EASE }}
               className="text-4xl lg:text-6xl font-bold text-gray-900 leading-[1.1] tracking-tight"
             >
-              Start Your{' '}
-              <span className="text-brand">Partnership Journey</span>
+              Start Your <span className="text-brand">Partnership Journey</span>
             </motion.h2>
             <motion.p
               variants={fadeUp}
@@ -299,10 +335,7 @@ export default function Partners() {
             >
               Join a growing network of innovators shaping the future of technology and business.
             </motion.p>
-            <motion.div
-              variants={fadeUp}
-              transition={{ duration: 0.6, ease: EASE }}
-            >
+            <motion.div variants={fadeUp} transition={{ duration: 0.6, ease: EASE }}>
               <Link
                 to="/about/contact"
                 className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white text-base font-semibold px-8 py-3.5 rounded-sm transition-colors duration-200 shadow-sm shadow-brand/20"
@@ -314,7 +347,6 @@ export default function Partners() {
           </motion.div>
         </div>
       </section>
-
     </div>
   )
 }
