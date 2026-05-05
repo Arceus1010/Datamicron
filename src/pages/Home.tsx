@@ -54,6 +54,81 @@ const LAYERS = [
   },
 ]
 
+const EDB_COMPONENTS = [
+  {
+    label: 'Data Layer',
+    detail: 'Pipelines, data lakes & real-time streams',
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Knowledge Layer',
+    detail: 'Business ontology & knowledge graph',
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+      </svg>
+    ),
+  },
+  {
+    label: 'AI Models',
+    detail: 'Prediction, optimisation & reasoning',
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Simulation Engine',
+    detail: 'Test scenarios before acting',
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Decision Layer',
+    detail: 'Recommendations or full automation',
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Feedback Loop',
+    detail: 'Learns and improves over time',
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+      </svg>
+    ),
+  },
+]
+
+const EVOLUTION_STAGES = [
+  {
+    stage: 'Reactive',
+    description: 'Store data. Generate reports. React after the fact.',
+    dimmed: true,
+  },
+  {
+    stage: 'Predictive',
+    description: 'Isolated AI models forecast outcomes — but stay disconnected from action.',
+    dimmed: true,
+  },
+  {
+    stage: 'Adaptive',
+    description: 'Memory + reasoning + learning + decision-making unified in one system.',
+    dimmed: false,
+  },
+]
+
 const CAPABILITIES = [
   {
     title: 'Enterprise Digital Brain',
@@ -304,6 +379,124 @@ export default function Home() {
             >
               Too many tools. No unified intelligence. Phoenix AIP closes the loop.
             </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Enterprise Digital Brain */}
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          {/* Header */}
+          <motion.div
+            className="max-w-3xl mx-auto text-center flex flex-col gap-5 mb-20"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={stagger(0.13)}
+          >
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
+              What is an Enterprise Digital Brain?
+            </motion.span>
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+            >
+              Give your company a{' '}
+              <span className="text-brand">brain, not just software.</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-lg text-gray-500 leading-relaxed"
+            >
+              An Enterprise Digital Brain (EDB) is the unified thinking layer of your organisation —
+              a single intelligent system that senses what's happening, simulates outcomes, and
+              continuously drives smarter decisions.
+            </motion.p>
+          </motion.div>
+
+          {/* Evolution strip */}
+          <motion.div
+            className="grid md:grid-cols-3 gap-px bg-gray-100 rounded-xl overflow-hidden mb-20"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={stagger(0.12)}
+          >
+            {EVOLUTION_STAGES.map((s, i) => (
+              <motion.div
+                key={s.stage}
+                variants={fadeUp}
+                transition={{ duration: 0.55, ease: EASE }}
+                className={`flex flex-col gap-3 px-8 py-8 ${s.dimmed ? 'bg-gray-50' : 'bg-brand-navy'}`}
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    className={`text-xs font-bold uppercase tracking-widest ${s.dimmed ? 'text-gray-400' : 'text-brand'}`}
+                  >
+                    0{i + 1}
+                  </span>
+                  <span
+                    className={`h-px flex-1 ${s.dimmed ? 'bg-gray-200' : 'bg-brand/30'}`}
+                  />
+                </div>
+                <h3
+                  className={`text-xl font-bold ${s.dimmed ? 'text-gray-400' : 'text-white'}`}
+                >
+                  {s.stage}
+                </h3>
+                <p
+                  className={`text-sm leading-relaxed ${s.dimmed ? 'text-gray-400' : 'text-gray-300'}`}
+                >
+                  {s.description}
+                </p>
+                {!s.dimmed && (
+                  <span className="mt-1 text-xs font-semibold text-brand bg-brand/10 border border-brand/20 rounded-full px-3 py-0.5 w-fit">
+                    Where Phoenix AIP takes you
+                  </span>
+                )}
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Components grid */}
+          <motion.div
+            className="flex flex-col gap-10"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={stagger(0.08)}
+          >
+            <motion.h3
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-2xl font-bold text-gray-900 text-center"
+            >
+              Six layers. One unified intelligence.
+            </motion.h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {EDB_COMPONENTS.map((c, i) => (
+                <motion.div
+                  key={c.label}
+                  variants={fadeUp}
+                  transition={{ duration: 0.5, delay: i * 0.06, ease: EASE }}
+                  className="flex items-start gap-4 p-6 rounded-xl border border-gray-100 bg-white hover:border-brand/20 hover:shadow-sm transition-all duration-200"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-brand-light text-brand flex items-center justify-center shrink-0">
+                    {c.icon}
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="font-bold text-gray-900 text-sm">{c.label}</span>
+                    <span className="text-sm text-gray-500">{c.detail}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>

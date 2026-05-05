@@ -41,57 +41,6 @@ export const NAV_ITEMS: NavEntry[] = [
     ],
   },
   {
-    label: 'Solutions',
-    href: '/industries/retail',
-    panel: {
-      title: 'Solutions',
-      description:
-        'Industry-specific, department-focused, and domain-driven solutions tailored to your enterprise needs.',
-    },
-    sections: [
-      {
-        title: 'By Industry',
-        items: [
-          { label: 'Banking & Financial Services', href: '/industries/banking' },
-          { label: 'Retail & E-Commerce', href: '/industries/retail' },
-          { label: 'Insurance', href: '/industries/insurance' },
-          { label: 'Telecommunications', href: '/industries/telecommunications' },
-          { label: 'Logistics & Supply Chain', href: '/industries/logistics' },
-          { label: 'Manufacturing', href: '/industries/manufacturing' },
-          { label: 'Oil & Gas', href: '/industries/oil-and-gas' },
-          { label: 'Agriculture & Food Production', href: '/industries/agriculture' },
-          { label: 'Tourism & Hospitality', href: '/industries/tourism' },
-          { label: 'Real Estate & Property', href: '/industries/real-estate' },
-          { label: 'Airport & Retail', href: '/industries/airport-retail' },
-          { label: 'Port Authority', href: '/industries/port-authority' },
-          { label: 'Law Enforcement', href: '/industries/law-enforcement' },
-        ],
-      },
-      {
-        title: 'By Department',
-        items: [
-          { label: 'Risk Management', href: '/department/risk-management' },
-          { label: 'IT & Technical Services', href: '/department/it-services' },
-          { label: 'HR & Human Resources', href: '/department/hr-resources' },
-          { label: 'Consulting Services', href: '/department/consulting-services' },
-          { label: 'Energy Distribution', href: '/department/energy-distribution' },
-          { label: 'Mobile Dashboards', href: '/department/mobile-dashboards' },
-          { label: 'Price Forecasting (Retail)', href: '/department/price-forecasting-retail' },
-          { label: 'Cross & Up-Selling', href: '/department/cross-and-up-selling' },
-        ],
-      },
-      {
-        title: 'Emerging Domains',
-        items: [
-          { label: 'Industry 4.0', href: '/domain/industry-4-0' },
-          { label: 'Smart City Solutions', href: '/domain/smart-city' },
-          { label: 'Smart Building Tech', href: '/domain/smart-building' },
-          { label: 'Risk Assessment Engine', href: '/domain/risk-assessment-engine' },
-        ],
-      },
-    ],
-  },
-  {
     label: 'Platforms',
     href: '/platforms',
     panel: {
@@ -105,7 +54,7 @@ export const NAV_ITEMS: NavEntry[] = [
           { label: 'InstaBI', href: '/platforms/instabi' },
           { label: 'Eagle Eye', href: '/platforms/eagle-eye' },
           { label: 'Reporting System', href: '/platforms/reporting-system' },
-          { label: 'Globes (Map Engine)', href: '/platforms/globes' },
+          { label: 'Globes', href: '/platforms/globes' },
           { label: 'Foresight', href: '/platforms/foresight' },
           { label: 'Falcon', href: '/platforms/falcon' },
         ],
@@ -119,6 +68,57 @@ export const NAV_ITEMS: NavEntry[] = [
           { label: 'Excel Automation', href: '/platforms/excel-automation' },
           { label: 'Spotlight BDA', href: '/platforms/spotlight-bda' },
           { label: 'EzSync', href: '/platforms/ezsync' },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Solutions',
+    href: '/industries/retail',
+    panel: {
+      title: 'Solutions',
+      description:
+        'Industry-specific, department-focused, and domain-driven solutions tailored to your enterprise needs.',
+    },
+    sections: [
+      {
+        title: 'By Industry',
+        items: [
+          { label: 'Banking', href: '/industries/banking' },
+          { label: 'Retail', href: '/industries/retail' },
+          { label: 'Insurance', href: '/industries/insurance' },
+          { label: 'Telecommunications', href: '/industries/telecommunications' },
+          { label: 'Logistics', href: '/industries/logistics' },
+          { label: 'Manufacturing', href: '/industries/manufacturing' },
+          { label: 'Oil & Gas', href: '/industries/oil-and-gas' },
+          { label: 'Agriculture', href: '/industries/agriculture' },
+          { label: 'Tourism', href: '/industries/tourism' },
+          { label: 'Real Estate', href: '/industries/real-estate' },
+          { label: 'Airport Retail', href: '/industries/airport-retail' },
+          { label: 'Port Authority', href: '/industries/port-authority' },
+          { label: 'Law Enforcement', href: '/industries/law-enforcement' },
+        ],
+      },
+      {
+        title: 'By Department',
+        items: [
+          { label: 'Risk Management', href: '/department/risk-management' },
+          { label: 'IT Services', href: '/department/it-services' },
+          { label: 'HR Resources', href: '/department/hr-resources' },
+          { label: 'Consulting Services', href: '/department/consulting-services' },
+          { label: 'Energy Distribution', href: '/department/energy-distribution' },
+          { label: 'Mobile Dashboards', href: '/department/mobile-dashboards' },
+          { label: 'Price Forecasting Retail', href: '/department/price-forecasting-retail' },
+          { label: 'Cross and Up Selling', href: '/department/cross-and-up-selling' },
+        ],
+      },
+      {
+        title: 'Emerging Domains',
+        items: [
+          { label: 'Industry 4.0', href: '/domain/industry-4-0' },
+          { label: 'Smart City', href: '/domain/smart-city' },
+          { label: 'Smart Building', href: '/domain/smart-building' },
+          { label: 'Risk Assessment Engine', href: '/domain/risk-assessment-engine' },
         ],
       },
     ],
