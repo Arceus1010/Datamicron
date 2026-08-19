@@ -19,36 +19,57 @@ const EASE = [0.22, 1, 0.36, 1] as const
 
 const CYCLING_WORDS = ['Digital Brain.', 'Autonomous AI.', 'Digital Twin.']
 
-const LAYERS = [
+const LAYERS: Array<{
+  step: string
+  name: string
+  tag: string
+  href: string
+  description: string
+  /** Optional demo reel — falls back to the image placeholder when absent */
+  video?: string
+}> = [
   {
     step: '01',
+    name: 'PhoenixApps',
+    tag: 'Business Applications & Workflows',
+    href: '/phoenix-aip/phoenix-apps',
+    video: '/2. PhoenixStudio.mp4',
+    description:
+      'Governed, AI-native business applications composed from ready-made blocks — putting data, reasoning, and agent actions directly in the screens your teams work in every day.',
+  },
+  {
+    step: '02',
     name: 'Cortexus',
     tag: 'Autonomous Agents & Orchestration',
     href: '/phoenix-aip/cortexus',
+    video: '/3. Cortexus.mp4',
     description:
       'AI agents that plan, reason, and act — orchestrating workflows across systems without human intervention, continuously optimising toward business outcomes.',
   },
   {
-    step: '02',
+    step: '03',
     name: 'Phoenix Insights',
     tag: 'Business Intelligence & Decision Layer',
     href: '/phoenix-aip/phoenix-insights',
+    video: '/4. Phoenix Insight.mp4',
     description:
       'Surfaces decisions, forecasts, and recommendations directly to business users — closing the loop from raw data to measurable enterprise action.',
   },
   {
-    step: '03',
-    name: 'Spotlight Lakehouse',
+    step: '04',
+    name: 'Spotlight Data Fabrics',
     tag: 'Semantic & Vector Storage',
     href: '/phoenix-aip/spotlight-lakehouse',
+    video: '/5. Spotlight Data Fabrics.mp4',
     description:
       'A unified lakehouse combining semantic search, vector embeddings, and a knowledge graph — turning stored data into contextually queryable intelligence.',
   },
   {
-    step: '04',
+    step: '05',
     name: 'DataForge',
     tag: 'Data Ingestion & Pipelines',
     href: '/phoenix-aip/dataforge',
+    video: '/6. Phoenix DataForge.mp4',
     description:
       'Connects and normalises data from any source — structured, unstructured, streaming or batch — into a unified, governed pipeline ready for intelligence.',
   },
@@ -288,7 +309,7 @@ export default function Home() {
         {/* Full-bleed video background */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
-          src="/Corporate Video Phoenix (1080p_30fps_H264-128kbit_AAC).mp4"
+          src="/01. EDB datamicron.mp4"
           autoPlay
           muted
           loop
@@ -531,8 +552,8 @@ export default function Home() {
               transition={{ duration: 0.55, ease: EASE }}
               className="text-lg text-gray-500"
             >
-              Four integrated modules that take your enterprise from raw data to autonomous
-              decisions.
+              Five integrated modules that take your enterprise from raw data to autonomous
+              decisions — and into the applications your teams use.
             </motion.p>
           </motion.div>
 
@@ -553,8 +574,19 @@ export default function Home() {
                   <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-brand border-2 border-white ring-1 ring-brand/30 hidden lg:block z-10" />
 
                   <div className={isEven ? 'lg:order-1' : 'lg:order-2'}>
-                    <div className="w-full aspect-video rounded-sm bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-300">
-                      <ImagePlaceholder />
+                    <div className="w-full aspect-video rounded-sm bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-300 overflow-hidden">
+                      {layer.video ? (
+                        <video
+                          className="w-full h-full object-cover"
+                          src={layer.video}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                        />
+                      ) : (
+                        <ImagePlaceholder />
+                      )}
                     </div>
                   </div>
 

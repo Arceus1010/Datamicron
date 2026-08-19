@@ -7,6 +7,7 @@ import Cortexus from '@/pages/phoenix-aip/Cortexus'
 import PhoenixInsights from '@/pages/phoenix-aip/PhoenixInsights'
 import SpotlightLakehouse from '@/pages/phoenix-aip/SpotlightLakehouse'
 import Dataforge from '@/pages/phoenix-aip/Dataforge'
+import PhoenixApps from '@/pages/phoenix-aip/PhoenixApps'
 import Services from '@/pages/about/Services'
 import Partners from '@/pages/Partners'
 import Company from '@/pages/about/Company'
@@ -55,6 +56,7 @@ const ROUTES: Array<{ path: string; element: ReactElement }> = [
   { path: 'phoenix-aip/phoenix-insights', element: <PhoenixInsights /> },
   { path: 'phoenix-aip/spotlight-lakehouse', element: <SpotlightLakehouse /> },
   { path: 'phoenix-aip/dataforge', element: <Dataforge /> },
+  { path: 'phoenix-aip/phoenix-apps', element: <PhoenixApps /> },
 
   // Platforms
   { path: 'platforms/instabi', element: <InstaBI /> },
