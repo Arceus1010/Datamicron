@@ -32,7 +32,6 @@ export const NAV_ITEMS: NavEntry[] = [
       {
         title: '',
         items: [
-          { label: 'PhoenixApps', href: '/phoenix-aip/phoenix-apps' },
           { label: 'Cortexus', href: '/phoenix-aip/cortexus' },
           { label: 'Phoenix Insights', href: '/phoenix-aip/phoenix-insights' },
           { label: 'Spotlight Lakehouse', href: '/phoenix-aip/spotlight-lakehouse' },
