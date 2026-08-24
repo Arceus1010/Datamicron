@@ -32,10 +32,10 @@ export const NAV_ITEMS: NavEntry[] = [
       {
         title: '',
         items: [
-          { label: 'PhoenixApps', href: '/phoenix-aip/phoenix-apps' },
+          { label: 'Phoenix Studio', href: '/phoenix-aip/phoenix-studio' },
           { label: 'Cortexus', href: '/phoenix-aip/cortexus' },
           { label: 'Phoenix Insights', href: '/phoenix-aip/phoenix-insights' },
-          { label: 'Spotlight Lakehouse', href: '/phoenix-aip/spotlight-lakehouse' },
+          { label: 'Spotlight Data Fabrics', href: '/phoenix-aip/spotlight-data-fabrics' },
           { label: 'Dataforge', href: '/phoenix-aip/dataforge' },
         ],
       },
@@ -57,18 +57,16 @@ export const NAV_ITEMS: NavEntry[] = [
           { label: 'Reporting System', href: '/platforms/reporting-system' },
           { label: 'Globes', href: '/platforms/globes' },
           { label: 'Foresight', href: '/platforms/foresight' },
-          { label: 'Falcon', href: '/platforms/falcon' },
         ],
       },
       {
         title: '',
         items: [
+          { label: 'Falcon', href: '/platforms/falcon' },
           { label: 'EzData', href: '/platforms/ezdata' },
-          { label: 'MemDB', href: '/platforms/memdb' },
           { label: 'Smart Data Governance', href: '/platforms/smart-data-governance' },
-          { label: 'Excel Automation', href: '/platforms/excel-automation' },
-          { label: 'Spotlight BDA', href: '/platforms/spotlight-bda' },
           { label: 'EzSync', href: '/platforms/ezsync' },
+          { label: 'Pulse', href: '/platforms/pulse' },
         ],
       },
     ],

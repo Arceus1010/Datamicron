@@ -30,9 +30,9 @@ const LAYERS: Array<{
 }> = [
   {
     step: '01',
-    name: 'PhoenixApps',
+    name: 'Phoenix Studio',
     tag: 'Business Applications & Workflows',
-    href: '/phoenix-aip/phoenix-apps',
+    href: '/phoenix-aip/phoenix-studio',
     video: '/2. PhoenixStudio.mp4',
     description:
       'Governed, AI-native business applications composed from ready-made blocks — putting data, reasoning, and agent actions directly in the screens your teams work in every day.',
@@ -59,7 +59,7 @@ const LAYERS: Array<{
     step: '04',
     name: 'Spotlight Data Fabrics',
     tag: 'Semantic & Vector Storage',
-    href: '/phoenix-aip/spotlight-lakehouse',
+    href: '/phoenix-aip/spotlight-data-fabrics',
     video: '/5. Spotlight Data Fabrics.mp4',
     description:
       'A unified lakehouse combining semantic search, vector embeddings, and a knowledge graph — turning stored data into contextually queryable intelligence.',

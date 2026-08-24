@@ -5,9 +5,9 @@ import Layout from '@/components/layout/Layout'
 import Home from '@/pages/Home'
 import Cortexus from '@/pages/phoenix-aip/Cortexus'
 import PhoenixInsights from '@/pages/phoenix-aip/PhoenixInsights'
-import SpotlightLakehouse from '@/pages/phoenix-aip/SpotlightLakehouse'
+import SpotlightDataFabrics from '@/pages/phoenix-aip/SpotlightDataFabrics'
 import Dataforge from '@/pages/phoenix-aip/Dataforge'
-import PhoenixApps from '@/pages/phoenix-aip/PhoenixApps'
+import PhoenixStudio from '@/pages/phoenix-aip/PhoenixStudio'
 import Services from '@/pages/about/Services'
 import Partners from '@/pages/Partners'
 import Company from '@/pages/about/Company'
@@ -40,11 +40,9 @@ import Globes from '@/pages/platforms/Globes'
 import Foresight from '@/pages/platforms/Foresight'
 import Falcon from '@/pages/platforms/Falcon'
 import EzData from '@/pages/platforms/EzData'
-import MemDB from '@/pages/platforms/MemDB'
 import SmartDataGovernance from '@/pages/platforms/SmartDataGovernance'
-import ExcelAutomation from '@/pages/platforms/ExcelAutomation'
-import SpotlightBDA from '@/pages/platforms/SpotlightBDA'
 import EzSync from '@/pages/platforms/EzSync'
+import Pulse from '@/pages/platforms/Pulse'
 import Industry40 from '@/pages/solutions/domain/Industry40'
 import SmartCity from '@/pages/solutions/domain/SmartCity'
 import SmartBuilding from '@/pages/solutions/domain/SmartBuilding'
@@ -54,9 +52,9 @@ const ROUTES: Array<{ path: string; element: ReactElement }> = [
   // Phoenix AIP
   { path: 'phoenix-aip/cortexus', element: <Cortexus /> },
   { path: 'phoenix-aip/phoenix-insights', element: <PhoenixInsights /> },
-  { path: 'phoenix-aip/spotlight-lakehouse', element: <SpotlightLakehouse /> },
+  { path: 'phoenix-aip/spotlight-data-fabrics', element: <SpotlightDataFabrics /> },
   { path: 'phoenix-aip/dataforge', element: <Dataforge /> },
-  { path: 'phoenix-aip/phoenix-apps', element: <PhoenixApps /> },
+  { path: 'phoenix-aip/phoenix-studio', element: <PhoenixStudio /> },
 
   // Platforms
   { path: 'platforms/instabi', element: <InstaBI /> },
@@ -66,11 +64,9 @@ const ROUTES: Array<{ path: string; element: ReactElement }> = [
   { path: 'platforms/foresight', element: <Foresight /> },
   { path: 'platforms/falcon', element: <Falcon /> },
   { path: 'platforms/ezdata', element: <EzData /> },
-  { path: 'platforms/memdb', element: <MemDB /> },
   { path: 'platforms/smart-data-governance', element: <SmartDataGovernance /> },
-  { path: 'platforms/excel-automation', element: <ExcelAutomation /> },
-  { path: 'platforms/spotlight-bda', element: <SpotlightBDA /> },
   { path: 'platforms/ezsync', element: <EzSync /> },
+  { path: 'platforms/pulse', element: <Pulse /> },
 
   // About
   { path: 'services', element: <Services /> },

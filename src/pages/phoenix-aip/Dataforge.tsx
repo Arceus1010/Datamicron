@@ -74,7 +74,7 @@ const HOW_IT_WORKS = [
   {
     step: '04',
     label: 'Deliver',
-    description: 'Clean, high-quality data is routed to Spotlight Lakehouse, Phoenix Insights, Cortexus, or any application — in the format and frequency each consumer needs.',
+    description: 'Clean, high-quality data is routed to Spotlight Data Fabrics, Phoenix Insights, Cortexus, or any application — in the format and frequency each consumer needs.',
     color: 'bg-brand/10 text-brand border-brand/20',
   },
 ]
@@ -754,7 +754,7 @@ export default function Dataforge() {
                 <h3 className="font-bold text-gray-900">Integration & Ecosystem</h3>
                 <div className="flex flex-col gap-3">
                   {[
-                    { label: 'Spotlight Lakehouse', sub: 'Primary destination for all ingested and transformed data' },
+                    { label: 'Spotlight Data Fabrics', sub: 'Primary destination for all ingested and transformed data' },
                     { label: 'Phoenix Insights', sub: 'Delivers clean, enriched data for AI reasoning and analytics' },
                     { label: 'Cortexus', sub: 'Supplies real-time context for autonomous agent execution' },
                     { label: 'Any downstream app', sub: 'API-first delivery to any consumer in your stack' },

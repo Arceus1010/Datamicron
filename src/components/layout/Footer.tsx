@@ -44,11 +44,9 @@ const PLATFORMS = [
   { label: 'Foresight', href: '/platforms/foresight' },
   { label: 'Falcon', href: '/platforms/falcon' },
   { label: 'EzData', href: '/platforms/ezdata' },
-  { label: 'MemDB', href: '/platforms/memdb' },
   { label: 'Smart Data Governance', href: '/platforms/smart-data-governance' },
-  { label: 'Excel Automation', href: '/platforms/excel-automation' },
-  { label: 'Spotlight BDA', href: '/platforms/spotlight-bda' },
   { label: 'EzSync', href: '/platforms/ezsync' },
+  { label: 'Pulse', href: '/platforms/pulse' },
 ]
 
 const FOOTER_COLS = [

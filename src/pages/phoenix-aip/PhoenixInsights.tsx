@@ -774,7 +774,7 @@ export default function PhoenixInsights() {
                 <h3 className="font-bold text-gray-900 text-lg">Integration & Ecosystem</h3>
                 <div className="flex flex-col gap-3">
                   {[
-                    { label: 'Spotlight Lakehouse', sub: 'Pulls from your semantic & vector storage layer' },
+                    { label: 'Spotlight Data Fabrics', sub: 'Pulls from your semantic & vector storage layer' },
                     { label: 'Cortexus', sub: 'Feeds decisions into the autonomous execution engine' },
                     { label: 'DataForge', sub: 'Works across structured + unstructured data pipelines' },
                     { label: 'External sources', sub: 'REST APIs, cloud DWs, SaaS, and streaming data' },
