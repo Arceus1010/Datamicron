@@ -25,6 +25,7 @@ const LAYERS: Array<{
   tag: string
   href: string
   description: string
+  videoId?: string
 }> = [
   {
     step: '01',
@@ -41,6 +42,7 @@ const LAYERS: Array<{
     href: '/phoenix-aip/cortexus',
     description:
       'AI agents that plan, reason, and act — orchestrating workflows across systems without human intervention, continuously optimising toward business outcomes.',
+    videoId: 'dZHT0Z10sDk',
   },
   {
     step: '03',
@@ -49,6 +51,7 @@ const LAYERS: Array<{
     href: '/phoenix-aip/phoenix-insights',
     description:
       'Surfaces decisions, forecasts, and recommendations directly to business users — closing the loop from raw data to measurable enterprise action.',
+    videoId: 'wYqkoDpz-B8',
   },
   {
     step: '04',
@@ -57,6 +60,7 @@ const LAYERS: Array<{
     href: '/phoenix-aip/spotlight-data-fabrics',
     description:
       'A unified lakehouse combining semantic search, vector embeddings, and a knowledge graph — turning stored data into contextually queryable intelligence.',
+    videoId: 'J2ItSRvftM0',
   },
   {
     step: '05',
@@ -65,6 +69,7 @@ const LAYERS: Array<{
     href: '/phoenix-aip/dataforge',
     description:
       'Connects and normalises data from any source — structured, unstructured, streaming or batch — into a unified, governed pipeline ready for intelligence.',
+    videoId: 'hNEZU9_8Uv0',
   },
 ]
 
@@ -137,7 +142,7 @@ const EVOLUTION_STAGES = [
     dimmed: true,
   },
   {
-    stage: 'Adaptive',
+    stage: 'Adaptive Intelligence',
     description: 'Memory + reasoning + learning + decision-making unified in one system.',
     dimmed: false,
   },
@@ -299,10 +304,20 @@ export default function Home() {
     <div className="bg-white">
       {/* Hero */}
       <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center bg-brand-navy">
-        {/* Placeholder background — a hosted video loop goes here once available */}
+        {/* Background video loop */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          src="/Homepage%20Background.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-brand-navy/60 pointer-events-none" />
         <div className="absolute -top-40 -right-40 w-125 h-125 rounded-full bg-brand/10 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-brand/8 blur-3xl pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-75 rounded-full bg-brand/5 blur-3xl pointer-events-none" />
 
         <div className="relative max-w-6xl mx-auto px-6 py-16 w-full">
           <motion.div
@@ -560,7 +575,18 @@ export default function Home() {
 
                   <div className={isEven ? 'lg:order-1' : 'lg:order-2'}>
                     <div className="w-full aspect-video rounded-sm bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-300 overflow-hidden">
-                      <ImagePlaceholder />
+                      {layer.videoId ? (
+                        <iframe
+                          className="w-full h-full block"
+                          src={`https://www.youtube-nocookie.com/embed/${layer.videoId}`}
+                          title={`${layer.name} overview`}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                        />
+                      ) : (
+                        <ImagePlaceholder />
+                      )}
                     </div>
                   </div>
 

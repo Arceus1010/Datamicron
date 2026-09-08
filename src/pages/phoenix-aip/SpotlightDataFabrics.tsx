@@ -5,6 +5,8 @@ import { fadeUp, stagger, EASE } from '@/lib/motion'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
+const SPOTLIGHT_VIDEO_ID = 'J2ItSRvftM0'
+
 const CAPABILITIES = [
   {
     id: 'unified',
@@ -859,6 +861,46 @@ export default function SpotlightDataFabrics() {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Spotlight Data Fabrics in Action ─────────────────────────────────── */}
+      <section className="bg-gray-50">
+        <div className="max-w-5xl mx-auto px-6 py-24">
+          <motion.div
+            className="max-w-2xl mx-auto text-center flex flex-col gap-4 mb-12"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={stagger()}
+          >
+            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+              Spotlight in Action
+            </motion.span>
+            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
+              See the fabric <span className="text-brand">at work.</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-gray-500 leading-relaxed">
+              Watch semantic search, vector embeddings and the knowledge graph come together — stored data turned into context you can query.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="relative rounded-2xl overflow-hidden border border-brand-navy-border shadow-xl"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7, ease: EASE }}
+          >
+            <iframe
+              className="w-full aspect-video block"
+              src={`https://www.youtube-nocookie.com/embed/${SPOTLIGHT_VIDEO_ID}`}
+              title="Spotlight Data Fabrics product walkthrough"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </motion.div>
         </div>
       </section>
 

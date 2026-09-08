@@ -46,11 +46,11 @@ export const NAV_ITEMS: NavEntry[] = [
     ],
   },
   {
-    label: 'Platforms',
+    label: 'Products',
     href: '/platforms',
     panel: {
-      title: 'Platforms',
-      description: 'Scalable data and AI platforms built for modern enterprises.',
+      title: 'Products',
+      description: 'Scalable data and AI products built for modern enterprises.',
     },
     sections: [
       {

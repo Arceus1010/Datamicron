@@ -67,7 +67,7 @@ const CONTACT_OPTIONS = [
       </svg>
     ),
     label: 'Visit Us',
-    sublabel: 'Suite 9-11, 9th Floor Wisma UOA II, Kuala Lumpur',
+    sublabel: 'Lobby A, 11th Floor, Wisma UOA II, Kuala Lumpur',
     value: 'Get Directions →',
     href: 'https://maps.google.com/?q=Wisma+UOA+II+Kuala+Lumpur',
   },
@@ -608,7 +608,7 @@ export default function Contact() {
             </div>
             <div className="px-6 py-4 bg-gray-50 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
               <p className="text-sm text-gray-600 font-medium">
-                Suite 9-11, 9th Floor, Wisma UOA II, No. 21 Jalan Pinang, 50450 Kuala Lumpur
+                Wisma UOA II, Lobby A, 11th Floor, No. 21 Jalan Pinang, 50450 Kuala Lumpur, Malaysia
               </p>
               <span className="hidden sm:block text-gray-300">·</span>
               <p className="text-sm text-gray-400">Ample parking available in the building</p>
