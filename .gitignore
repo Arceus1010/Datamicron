@@ -23,6 +23,16 @@ dist-ssr
 *.sln
 *.sw?
 
+# Video is never committed — GitHub rejects files over 100MB and these ran
+# 26–246MB each. Masters live outside the repo in ../Datamicron-video-masters/.
+# The site shows placeholders until the videos are hosted externally.
+public/*.mp4
+*.mp4
+*.mov
+*.webm
+*.avi
+*.mkv
+
 # Misc
 .eslintcache
 .env.local

@@ -10,6 +10,7 @@ import Dataforge from '@/pages/phoenix-aip/Dataforge'
 import PhoenixStudio from '@/pages/phoenix-aip/PhoenixStudio'
 import Services from '@/pages/about/Services'
 import Partners from '@/pages/Partners'
+import WhyEDB from '@/pages/WhyEDB'
 import Company from '@/pages/about/Company'
 import Contact from '@/pages/about/Contact'
 import Retail from '@/pages/solutions/industries/Retail'
@@ -71,6 +72,7 @@ const ROUTES: Array<{ path: string; element: ReactElement }> = [
   // About
   { path: 'services', element: <Services /> },
   { path: 'partners', element: <Partners /> },
+  { path: 'why-edb', element: <WhyEDB /> },
   { path: 'about/company', element: <Company /> },
   { path: 'about/contact', element: <Contact /> },
 

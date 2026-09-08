@@ -21,6 +21,10 @@ export interface NavEntry {
 
 export const NAV_ITEMS: NavEntry[] = [
   {
+    label: 'Why EDB?',
+    href: '/why-edb',
+  },
+  {
     label: 'Phoenix AIP',
     href: '/phoenix-aip',
     panel: {

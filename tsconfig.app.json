@@ -16,11 +16,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
-    /* Path aliases */
-    "ignoreDeprecations": "6.0",
-    "baseUrl": ".",
+    /* Path aliases — resolved relative to this file, so no baseUrl needed */
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
 
     /* Linting */

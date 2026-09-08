@@ -118,12 +118,6 @@ const USE_CASES = [
   },
 ]
 
-const OUTCOMES = [
-  { icon: '🚀', metric: '10×', label: 'Faster delivery than traditional app builds' },
-  { icon: '🧩', metric: '80%', label: 'Of each app assembled from existing blocks' },
-  { icon: '💸', metric: '60%', label: 'Lower cost than bespoke custom development' },
-  { icon: '🔐', metric: '100%', label: 'Of user and agent actions audit-logged' },
-]
 
 const PROBLEMS = [
   'Insight lands in dashboards, but the actual work still happens in spreadsheets',
@@ -593,7 +587,7 @@ export default function PhoenixStudio() {
       </section>
 
       {/* ── Use Cases ────────────────────────────────────────────────────────── */}
-      <section className="bg-white">
+      <section className="bg-gray-50">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <motion.div
             className="max-w-2xl mx-auto text-center flex flex-col gap-4 mb-16"
@@ -634,43 +628,6 @@ export default function PhoenixStudio() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Business Outcomes ────────────────────────────────────────────────── */}
-      <section className="bg-indigo-50">
-        <div className="max-w-6xl mx-auto px-6 py-24">
-          <motion.div
-            className="max-w-2xl mx-auto text-center flex flex-col gap-4 mb-16"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.4 }}
-            variants={stagger()}
-          >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-indigo-600 uppercase tracking-widest">
-              Business Outcomes
-            </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-              What a shared app layer <span className="text-indigo-600">unlocks.</span>
-            </motion.h2>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {OUTCOMES.map((o, i) => (
-              <motion.div
-                key={o.label}
-                className="bg-white rounded-xl p-6 text-center shadow-sm border border-indigo-100 flex flex-col gap-3 items-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
-              >
-                <span className="text-3xl">{o.icon}</span>
-                <span className="text-4xl font-bold text-indigo-600 font-display">{o.metric}</span>
-                <p className="text-sm text-gray-500 leading-snug">{o.label}</p>
               </motion.div>
             ))}
           </div>

@@ -25,15 +25,12 @@ const LAYERS: Array<{
   tag: string
   href: string
   description: string
-  /** Optional demo reel — falls back to the image placeholder when absent */
-  video?: string
 }> = [
   {
     step: '01',
     name: 'Phoenix Studio',
     tag: 'Business Applications & Workflows',
     href: '/phoenix-aip/phoenix-studio',
-    video: '/2. PhoenixStudio.mp4',
     description:
       'Governed, AI-native business applications composed from ready-made blocks — putting data, reasoning, and agent actions directly in the screens your teams work in every day.',
   },
@@ -42,7 +39,6 @@ const LAYERS: Array<{
     name: 'Cortexus',
     tag: 'Autonomous Agents & Orchestration',
     href: '/phoenix-aip/cortexus',
-    video: '/3. Cortexus.mp4',
     description:
       'AI agents that plan, reason, and act — orchestrating workflows across systems without human intervention, continuously optimising toward business outcomes.',
   },
@@ -51,7 +47,6 @@ const LAYERS: Array<{
     name: 'Phoenix Insights',
     tag: 'Business Intelligence & Decision Layer',
     href: '/phoenix-aip/phoenix-insights',
-    video: '/4. Phoenix Insight.mp4',
     description:
       'Surfaces decisions, forecasts, and recommendations directly to business users — closing the loop from raw data to measurable enterprise action.',
   },
@@ -60,7 +55,6 @@ const LAYERS: Array<{
     name: 'Spotlight Data Fabrics',
     tag: 'Semantic & Vector Storage',
     href: '/phoenix-aip/spotlight-data-fabrics',
-    video: '/5. Spotlight Data Fabrics.mp4',
     description:
       'A unified lakehouse combining semantic search, vector embeddings, and a knowledge graph — turning stored data into contextually queryable intelligence.',
   },
@@ -69,7 +63,6 @@ const LAYERS: Array<{
     name: 'DataForge',
     tag: 'Data Ingestion & Pipelines',
     href: '/phoenix-aip/dataforge',
-    video: '/6. Phoenix DataForge.mp4',
     description:
       'Connects and normalises data from any source — structured, unstructured, streaming or batch — into a unified, governed pipeline ready for intelligence.',
   },
@@ -305,19 +298,11 @@ export default function Home() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center">
-        {/* Full-bleed video background */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src="/01. EDB datamicron.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-
-        {/* Dark overlay so text stays readable */}
-        <div className="absolute inset-0 bg-black/55 pointer-events-none" />
+      <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center bg-brand-navy">
+        {/* Placeholder background — a hosted video loop goes here once available */}
+        <div className="absolute -top-40 -right-40 w-125 h-125 rounded-full bg-brand/10 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-brand/8 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-75 rounded-full bg-brand/5 blur-3xl pointer-events-none" />
 
         <div className="relative max-w-6xl mx-auto px-6 py-16 w-full">
           <motion.div
@@ -575,18 +560,7 @@ export default function Home() {
 
                   <div className={isEven ? 'lg:order-1' : 'lg:order-2'}>
                     <div className="w-full aspect-video rounded-sm bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-300 overflow-hidden">
-                      {layer.video ? (
-                        <video
-                          className="w-full h-full object-cover"
-                          src={layer.video}
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                        />
-                      ) : (
-                        <ImagePlaceholder />
-                      )}
+                      <ImagePlaceholder />
                     </div>
                   </div>
 
