@@ -11,46 +11,102 @@ const CAPABILITIES = [
   {
     id: 'unified',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"
+        />
       </svg>
     ),
     title: 'Unified Storage',
-    description: 'Store structured and unstructured data in a single lakehouse architecture — eliminating silos, simplifying your data estate, and creating one reliable foundation.',
-    points: ['All data types in one place', 'Eliminate warehouse + lake sprawl', 'Simplified data architecture'],
+    description:
+      'Store structured and unstructured data in a single lakehouse architecture — eliminating silos, simplifying your data estate, and creating one reliable foundation.',
+    points: [
+      'All data types in one place',
+      'Eliminate warehouse + lake sprawl',
+      'Simplified data architecture',
+    ],
   },
   {
     id: 'vector',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+        />
       </svg>
     ),
     title: 'Vector & Semantic Storage',
-    description: 'Native embedding support powers LLM and AI applications with semantic search and contextual retrieval across all your enterprise data.',
+    description:
+      'Native embedding support powers LLM and AI applications with semantic search and contextual retrieval across all your enterprise data.',
     points: ['Native vector embeddings', 'Semantic search & retrieval', 'LLM-ready context store'],
   },
   {
     id: 'analytics',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6.75v6.75" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6.75v6.75"
+        />
       </svg>
     ),
     title: 'High-Performance Analytics',
-    description: 'Fast querying across datasets of any scale — real-time and batch processing side by side, on scalable infrastructure built for enterprise throughput.',
-    points: ['Sub-second query performance', 'Real-time & batch processing', 'Elastic, scalable compute'],
+    description:
+      'Fast querying across datasets of any scale — real-time and batch processing side by side, on scalable infrastructure built for enterprise throughput.',
+    points: [
+      'Sub-second query performance',
+      'Real-time & batch processing',
+      'Elastic, scalable compute',
+    ],
   },
   {
     id: 'governance',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
+        />
       </svg>
     ),
     title: 'Governance & Security',
-    description: 'Fine-grained access control, end-to-end encryption, and full data lineage — so every data asset is traceable, auditable, and compliance-ready from day one.',
-    points: ['Fine-grained access control', 'Data lineage & auditability', 'Compliance-ready by design'],
+    description:
+      'Fine-grained access control, end-to-end encryption, and full data lineage — so every data asset is traceable, auditable, and compliance-ready from day one.',
+    points: [
+      'Fine-grained access control',
+      'Data lineage & auditability',
+      'Compliance-ready by design',
+    ],
   },
 ]
 
@@ -58,25 +114,29 @@ const HOW_IT_WORKS = [
   {
     step: '01',
     label: 'Ingest',
-    description: 'Data streams in from any source — structured databases, document stores, APIs, streaming platforms, and legacy systems — via the DataForge pipeline layer.',
+    description:
+      'Data streams in from any source — structured databases, document stores, APIs, streaming platforms, and legacy systems — via the DataForge pipeline layer.',
     color: 'bg-brand/10 text-brand border-brand/20',
   },
   {
     step: '02',
     label: 'Unify',
-    description: 'All data is stored in a single lakehouse layer — no more isolated data lakes or disconnected warehouses. One place, one schema, one truth.',
+    description:
+      'All data is stored in a single lakehouse layer — no more isolated data lakes or disconnected warehouses. One place, one schema, one truth.',
     color: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
   },
   {
     step: '03',
     label: 'Organise',
-    description: 'Data is structured, indexed, enriched with metadata, and stored as vectors or tables — ready for semantic retrieval, analytics, or AI model consumption.',
+    description:
+      'Data is structured, indexed, enriched with metadata, and stored as vectors or tables — ready for semantic retrieval, analytics, or AI model consumption.',
     color: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
   },
   {
     step: '04',
     label: 'Serve',
-    description: 'Clean, governed data is delivered to Phoenix Insights for reasoning, Cortexus for execution, and any downstream application or BI tool.',
+    description:
+      'Clean, governed data is delivered to Phoenix Insights for reasoning, Cortexus for execution, and any downstream application or BI tool.',
     color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
   },
 ]
@@ -84,39 +144,95 @@ const HOW_IT_WORKS = [
 const USE_CASES = [
   {
     icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"
+        />
       </svg>
     ),
     title: 'AI & LLM Enablement',
-    items: ['Vector databases for retrieval-augmented generation', 'Context-aware AI applications', 'Knowledge store for enterprise LLMs'],
+    items: [
+      'Vector databases for retrieval-augmented generation',
+      'Context-aware AI applications',
+      'Knowledge store for enterprise LLMs',
+    ],
   },
   {
     icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6.75v6.75" />
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6.75v6.75"
+        />
       </svg>
     ),
     title: 'Business Intelligence',
-    items: ['Unified dashboards across all data', 'Cross-functional analytics in one query', 'No more BI tool proliferation'],
+    items: [
+      'Unified dashboards across all data',
+      'Cross-functional analytics in one query',
+      'No more BI tool proliferation',
+    ],
   },
   {
     icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+        />
       </svg>
     ),
     title: 'Data Modernisation',
-    items: ['Replace legacy data warehouses and lakes', 'Simplify and consolidate infrastructure', 'Reduce operational overhead'],
+    items: [
+      'Replace legacy data warehouses and lakes',
+      'Simplify and consolidate infrastructure',
+      'Reduce operational overhead',
+    ],
   },
   {
     icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+        />
       </svg>
     ),
     title: 'Knowledge Management',
-    items: ['Centralised enterprise knowledge base', 'Semantic search across all documents', 'Institutional memory at scale'],
+    items: [
+      'Centralised enterprise knowledge base',
+      'Semantic search across all documents',
+      'Institutional memory at scale',
+    ],
   },
 ]
 
@@ -129,7 +245,7 @@ const OUTCOMES = [
 
 const PROBLEMS = [
   'Data lives across silos — warehouses, lakes, apps',
-  'Structured and unstructured data aren\'t unified',
+  "Structured and unstructured data aren't unified",
   'AI systems lack clean, accessible data to reason over',
   'Governance and security are inconsistent across systems',
 ]
@@ -147,7 +263,15 @@ const GOVERNANCE_ITEMS = [
 
 function ArrowIcon() {
   return (
-    <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="w-4 h-4"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M3 8h10M9 4l4 4-4 4" />
     </svg>
   )
@@ -255,48 +379,50 @@ function DataConvergenceDiagram() {
         ))}
 
         {/* Animated data packets: sources → hub */}
-        {!reduceMotion && sources.map((src, i) => (
-          <motion.circle
-            key={`pk-in-${i}`}
-            r={2.5}
-            fill={src.color}
-            filter="url(#lh-glow)"
-            animate={{
-              cx: [src.x + 18, hubX],
-              cy: [src.y, hubY],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 1.2,
-              delay: 1.2 + i * 0.35,
-              repeat: Infinity,
-              repeatDelay: 2.5,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
+        {!reduceMotion &&
+          sources.map((src, i) => (
+            <motion.circle
+              key={`pk-in-${i}`}
+              r={2.5}
+              fill={src.color}
+              filter="url(#lh-glow)"
+              animate={{
+                cx: [src.x + 18, hubX],
+                cy: [src.y, hubY],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 1.2,
+                delay: 1.2 + i * 0.35,
+                repeat: Infinity,
+                repeatDelay: 2.5,
+                ease: 'easeInOut',
+              }}
+            />
+          ))}
 
         {/* Animated data packets: hub → outputs */}
-        {!reduceMotion && outputs.map((out, i) => (
-          <motion.circle
-            key={`pk-out-${i}`}
-            r={2.5}
-            fill={out.color}
-            filter="url(#lh-glow)"
-            animate={{
-              cx: [hubX, out.x - 18],
-              cy: [hubY, out.y],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 1.2,
-              delay: 1.8 + i * 0.3,
-              repeat: Infinity,
-              repeatDelay: 2.5,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
+        {!reduceMotion &&
+          outputs.map((out, i) => (
+            <motion.circle
+              key={`pk-out-${i}`}
+              r={2.5}
+              fill={out.color}
+              filter="url(#lh-glow)"
+              animate={{
+                cx: [hubX, out.x - 18],
+                cy: [hubY, out.y],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 1.2,
+                delay: 1.8 + i * 0.3,
+                repeat: Infinity,
+                repeatDelay: 2.5,
+                ease: 'easeInOut',
+              }}
+            />
+          ))}
 
         {/* Source nodes */}
         {sources.map((src, i) => (
@@ -306,8 +432,24 @@ function DataConvergenceDiagram() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 + i * 0.1, duration: 0.5, ease: EASE }}
           >
-            <rect x={src.x - 30} y={src.y - 14} width={60} height={28} rx={6} fill={`${src.color}20`} stroke={`${src.color}50`} strokeWidth={1} />
-            <text x={src.x} y={src.y + 4} textAnchor="middle" fill="rgba(255,255,255,0.65)" fontSize="10" fontFamily="'Source Sans 3', sans-serif">
+            <rect
+              x={src.x - 30}
+              y={src.y - 14}
+              width={60}
+              height={28}
+              rx={6}
+              fill={`${src.color}20`}
+              stroke={`${src.color}50`}
+              strokeWidth={1}
+            />
+            <text
+              x={src.x}
+              y={src.y + 4}
+              textAnchor="middle"
+              fill="rgba(255,255,255,0.65)"
+              fontSize="10"
+              fontFamily="'Source Sans 3', sans-serif"
+            >
               {src.label}
             </text>
           </motion.g>
@@ -319,10 +461,20 @@ function DataConvergenceDiagram() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.6, ease: EASE }}
         >
-          <circle cx={hubX} cy={hubY} r={46} fill="url(#hubGrad)" stroke="#117EC2" strokeWidth={1.5} filter="url(#lh-glow)" />
+          <circle
+            cx={hubX}
+            cy={hubY}
+            r={46}
+            fill="url(#hubGrad)"
+            stroke="#117EC2"
+            strokeWidth={1.5}
+            filter="url(#lh-glow)"
+          />
           {!reduceMotion && (
             <motion.circle
-              cx={hubX} cy={hubY} r={46}
+              cx={hubX}
+              cy={hubY}
+              r={46}
               fill="none"
               stroke="#117EC2"
               strokeWidth={1}
@@ -331,10 +483,26 @@ function DataConvergenceDiagram() {
               transition={{ duration: 2.5, repeat: Infinity, ease: 'easeOut' }}
             />
           )}
-          <text x={hubX} y={hubY - 6} textAnchor="middle" fill="#ffffff" fontSize="10" fontWeight="600" fontFamily="'Source Sans 3', sans-serif" letterSpacing="0.06em">
+          <text
+            x={hubX}
+            y={hubY - 6}
+            textAnchor="middle"
+            fill="#ffffff"
+            fontSize="10"
+            fontWeight="600"
+            fontFamily="'Source Sans 3', sans-serif"
+            letterSpacing="0.06em"
+          >
             SPOTLIGHT
           </text>
-          <text x={hubX} y={hubY + 8} textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="'Source Sans 3', sans-serif">
+          <text
+            x={hubX}
+            y={hubY + 8}
+            textAnchor="middle"
+            fill="rgba(255,255,255,0.5)"
+            fontSize="9"
+            fontFamily="'Source Sans 3', sans-serif"
+          >
             DATA FABRICS
           </text>
         </motion.g>
@@ -347,8 +515,24 @@ function DataConvergenceDiagram() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7 + i * 0.1, duration: 0.5, ease: EASE }}
           >
-            <rect x={out.x - 46} y={out.y - 14} width={92} height={28} rx={6} fill={`${out.color}18`} stroke={`${out.color}45`} strokeWidth={1} />
-            <text x={out.x} y={out.y + 4} textAnchor="middle" fill="rgba(255,255,255,0.65)" fontSize="10" fontFamily="'Source Sans 3', sans-serif">
+            <rect
+              x={out.x - 46}
+              y={out.y - 14}
+              width={92}
+              height={28}
+              rx={6}
+              fill={`${out.color}18`}
+              stroke={`${out.color}45`}
+              strokeWidth={1}
+            />
+            <text
+              x={out.x}
+              y={out.y + 4}
+              textAnchor="middle"
+              fill="rgba(255,255,255,0.65)"
+              fontSize="10"
+              fontFamily="'Source Sans 3', sans-serif"
+            >
               {out.label}
             </text>
           </motion.g>
@@ -358,7 +542,7 @@ function DataConvergenceDiagram() {
   )
 }
 
-function CapabilityCard({ cap, index }: { cap: typeof CAPABILITIES[0]; index: number }) {
+function CapabilityCard({ cap, index }: { cap: (typeof CAPABILITIES)[0]; index: number }) {
   return (
     <motion.div
       className="group bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-brand/25 transition-all duration-300 flex flex-col gap-4 relative overflow-hidden"
@@ -408,8 +592,17 @@ export default function SpotlightDataFabrics() {
 
         <div className="relative max-w-6xl mx-auto px-6 py-24 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div className="flex flex-col gap-8" variants={stagger()} initial="hidden" animate="show">
-              <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="flex items-center gap-2.5">
+            <motion.div
+              className="flex flex-col gap-8"
+              variants={stagger()}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.div
+                variants={fadeUp}
+                transition={{ duration: 0.5, ease: EASE }}
+                className="flex items-center gap-2.5"
+              >
                 <PulsingDot color="bg-cyan-400" />
                 <span className="text-sm font-semibold text-cyan-400 uppercase tracking-widest">
                   Phoenix AIP — Spotlight Data Fabrics
@@ -421,8 +614,7 @@ export default function SpotlightDataFabrics() {
                 transition={{ duration: 0.6, ease: EASE }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
               >
-                One Unified{' '}
-                <span className="text-cyan-400">Data Layer</span>{' '}
+                One Unified <span className="text-cyan-400">Data Layer</span>{' '}
                 <span className="text-white/60">for Everything.</span>
               </motion.h1>
 
@@ -431,7 +623,8 @@ export default function SpotlightDataFabrics() {
                 transition={{ duration: 0.6, ease: EASE }}
                 className="text-base sm:text-xl text-white/60 leading-relaxed max-w-xl"
               >
-                Spotlight Data Fabrics brings all your structured and unstructured data into a single, AI-ready platform — secure, governed, and built for scale.
+                Spotlight Data Fabrics brings all your structured and unstructured data into a
+                single, AI-ready platform — secure, governed, and built for scale.
               </motion.p>
 
               <motion.div
@@ -473,7 +666,12 @@ export default function SpotlightDataFabrics() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
           >
-            {['Structured + unstructured data', 'Native vector & semantic storage', 'Enterprise governance built-in', 'Real-time & batch analytics'].map((item) => (
+            {[
+              'Structured + unstructured data',
+              'Native vector & semantic storage',
+              'Enterprise governance built-in',
+              'Real-time & batch analytics',
+            ].map((item) => (
               <span key={item} className="flex items-center gap-2 text-sm text-white/50">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
                 {item}
@@ -494,10 +692,18 @@ export default function SpotlightDataFabrics() {
               viewport={{ once: true, amount: 0.3 }}
               variants={stagger()}
             >
-              <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+              <motion.span
+                variants={fadeUp}
+                transition={{ duration: 0.5, ease: EASE }}
+                className="text-sm font-semibold text-brand uppercase tracking-widest"
+              >
                 The Problem
               </motion.span>
-              <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl font-bold text-gray-900 leading-[1.1] tracking-tight">
+              <motion.h2
+                variants={fadeUp}
+                transition={{ duration: 0.55, ease: EASE }}
+                className="text-4xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+              >
                 Enterprise data is <span className="text-brand">fragmented and hard to use.</span>
               </motion.h2>
               <motion.ul variants={stagger(0.1)} className="flex flex-col gap-3 mt-2">
@@ -508,7 +714,9 @@ export default function SpotlightDataFabrics() {
                     transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
                     className="flex items-start gap-3 text-gray-600"
                   >
-                    <span className="mt-1 w-5 h-5 rounded-full bg-red-100 text-red-500 flex items-center justify-center shrink-0 text-xs font-bold">✕</span>
+                    <span className="mt-1 w-5 h-5 rounded-full bg-red-100 text-red-500 flex items-center justify-center shrink-0 text-xs font-bold">
+                      ✕
+                    </span>
                     {p}
                   </motion.li>
                 ))}
@@ -524,14 +732,28 @@ export default function SpotlightDataFabrics() {
               <div className="bg-brand-navy rounded-2xl p-8 flex flex-col gap-6 border border-brand-navy-border">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg bg-cyan-500/15 text-cyan-400 flex items-center justify-center shrink-0">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"
+                      />
                     </svg>
                   </div>
-                  <span className="text-white font-semibold">Spotlight Data Fabrics unifies everything</span>
+                  <span className="text-white font-semibold">
+                    Spotlight Data Fabrics unifies everything
+                  </span>
                 </div>
                 <p className="text-white/60 leading-relaxed text-sm">
-                  Fragmented data costs enterprises in missed AI opportunities, duplicated infrastructure, and inconsistent governance. Spotlight Data Fabrics brings it all together — one platform, one truth, governed from the start.
+                  Fragmented data costs enterprises in missed AI opportunities, duplicated
+                  infrastructure, and inconsistent governance. Spotlight Data Fabrics brings it all
+                  together — one platform, one truth, governed from the start.
                 </p>
                 <div className="pt-2 border-t border-white/10">
                   <p className="text-cyan-400 text-sm font-semibold italic">
@@ -554,14 +776,28 @@ export default function SpotlightDataFabrics() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
               What Is Spotlight Data Fabrics?
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-              The flexibility of a lake. The performance of a <span className="text-brand">warehouse.</span>
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+            >
+              The flexibility of a lake. The performance of a{' '}
+              <span className="text-brand">warehouse.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-gray-500 leading-relaxed max-w-2xl">
-              A unified data platform optimised for AI, analytics, and real-time access — combining the openness of a data lake with the governance and performance of a data warehouse.
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-xl text-gray-500 leading-relaxed max-w-2xl"
+            >
+              A unified data platform optimised for AI, analytics, and real-time access — combining
+              the openness of a data lake with the governance and performance of a data warehouse.
             </motion.p>
 
             {/* Lake + Warehouse → Lakehouse visual */}
@@ -572,22 +808,46 @@ export default function SpotlightDataFabrics() {
             >
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                 <div className="flex-1 rounded-xl border border-indigo-200 bg-indigo-50 p-4 text-center">
-                  <p className="text-xs font-semibold text-indigo-700 uppercase tracking-widest mb-1.5">Data Lake</p>
-                  <p className="text-xs text-indigo-700/80">Flexible storage<br />Any data type<br />Low governance</p>
+                  <p className="text-xs font-semibold text-indigo-700 uppercase tracking-widest mb-1.5">
+                    Data Lake
+                  </p>
+                  <p className="text-xs text-indigo-700/80">
+                    Flexible storage
+                    <br />
+                    Any data type
+                    <br />
+                    Low governance
+                  </p>
                 </div>
                 <div className="flex items-center justify-center shrink-0">
                   <span className="text-gray-500 text-xl">+</span>
                 </div>
                 <div className="flex-1 rounded-xl border border-cyan-200 bg-cyan-50 p-4 text-center">
-                  <p className="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-1.5">Data Warehouse</p>
-                  <p className="text-xs text-cyan-700/80">Fast querying<br />Structured data<br />Strong governance</p>
+                  <p className="text-xs font-semibold text-cyan-700 uppercase tracking-widest mb-1.5">
+                    Data Warehouse
+                  </p>
+                  <p className="text-xs text-cyan-700/80">
+                    Fast querying
+                    <br />
+                    Structured data
+                    <br />
+                    Strong governance
+                  </p>
                 </div>
                 <div className="flex items-center justify-center shrink-0">
                   <span className="text-gray-500 text-xl">=</span>
                 </div>
                 <div className="flex-1 rounded-xl border border-brand/30 bg-brand-light p-4 text-center">
-                  <p className="text-xs font-semibold text-brand-dark uppercase tracking-widest mb-1.5">Spotlight Data Fabrics</p>
-                  <p className="text-xs text-brand-dark/80">Best of both<br />AI-ready<br />Governed by design</p>
+                  <p className="text-xs font-semibold text-brand-dark uppercase tracking-widest mb-1.5">
+                    Spotlight Data Fabrics
+                  </p>
+                  <p className="text-xs text-brand-dark/80">
+                    Best of both
+                    <br />
+                    AI-ready
+                    <br />
+                    Governed by design
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -602,7 +862,10 @@ export default function SpotlightDataFabrics() {
                 { label: 'Not just a lake', sub: 'Structured + semantic intelligence' },
                 { label: 'Not just centralised', sub: 'Governed and secure by design' },
               ].map((item) => (
-                <div key={item.label} className="bg-gray-50 rounded-lg p-4 text-left border border-gray-100">
+                <div
+                  key={item.label}
+                  className="bg-gray-50 rounded-lg p-4 text-left border border-gray-100"
+                >
                   <p className="text-xs text-gray-500 line-through mb-1">{item.label}</p>
                   <p className="text-sm font-semibold text-brand-dark">{item.sub}</p>
                 </div>
@@ -622,10 +885,18 @@ export default function SpotlightDataFabrics() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
               Core Capabilities
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+            >
               Built for modern data <span className="text-brand">and AI workloads.</span>
             </motion.h2>
           </motion.div>
@@ -648,10 +919,18 @@ export default function SpotlightDataFabrics() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand-light/50 uppercase tracking-widest">
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand-light/50 uppercase tracking-widest"
+            >
               How It Works
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight">
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight"
+            >
               From raw input to <span className="text-cyan-400">AI-ready output.</span>
             </motion.h2>
           </motion.div>
@@ -678,9 +957,13 @@ export default function SpotlightDataFabrics() {
                   transition={{ duration: 0.5, delay: i * 0.12, ease: EASE }}
                   onClick={() => setActiveStep(i)}
                 >
-                  <div className={`relative w-24 h-24 mx-auto rounded-2xl border flex items-center justify-center flex-col gap-1 transition-all duration-300 ${activeStep === i ? `${step.color} scale-105 shadow-lg` : 'bg-white/5 border-white/10 text-white/60'}`}>
+                  <div
+                    className={`relative w-24 h-24 mx-auto rounded-2xl border flex items-center justify-center flex-col gap-1 transition-all duration-300 ${activeStep === i ? `${step.color} scale-105 shadow-lg` : 'bg-white/5 border-white/10 text-white/60'}`}
+                  >
                     <span className="text-2xl font-bold font-display">{step.step}</span>
-                    <span className="text-xs font-semibold uppercase tracking-wider">{step.label}</span>
+                    <span className="text-xs font-semibold uppercase tracking-wider">
+                      {step.label}
+                    </span>
                   </div>
                 </motion.button>
               ))}
@@ -714,10 +997,18 @@ export default function SpotlightDataFabrics() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
               Key Use Cases
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+            >
               The data backbone for every <span className="text-brand">modern workload.</span>
             </motion.h2>
           </motion.div>
@@ -762,10 +1053,18 @@ export default function SpotlightDataFabrics() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
               Business Outcomes
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+            >
               What a solid foundation <span className="text-brand">makes possible.</span>
             </motion.h2>
           </motion.div>
@@ -803,14 +1102,29 @@ export default function SpotlightDataFabrics() {
               viewport={{ once: true, amount: 0.3 }}
               variants={stagger()}
             >
-              <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+              <motion.span
+                variants={fadeUp}
+                transition={{ duration: 0.5, ease: EASE }}
+                className="text-sm font-semibold text-brand uppercase tracking-widest"
+              >
                 Why Spotlight Data Fabrics
               </motion.span>
-              <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-                The foundation that powers <span className="text-brand">intelligence and execution.</span>
+              <motion.h2
+                variants={fadeUp}
+                transition={{ duration: 0.55, ease: EASE }}
+                className="text-4xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+              >
+                The foundation that powers{' '}
+                <span className="text-brand">intelligence and execution.</span>
               </motion.h2>
-              <motion.p variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-gray-500 leading-relaxed">
-                Most data platforms force a trade-off between flexibility and governance. Spotlight Data Fabrics was designed so you never have to choose — every dataset is open, structured, secured, and AI-ready from the moment it lands.
+              <motion.p
+                variants={fadeUp}
+                transition={{ duration: 0.55, ease: EASE }}
+                className="text-gray-500 leading-relaxed"
+              >
+                Most data platforms force a trade-off between flexibility and governance. Spotlight
+                Data Fabrics was designed so you never have to choose — every dataset is open,
+                structured, secured, and AI-ready from the moment it lands.
               </motion.p>
 
               <motion.div variants={stagger(0.1)} className="flex flex-col gap-4 mt-2">
@@ -819,8 +1133,15 @@ export default function SpotlightDataFabrics() {
                   { before: 'Data lake or warehouse', after: 'Structured + semantic intelligence' },
                   { before: 'Centralised chaos', after: 'Governed and secure by design' },
                 ].map((row) => (
-                  <motion.div key={row.before} variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="flex items-center gap-4">
-                    <span className="text-sm text-gray-500 line-through w-40 shrink-0">{row.before}</span>
+                  <motion.div
+                    key={row.before}
+                    variants={fadeUp}
+                    transition={{ duration: 0.5, ease: EASE }}
+                    className="flex items-center gap-4"
+                  >
+                    <span className="text-sm text-gray-500 line-through w-40 shrink-0">
+                      {row.before}
+                    </span>
                     <ArrowIcon />
                     <span className="text-sm font-semibold text-gray-800">{row.after}</span>
                   </motion.div>
@@ -828,14 +1149,27 @@ export default function SpotlightDataFabrics() {
               </motion.div>
 
               {/* Integration in the Phoenix AIP stack */}
-              <motion.div variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="mt-2 bg-gray-50 rounded-2xl p-6 border border-gray-100 flex flex-col gap-4">
+              <motion.div
+                variants={fadeUp}
+                transition={{ duration: 0.55, ease: EASE }}
+                className="mt-2 bg-gray-50 rounded-2xl p-6 border border-gray-100 flex flex-col gap-4"
+              >
                 <h3 className="font-bold text-gray-900">Integration & Ecosystem</h3>
                 <div className="flex flex-col gap-3">
                   {[
                     { label: 'DataForge', sub: 'Receives ingested data from all pipeline sources' },
-                    { label: 'Phoenix Insights', sub: 'Serves clean data to the intelligence & reasoning layer' },
-                    { label: 'Cortexus', sub: 'Supplies context and state to the execution engine' },
-                    { label: 'BI & Analytics tools', sub: 'Feeds dashboards, reports, and downstream apps' },
+                    {
+                      label: 'Phoenix Insights',
+                      sub: 'Serves clean data to the intelligence & reasoning layer',
+                    },
+                    {
+                      label: 'Cortexus',
+                      sub: 'Supplies context and state to the execution engine',
+                    },
+                    {
+                      label: 'BI & Analytics tools',
+                      sub: 'Feeds dashboards, reports, and downstream apps',
+                    },
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-3">
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
@@ -860,8 +1194,18 @@ export default function SpotlightDataFabrics() {
               <div className="bg-brand-navy rounded-2xl p-8 border border-brand-navy-border flex flex-col gap-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-brand/20 text-brand flex items-center justify-center shrink-0">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
+                      />
                     </svg>
                   </div>
                   <div>
@@ -872,10 +1216,23 @@ export default function SpotlightDataFabrics() {
 
                 <div className="grid grid-cols-1 gap-3">
                   {GOVERNANCE_ITEMS.map((item) => (
-                    <div key={item} className="flex items-center gap-3 bg-white/5 rounded-lg px-4 py-3 border border-white/8">
+                    <div
+                      key={item}
+                      className="flex items-center gap-3 bg-white/5 rounded-lg px-4 py-3 border border-white/8"
+                    >
                       <div className="w-6 h-6 rounded-md bg-brand/20 flex items-center justify-center shrink-0">
-                        <svg className="w-3.5 h-3.5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        <svg
+                          className="w-3.5 h-3.5 text-brand"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="m4.5 12.75 6 6 9-13.5"
+                          />
                         </svg>
                       </div>
                       <span className="text-sm text-white/70">{item}</span>
@@ -898,14 +1255,27 @@ export default function SpotlightDataFabrics() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
               Spotlight in Action
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+            >
               See the fabric <span className="text-brand">at work.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-gray-500 leading-relaxed">
-              Watch semantic search, vector embeddings and the knowledge graph come together — stored data turned into context you can query.
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-xl text-gray-500 leading-relaxed"
+            >
+              Watch semantic search, vector embeddings and the knowledge graph come together —
+              stored data turned into context you can query.
             </motion.p>
           </motion.div>
 
@@ -939,18 +1309,36 @@ export default function SpotlightDataFabrics() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger(0.14)}
           >
-            <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="flex items-center gap-2.5">
+            <motion.div
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="flex items-center gap-2.5"
+            >
               <PulsingDot color="bg-cyan-400" />
-              <span className="text-sm font-semibold text-brand-light/50 uppercase tracking-widest">Get Started</span>
+              <span className="text-sm font-semibold text-brand-light/50 uppercase tracking-widest">
+                Get Started
+              </span>
             </motion.div>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-4xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight">
-              Ready to Unify Your{' '}
-              <span className="text-cyan-400">Data for AI?</span>
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-4xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight"
+            >
+              Ready to Unify Your <span className="text-cyan-400">Data for AI?</span>
             </motion.h2>
-            <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-lg text-white/55 leading-relaxed">
-              See Spotlight Data Fabrics consolidate your data estate into a single, governed, AI-ready platform — in a live demo tailored to your stack.
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-lg text-white/55 leading-relaxed"
+            >
+              See Spotlight Data Fabrics consolidate your data estate into a single, governed,
+              AI-ready platform — in a live demo tailored to your stack.
             </motion.p>
-            <motion.div variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="flex flex-col sm:flex-row gap-4 pt-2">
+            <motion.div
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="flex flex-col sm:flex-row gap-4 pt-2"
+            >
               <Link
                 to="/about/contact"
                 className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white text-base font-semibold px-8 py-3.5 rounded-sm transition-colors duration-200 shadow-lg shadow-brand/30"

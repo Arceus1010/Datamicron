@@ -360,7 +360,10 @@ export default function Contact() {
                   <p className="text-xs text-gray-600 uppercase tracking-widest font-semibold mb-1">
                     Phone
                   </p>
-                  <a href="tel:+60321633168" className="text-brand-dark font-medium hover:underline">
+                  <a
+                    href="tel:+60321633168"
+                    className="text-brand-dark font-medium hover:underline"
+                  >
                     +603 2163 3168
                   </a>
                 </div>

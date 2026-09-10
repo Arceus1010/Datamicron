@@ -47,7 +47,7 @@ export default function Navbar() {
   const isActive = useCallback(
     (href: string) =>
       href === '/' ? location.pathname === '/' : location.pathname.startsWith(href),
-    [location.pathname]
+    [location.pathname],
   )
 
   return (
