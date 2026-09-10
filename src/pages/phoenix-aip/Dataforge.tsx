@@ -9,74 +9,96 @@ const DATAFORGE_VIDEO_ID = 'hNEZU9_8Uv0'
 
 const CAPABILITIES = [
   {
-    id: 'ingest',
+    id: 'conversational',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
       </svg>
     ),
-    title: 'Real-Time Ingestion',
-    description: 'Stream data from any source — databases, SaaS platforms, IoT devices, event queues — with native support for both real-time streaming and high-volume batch loads.',
-    points: ['Multi-source connectivity', 'Streaming + batch in one platform', 'High-throughput data capture'],
+    title: 'Conversational Data Engineering',
+    description: 'Tell the assistant what you need in plain language. It interprets the request, asks what it needs to know, plans the work, and carries it out — no tickets, no hand-offs, no pipeline authoring.',
+    points: ['Plain-language instructions', 'Agent plans before it acts', 'Schedule work by conversation'],
   },
   {
-    id: 'transform',
+    id: 'sql',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 48.678 48.678 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7 48.656 48.656 0 0 0 7.324 0 4.006 4.006 0 0 0 3.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3-3 3" />
       </svg>
     ),
-    title: 'Data Transformation',
-    description: 'Clean, normalise, and structure raw data through flexible, code-or-config transformation pipelines that handle even the most complex multi-step workflows.',
-    points: ['Schema normalisation & mapping', 'Complex multi-step pipelines', 'Code or low-code transformation'],
+    title: 'Autonomous SQL Generation',
+    description: 'Agents establish the database connection, inspect the schema, write the SQL, and run it — so nobody has to hand-author a query to move, reshape, or model data.',
+    points: ['Automatic source connection', 'Query generation & execution', 'No hand-written SQL required'],
   },
   {
-    id: 'quality',
+    id: 'warehouse',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
       </svg>
     ),
-    title: 'Data Quality & Enrichment',
-    description: 'Automatically validate, cleanse, and enrich every record with internal and external sources — ensuring every downstream AI model and dashboard works from reliable data.',
-    points: ['Automated validation & cleansing', 'Internal + external enrichment', 'AI-ready dataset guarantees'],
+    title: 'Agent-Built Warehouses',
+    description: 'Describe the model you want and agents design the schema, build the warehouse and its marts, and manage the loads — dimensional modelling included, without a data engineer writing DDL.',
+    points: ['Schema & dimensional design', 'Warehouse and mart construction', 'Load orchestration end to end'],
   },
   {
-    id: 'apis',
+    id: 'skills',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
       </svg>
     ),
-    title: 'APIs & Data Pipelines',
-    description: 'Expose clean, transformed data via APIs and build reusable, production-grade pipelines that integrate seamlessly with every downstream system in your stack.',
-    points: ['Data API exposure layer', 'Reusable, versioned pipelines', 'Plug-in ecosystem integrations'],
+    title: 'Extensible AI Skills',
+    description: 'Enrich the assistant with specific data engineering skills — your modelling standards, naming conventions, and quality practices — until it works with the judgement of an experienced warehouse engineer.',
+    points: ['Add domain & practice skills', 'Encode your own conventions', 'Capability grows with your team'],
+  },
+  {
+    id: 'quality',
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+      </svg>
+    ),
+    title: 'Data Quality & Enrichment',
+    description: 'Agents profile every source, infer the validation rules that matter, then cleanse and enrich records against internal and external references — and flag what they cannot resolve alone.',
+    points: ['Automated profiling & validation', 'Internal + external enrichment', 'Exceptions raised, not buried'],
+  },
+  {
+    id: 'ingestion',
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m-6 3.75 3 3m0 0 3-3m-3 3V1.5m6 9h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5" />
+      </svg>
+    ),
+    title: 'Ingestion & Delivery',
+    description: 'Real-time streams and high-volume batch loads arrive from any source, and agents route the results wherever they are needed — into the lakehouse, an API, or any downstream consumer.',
+    points: ['Multi-source connectivity', 'Streaming + batch in one platform', 'API-first delivery to any consumer'],
   },
 ]
 
 const HOW_IT_WORKS = [
   {
     step: '01',
-    label: 'Connect',
-    description: 'DataForge connects to your existing data sources — cloud databases, SaaS tools, streaming platforms, on-premise systems, and custom APIs — with no rip-and-replace.',
+    label: 'Describe',
+    description: 'Tell the assistant what you need — a warehouse, a cleansed table, a nightly load — in plain language. No ticket, no specification document, no SQL.',
     color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
   },
   {
     step: '02',
-    label: 'Ingest',
-    description: 'Data is captured continuously in real time or loaded in optimised batch windows — with automatic schema detection, deduplication, and error handling built in.',
+    label: 'Plan',
+    description: 'Agents connect to your sources, inspect the schemas, and lay out how they intend to build it — so you can see and approve the approach before anything runs.',
     color: 'bg-green-500/10 text-green-400 border-green-500/20',
   },
   {
     step: '03',
-    label: 'Transform',
-    description: 'Raw records flow through configurable transformation stages — cleaned, normalised, enriched, and validated against quality rules before they touch any downstream system.',
+    label: 'Build',
+    description: 'Agents generate and execute the SQL — creating tables, loading data, cleansing records, and applying transformations against the sources they connected to.',
     color: 'bg-teal-500/10 text-teal-400 border-teal-500/20',
   },
   {
     step: '04',
-    label: 'Deliver',
-    description: 'Clean, high-quality data is routed to Spotlight Data Fabrics, Phoenix Insights, Cortexus, or any application — in the format and frequency each consumer needs.',
+    label: 'Operate',
+    description: 'The work is scheduled, monitored, and self-healing from then on — with results routed to Spotlight Data Fabrics, Phoenix Insights, Cortexus, or any application that needs them.',
     color: 'bg-brand/10 text-brand border-brand/20',
   },
 ]
@@ -118,19 +140,38 @@ const USE_CASES = [
     title: 'Data Integration',
     items: ['Unify SaaS, databases, and APIs', 'Seamless cross-system data flow', 'Single integration layer for all tools'],
   },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+      </svg>
+    ),
+    title: 'Self-Service Data Access',
+    items: ['Analysts request datasets in plain language', 'No queue behind the engineering team', 'Answers in minutes, not sprints'],
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+      </svg>
+    ),
+    title: 'Scaling a Small Data Team',
+    items: ['Encode senior expertise as reusable skills', 'Deliver like a much larger team', 'Consistent standards on every build'],
+  },
 ]
 
 const OUTCOMES = [
   { icon: '⚡', metric: '10×', label: 'Faster time-to-data across the stack' },
   { icon: '🧼', metric: '99%', label: 'Data quality and reliability SLA' },
-  { icon: '🔄', metric: '∞', label: 'Scalable, self-healing pipelines' },
+  { icon: '💬', metric: 'Zero', label: 'Hand-written SQL required' },
   { icon: '🚀', metric: '3×', label: 'Acceleration in AI and analytics delivery' },
 ]
 
 const PROBLEMS = [
-  'Data arrives fragmented from dozens of disconnected sources',
+  'Every warehouse, pipeline, and transformation is built by hand',
+  'Delivery is bottlenecked on scarce SQL and data modelling expertise',
+  'Teams wait weeks for a dataset they could describe in one sentence',
   'Pipelines are brittle, break often, and are hard to scale',
-  'Transformation is slow, resource-heavy, and manual',
   'Poor data quality cascades into broken AI and bad decisions',
 ]
 
@@ -141,6 +182,8 @@ const RELIABILITY_ITEMS = [
   'Role-based access control across all pipeline assets',
   'Dead-letter queues and automatic error recovery',
   'Full observability — logs, metrics, and alerting',
+  'Human review and approval before agents apply changes',
+  'Full audit trail of every agent action and generated query',
 ]
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -370,9 +413,9 @@ export default function Dataforge() {
                 transition={{ duration: 0.6, ease: EASE }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
               >
-                Power Your Data
+                Data Engineering
                 <span className="text-white/60">—</span>
-                <span className="text-emerald-400">In Real Time.</span>
+                <span className="text-emerald-400">Done by AI Agents.</span>
               </motion.h1>
 
               <motion.p
@@ -380,7 +423,7 @@ export default function Dataforge() {
                 transition={{ duration: 0.6, ease: EASE }}
                 className="text-base sm:text-xl text-white/60 leading-relaxed max-w-xl"
               >
-                DataForge ingests, transforms, and activates your data at scale — delivering high-quality, real-time pipelines ready for AI and analytics.
+                Describe what you need in plain language. DataForge's agents connect to your sources, generate and run the SQL, and build the warehouses, transformations, and schedules for you.
               </motion.p>
 
               <motion.div
@@ -422,7 +465,7 @@ export default function Dataforge() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
           >
-            {['Real-time & batch ingestion', 'Automated data quality', 'Fault-tolerant pipelines', 'API-first delivery'].map((item) => (
+            {['No SQL required', 'Autonomous agent execution', 'Extensible with data engineering skills', 'Automated data quality', 'API-first delivery'].map((item) => (
               <span key={item} className="flex items-center gap-2 text-sm text-white/50">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
                 {item}
@@ -447,7 +490,7 @@ export default function Dataforge() {
                 The Problem
               </motion.span>
               <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-                Raw data is messy, slow, and <span className="text-emerald-600">unusable.</span>
+                Data engineering is slow because it is <span className="text-emerald-600">still done by hand.</span>
               </motion.h2>
               <motion.ul variants={stagger(0.1)} className="flex flex-col gap-3 mt-2">
                 {PROBLEMS.map((p, i) => (
@@ -477,14 +520,14 @@ export default function Dataforge() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                     </svg>
                   </div>
-                  <span className="text-white font-semibold">DataForge turns raw data into a reliable asset</span>
+                  <span className="text-white font-semibold">DataForge puts an AI data engineer on the work</span>
                 </div>
                 <p className="text-white/60 leading-relaxed text-sm">
-                  Every broken pipeline, every bad record, every delayed dataset costs your organisation in wrong decisions, stalled AI initiatives, and wasted engineering hours. DataForge removes the friction — permanently.
+                  Every hand-built pipeline, every hand-written query, every dataset stuck in a backlog costs your organisation in stalled AI initiatives and wasted engineering hours. DataForge hands that work to agents instead.
                 </p>
                 <div className="pt-2 border-t border-white/10">
                   <p className="text-emerald-400 text-sm font-semibold italic">
-                    "The engine that powers your entire data ecosystem."
+                    "An AI data engineer for your entire data estate."
                   </p>
                 </div>
               </div>
@@ -507,10 +550,10 @@ export default function Dataforge() {
               What Is DataForge?
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-              A data engineering platform built for <span className="text-emerald-600">real-time activation.</span>
+              A data engineering platform where <span className="text-emerald-600">agents do the work.</span>
             </motion.h2>
             <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-gray-500 leading-relaxed max-w-2xl">
-              DataForge enables real-time ingestion, transformation, enrichment, and delivery of data across your entire ecosystem — so every downstream system always works from clean, reliable data.
+              You describe the outcome; the assistant handles connection, SQL generation, execution, and scheduling — building warehouses, cleansing records, and running transformations autonomously across your entire ecosystem.
             </motion.p>
 
             {/* Raw → Refined → Usable transformation flow */}
@@ -522,7 +565,7 @@ export default function Dataforge() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 {[
                   { label: 'Raw Data', sub: 'Fragmented, inconsistent', color: 'bg-red-50 border-red-200 text-red-700', sub_color: 'text-red-600' },
-                  { label: 'DataForge', sub: 'Ingest · Transform · Enrich', color: 'bg-emerald-50 border-emerald-300 text-emerald-700', sub_color: 'text-emerald-700', highlight: true },
+                  { label: 'DataForge', sub: 'Connect · Generate · Run', color: 'bg-emerald-50 border-emerald-300 text-emerald-700', sub_color: 'text-emerald-700', highlight: true },
                   { label: 'Refined Data', sub: 'Clean, reliable, AI-ready', color: 'bg-brand-light border-brand/20 text-brand-dark', sub_color: 'text-brand-dark/80' },
                 ].map((item, i) => (
                   <div
@@ -550,14 +593,38 @@ export default function Dataforge() {
               </div>
             </motion.div>
 
+            {/* Skills the assistant can be taught */}
+            <motion.div
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="w-full max-w-2xl"
+            >
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Teach it your data engineering practice</p>
+              <div className="grid sm:grid-cols-3 gap-3">
+                {[
+                  { skill: 'Warehouse Design', sub: 'Dimensional modelling, star schemas, slowly changing dimensions' },
+                  { skill: 'Data Quality', sub: 'Profiling, validation rules, and cleansing strategies' },
+                  { skill: 'Your Conventions', sub: 'Naming, standards, and the way your team builds' },
+                ].map((s) => (
+                  <div key={s.skill} className="rounded-xl border border-gray-200 bg-white p-4 text-left">
+                    <p className="text-sm font-semibold text-emerald-700 mb-1">{s.skill}</p>
+                    <p className="text-xs text-gray-500 leading-relaxed">{s.sub}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-gray-400 leading-relaxed mt-3">
+                Each skill you add makes the assistant more capable — until it works with the judgement of an experienced data warehouse engineer.
+              </p>
+            </motion.div>
+
             <motion.div
               variants={fadeUp}
               transition={{ duration: 0.6, ease: EASE }}
               className="grid sm:grid-cols-3 gap-4 mt-4 w-full max-w-2xl"
             >
               {[
-                { label: 'Not just pipelines', sub: 'Real-time data activation' },
-                { label: 'Not just ETL', sub: 'Continuous intelligent flow' },
+                { label: 'Not just pipelines', sub: 'Agents that build them for you' },
+                { label: 'Not just low-code', sub: 'No SQL to write at all' },
                 { label: 'Not just ingestion', sub: 'End-to-end data engineering' },
               ].map((item) => (
                 <div key={item.label} className="bg-gray-50 rounded-lg p-4 text-left border border-gray-100">
@@ -764,10 +831,10 @@ export default function Dataforge() {
                 Why DataForge
               </motion.span>
               <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-                The engine that powers your <span className="text-emerald-600">entire data ecosystem.</span>
+                An AI data engineer for your <span className="text-emerald-600">entire data estate.</span>
               </motion.h2>
               <motion.p variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-gray-500 leading-relaxed">
-                Legacy ETL tools were built for a batch world. DataForge is built for real time — continuous ingestion, instant transformation, and guaranteed delivery to every consumer in your stack, at any scale.
+                Legacy ETL tools still expect an engineer to author every connection, query, and transformation. DataForge expects a sentence — and grows more capable as you add data engineering skills, until it works with the judgement of a seasoned warehouse engineer.
               </motion.p>
 
               <motion.div variants={stagger(0.1)} className="flex flex-col gap-4 mt-2">
@@ -789,7 +856,7 @@ export default function Dataforge() {
                 <h3 className="font-bold text-gray-900">Integration & Ecosystem</h3>
                 <div className="flex flex-col gap-3">
                   {[
-                    { label: 'Spotlight Data Fabrics', sub: 'Primary destination for all ingested and transformed data' },
+                    { label: 'Spotlight Data Fabrics', sub: 'Where agents build and populate the warehouses they create' },
                     { label: 'Phoenix Insights', sub: 'Delivers clean, enriched data for AI reasoning and analytics' },
                     { label: 'Cortexus', sub: 'Supplies real-time context for autonomous agent execution' },
                     { label: 'Any downstream app', sub: 'API-first delivery to any consumer in your stack' },
@@ -901,11 +968,11 @@ export default function Dataforge() {
               <span className="text-sm font-semibold text-brand-light/50 uppercase tracking-widest">Get Started</span>
             </motion.div>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-4xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight">
-              Ready to Activate Your{' '}
-              <span className="text-emerald-400">Data in Real Time?</span>
+              Ready to Hand Data Engineering{' '}
+              <span className="text-emerald-400">to Agents?</span>
             </motion.h2>
             <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-lg text-white/55 leading-relaxed">
-              See DataForge ingest, transform, and deliver your data across your entire stack — in a live demo built around your architecture.
+              See the assistant connect to a live source, design a warehouse, and build it end to end — in a demo run against your own architecture.
             </motion.p>
             <motion.div variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="flex flex-col sm:flex-row gap-4 pt-2">
               <Link

@@ -80,7 +80,7 @@ const HOW_IT_WORKS = [
   {
     step: '01',
     label: 'Ingest',
-    description: 'Data streams in from any source — structured databases, document stores, APIs, streaming platforms, and legacy systems — via DataForge for enterprise integration, or loaded directly by the built-in ETL engine.',
+    description: 'Data streams in from any source — structured databases, document stores, APIs, streaming platforms, and legacy systems — via DataForge, where AI agents do the engineering, or loaded directly by the built-in ETL engine.',
     color: 'bg-brand/10 text-brand border-brand/20',
   },
   {
@@ -901,7 +901,7 @@ export default function SpotlightDataFabrics() {
                 <h3 className="font-bold text-gray-900">Integration & Ecosystem</h3>
                 <div className="flex flex-col gap-3">
                   {[
-                    { label: 'DataForge', sub: 'Brings external systems in; Spotlight transforms once landed' },
+                    { label: 'DataForge', sub: 'Where AI agents build and populate warehouses in the fabric' },
                     { label: 'Phoenix Insights', sub: 'Serves clean data to the intelligence & reasoning layer' },
                     { label: 'Cortexus', sub: 'Supplies context and state to the execution engine' },
                     { label: 'BI & Analytics tools', sub: 'Feeds dashboards, reports, and downstream apps' },
