@@ -126,7 +126,7 @@ const ERAS = [
     verbs: 'Explain, analyse, understand.',
   },
   {
-    years: '2023–2030+',
+    years: '2023–Future',
     name: 'Enterprise Digital Brain',
     systems: 'AI reasoning, enterprise knowledge graph, digital twin, multi-agent AI',
     verbs: 'Predict, simulate, recommend, execute.',
@@ -753,7 +753,7 @@ export default function WhyEDB() {
   return (
     <div className="bg-white">
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center bg-brand-navy">
+      <section className="relative overflow-hidden min-h-[calc(100dvh-4rem)] flex flex-col justify-center bg-brand-navy">
         <div className="absolute -top-40 -right-40 w-125 h-125 rounded-full bg-brand/10 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-brand/8 blur-3xl pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-75 rounded-full bg-brand/5 blur-3xl pointer-events-none" />

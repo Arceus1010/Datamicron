@@ -81,7 +81,6 @@ export default function Footer() {
             <Link to="/" className="inline-block">
               <img src="/Logo.webp" alt="Datamicron" className="h-8 w-auto" />
             </Link>
-            <span>© {YEAR} Datamicron Systems Sdn. Bhd. All rights reserved.</span>
             <div className="flex gap-4">
               <motion.a
                 href="https://www.linkedin.com/company/datamicron"
@@ -109,7 +108,7 @@ export default function Footer() {
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
-                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a2744" />
+                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0b1e2d" />
                 </svg>
               </motion.a>
               <motion.a
@@ -185,14 +184,15 @@ export default function Footer() {
         </div>
 
         <motion.div
-          className="border-t border-brand-navy-border mt-8 pt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-brand-navy-muted"
+          className="border-t border-brand-navy-border mt-8 pt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <span>© {YEAR} Datamicron. All rights reserved.</span>
+          <span>© {YEAR} Datamicron Systems Sdn. Bhd. All rights reserved.</span>
           <div className="flex gap-5">
+            {/* TODO: point at real legal pages once they exist */}
             <Link to="/about/contact" className="hover:text-brand-light transition-colors">
               Privacy Policy
             </Link>

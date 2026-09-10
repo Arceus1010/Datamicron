@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { fadeUp, stagger, EASE } from '@/lib/motion'
 
@@ -10,8 +10,18 @@ const WHY_FALCON = [
   {
     id: 'multimedia',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+        />
       </svg>
     ),
     title: 'Cross-Platform Multimedia Sharing',
@@ -21,8 +31,18 @@ const WHY_FALCON = [
   {
     id: 'reporting',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+        />
       </svg>
     ),
     title: 'Secure Custom Reporting',
@@ -32,8 +52,18 @@ const WHY_FALCON = [
   {
     id: 'command',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
+        />
       </svg>
     ),
     title: 'Ideal for Command Centers',
@@ -43,34 +73,70 @@ const WHY_FALCON = [
 ]
 
 const CAPABILITIES = [
-  { title: 'Instant Messaging', description: 'Secure text, photos, video and location in one-to-one or group threads.' },
-  { title: 'Audio & Video Calls', description: 'Stable, high-quality, encrypted calling between users and groups.' },
-  { title: 'Dispatch Management', description: 'Intuitive dispatch with live geolocation tracking and patrol routing.' },
-  { title: 'Command Control Centre', description: 'Command and control of every user with live location intelligence.' },
-  { title: 'Live Streaming', description: 'Stream events from the field and interact with users in real time.' },
-  { title: 'Smart Reports & Dashboards', description: 'Automated reports and dashboards that turn activity into decisions.' },
-  { title: 'Secure & Audit Trail', description: 'End-to-end encryption with a full audit trail for compliance.' },
-  { title: 'On-Premise or Cloud', description: 'Deploy however your security and infrastructure policy requires.' },
+  {
+    title: 'Instant Messaging',
+    description: 'Secure text, photos, video and location in one-to-one or group threads.',
+  },
+  {
+    title: 'Audio & Video Calls',
+    description: 'Stable, high-quality, encrypted calling between users and groups.',
+  },
+  {
+    title: 'Dispatch Management',
+    description: 'Intuitive dispatch with live geolocation tracking and patrol routing.',
+  },
+  {
+    title: 'Command Control Centre',
+    description: 'Command and control of every user with live location intelligence.',
+  },
+  {
+    title: 'Live Streaming',
+    description: 'Stream events from the field and interact with users in real time.',
+  },
+  {
+    title: 'Smart Reports & Dashboards',
+    description: 'Automated reports and dashboards that turn activity into decisions.',
+  },
+  {
+    title: 'Secure & Audit Trail',
+    description: 'End-to-end encryption with a full audit trail for compliance.',
+  },
+  {
+    title: 'On-Premise or Cloud',
+    description: 'Deploy however your security and infrastructure policy requires.',
+  },
 ]
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
 function ArrowIcon() {
   return (
-    <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="w-4 h-4"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M3 8h10M9 4l4 4-4 4" />
     </svg>
   )
 }
 
 function PulsingDot({ color = 'bg-brand' }: { color?: string }) {
+  const reduceMotion = useReducedMotion()
+
   return (
     <span className="relative flex h-2.5 w-2.5">
-      <motion.span
-        className={`absolute inline-flex h-full w-full rounded-full ${color} opacity-75`}
-        animate={{ scale: [1, 1.8], opacity: [0.75, 0] }}
-        transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
-      />
+      {!reduceMotion && (
+        <motion.span
+          className={`absolute inline-flex h-full w-full rounded-full ${color} opacity-75`}
+          animate={{ scale: [1, 1.8], opacity: [0.75, 0] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
+        />
+      )}
       <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${color}`} />
     </span>
   )
@@ -78,8 +144,18 @@ function PulsingDot({ color = 'bg-brand' }: { color?: string }) {
 
 function FalconMark({ className = 'w-7 h-7' }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3c3.6 1.4 6 2.2 9 2.2-.4 7.4-3.6 12.6-9 15.8C6.6 17.8 3.4 12.6 3 5.2c3 0 5.4-.8 9-2.2Z" />
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 3c3.6 1.4 6 2.2 9 2.2-.4 7.4-3.6 12.6-9 15.8C6.6 17.8 3.4 12.6 3 5.2c3 0 5.4-.8 9-2.2Z"
+      />
       <path strokeLinecap="round" strokeLinejoin="round" d="M9 11.5l2.2 2.2L15.5 9.4" />
     </svg>
   )
@@ -95,6 +171,8 @@ const HUB_NODES = [
 ]
 
 function CommsNetworkVisual() {
+  const reduceMotion = useReducedMotion()
+
   return (
     <motion.div
       className="w-full max-w-lg rounded-2xl border border-brand-navy-border bg-white/2 p-6 backdrop-blur-sm"
@@ -103,8 +181,10 @@ function CommsNetworkVisual() {
       transition={{ duration: 0.7, ease: EASE }}
     >
       <div className="flex items-center justify-between mb-4">
-        <span className="text-xs font-semibold uppercase tracking-widest text-white/40">Secured network</span>
-        <span className="flex items-center gap-1.5 text-xs text-white/40">
+        <span className="text-xs font-semibold uppercase tracking-widest text-white/60">
+          Secured network
+        </span>
+        <span className="flex items-center gap-1.5 text-xs text-white/60">
           <PulsingDot color="bg-emerald-400" />
           Encrypted
         </span>
@@ -134,13 +214,20 @@ function CommsNetworkVisual() {
             transition={{ duration: 0.5, delay: 0.5 + i * 0.12, ease: EASE }}
             style={{ transformOrigin: `${node.x + 14}px ${node.y + 14}px` }}
           >
-            <rect x={node.x} y={node.y} width={28} height={28} rx={9} className="fill-white/8 stroke-white/15" />
+            <rect
+              x={node.x}
+              y={node.y}
+              width={28}
+              height={28}
+              rx={9}
+              className="fill-white/8 stroke-white/15"
+            />
             <circle cx={node.x + 14} cy={node.y + 14} r={4} className="fill-brand" />
             <text
               x={node.x + 14}
               y={node.y + 42}
               textAnchor="middle"
-              className="fill-white/40 text-[8px] font-semibold uppercase tracking-wider"
+              className="fill-white/65 text-[9px] font-semibold uppercase tracking-wider"
             >
               {node.label}
             </text>
@@ -157,15 +244,17 @@ function CommsNetworkVisual() {
           transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
           style={{ transformOrigin: '140px 105px' }}
         />
-        <motion.circle
-          cx={140}
-          cy={105}
-          r={30}
-          className="fill-none stroke-brand/30"
-          animate={{ scale: [1, 1.5], opacity: [0.6, 0] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeOut' }}
-          style={{ transformOrigin: '140px 105px' }}
-        />
+        {!reduceMotion && (
+          <motion.circle
+            cx={140}
+            cy={105}
+            r={30}
+            className="fill-none stroke-brand/30"
+            animate={{ scale: [1, 1.5], opacity: [0.6, 0] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeOut' }}
+            style={{ transformOrigin: '140px 105px' }}
+          />
+        )}
         <foreignObject x={124} y={89} width={32} height={32}>
           <div className="w-8 h-8 flex items-center justify-center text-brand">
             <FalconMark className="w-6 h-6" />
@@ -182,14 +271,23 @@ export default function Falcon() {
   return (
     <div className="bg-white">
       {/* ── 01 · Hero ────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center bg-brand-navy">
+      <section className="relative overflow-hidden min-h-[calc(100dvh-4rem)] flex flex-col justify-center bg-brand-navy">
         <div className="absolute -top-40 -right-40 w-125 h-125 rounded-full bg-brand/10 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-cyan-500/8 blur-3xl pointer-events-none" />
 
         <div className="relative max-w-6xl mx-auto px-6 py-24 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div className="flex flex-col gap-8" variants={stagger()} initial="hidden" animate="show">
-              <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="flex items-center gap-2.5">
+            <motion.div
+              className="flex flex-col gap-8"
+              variants={stagger()}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.div
+                variants={fadeUp}
+                transition={{ duration: 0.5, ease: EASE }}
+                className="flex items-center gap-2.5"
+              >
                 <PulsingDot color="bg-brand" />
                 <span className="text-sm font-semibold text-brand uppercase tracking-widest">
                   Platforms — Falcon
@@ -199,7 +297,7 @@ export default function Falcon() {
               <motion.h1
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
               >
                 Forces <span className="text-brand">At Work.</span>
               </motion.h1>
@@ -207,9 +305,11 @@ export default function Falcon() {
               <motion.p
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="text-xl text-white/60 leading-relaxed max-w-xl"
+                className="text-base sm:text-xl text-white/60 leading-relaxed max-w-xl"
               >
-                Falcon is an efficient, fully secure private messaging service with command and control capabilities — wholly licensed and operated by the customer on-premise, with full autonomy over its policy and procedures.
+                Falcon is an efficient, fully secure private messaging service with command and
+                control capabilities — wholly licensed and operated by the customer on-premise, with
+                full autonomy over its policy and procedures.
               </motion.p>
 
               <motion.div
@@ -235,6 +335,7 @@ export default function Falcon() {
 
             <motion.div
               className="hidden lg:flex items-center justify-center"
+              aria-hidden="true"
               initial={{ opacity: 0, x: 32 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: EASE, delay: 0.25 }}
@@ -250,7 +351,12 @@ export default function Falcon() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
           >
-            {['Customer-operated on-premise', 'End-to-end encrypted', 'Command and control built in', 'iOS, Android and web'].map((item) => (
+            {[
+              'Customer-operated on-premise',
+              'End-to-end encrypted',
+              'Command and control built in',
+              'iOS, Android and web',
+            ].map((item) => (
               <span key={item} className="flex items-center gap-2 text-sm text-white/50">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
                 {item}
@@ -270,14 +376,28 @@ export default function Falcon() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
               Why Falcon
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+            >
               Built for teams who <span className="text-brand">cannot afford leaks.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-gray-500 leading-relaxed">
-              Falcon enhances multimedia reporting across mobile and web, with video streaming, location analytics and Eagle Eye integration — built on the latest encryption so private teams communicate securely.
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-xl text-gray-500 leading-relaxed"
+            >
+              Falcon enhances multimedia reporting across mobile and web, with video streaming,
+              location analytics and Eagle Eye integration — built on the latest encryption so
+              private teams communicate securely.
             </motion.p>
           </motion.div>
 
@@ -301,7 +421,9 @@ export default function Falcon() {
                 <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-brand-light text-brand shrink-0">
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 tracking-tight leading-snug">{item.title}</h3>
+                <h3 className="text-lg font-bold text-gray-900 tracking-tight leading-snug">
+                  {item.title}
+                </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
@@ -319,14 +441,27 @@ export default function Falcon() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
               Capabilities
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+            >
               Secured unified <span className="text-brand">communication.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-gray-500 leading-relaxed">
-              Stay connected and in control no matter where the work takes you — web, iOS and Android, private and real-time throughout.
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-xl text-gray-500 leading-relaxed"
+            >
+              Stay connected and in control no matter where the work takes you — web, iOS and
+              Android, private and real-time throughout.
             </motion.p>
           </motion.div>
 
@@ -341,7 +476,9 @@ export default function Falcon() {
                 transition={{ duration: 0.45, delay: (i % 4) * 0.08, ease: EASE }}
               >
                 <span className="text-xs font-semibold text-brand tracking-widest">{`0${i + 1}`}</span>
-                <h3 className="text-base font-bold text-gray-900 tracking-tight leading-snug">{cap.title}</h3>
+                <h3 className="text-base font-bold text-gray-900 tracking-tight leading-snug">
+                  {cap.title}
+                </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{cap.description}</p>
               </motion.div>
             ))}
@@ -359,14 +496,27 @@ export default function Falcon() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
               Falcon in Action
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight">
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight"
+            >
               See the platform <span className="text-brand">at work.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-white/55 leading-relaxed">
-              Watch how Falcon connects the command centre and the field — secure messaging, dispatch, live streaming and reporting in a single environment.
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-xl text-white/55 leading-relaxed"
+            >
+              Watch how Falcon connects the command centre and the field — secure messaging,
+              dispatch, live streaming and reporting in a single environment.
             </motion.p>
           </motion.div>
 
@@ -381,6 +531,7 @@ export default function Falcon() {
               className="w-full aspect-video block"
               src={`https://www.youtube-nocookie.com/embed/${FALCON_VIDEO_ID}`}
               title="Falcon platform overview"
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen

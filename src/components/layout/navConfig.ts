@@ -132,20 +132,6 @@ export const NAV_ITEMS: NavEntry[] = [
   },
   {
     label: 'About',
-    href: '/about/company',
-    panel: {
-      title: 'About Datamicron',
-      description: 'Learn about who we are, what we do, and how to get in touch.',
-    },
-    sections: [
-      {
-        title: '',
-        items: [
-          { label: 'Company', href: '/about/company' },
-          { label: 'Contact Us', href: '/about/contact' },
-          { label: 'Services', href: '/services' },
-        ],
-      },
-    ],
+    href: '/about/contact',
   },
 ]

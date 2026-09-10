@@ -114,7 +114,7 @@ export default function Partners() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center bg-white">
+      <section className="relative overflow-hidden min-h-[calc(100dvh-4rem)] flex flex-col justify-center bg-white">
         {/* Decorative brand accents */}
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-brand/6 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-24 w-72 h-72 rounded-full bg-brand/4 blur-3xl pointer-events-none" />
@@ -137,7 +137,7 @@ export default function Partners() {
             <motion.h1
               variants={fadeUp}
               transition={{ duration: 0.55, ease: EASE }}
-              className="text-5xl lg:text-7xl font-bold text-gray-900 leading-[1.05] tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 leading-[1.05] tracking-tight"
             >
               Build the Future. <span className="text-brand">Together.</span>
             </motion.h1>
@@ -145,7 +145,7 @@ export default function Partners() {
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.55, ease: EASE }}
-              className="text-xl text-gray-500 leading-relaxed max-w-2xl"
+              className="text-base sm:text-xl text-gray-500 leading-relaxed max-w-2xl"
             >
               At Datamicron, we believe in the power of collaboration. We partner with
               organizations, institutions, and technology leaders to create a strong ecosystem that
@@ -261,8 +261,6 @@ export default function Partners() {
 
           {/* Steps */}
           <div className="relative">
-            <div className="absolute top-6 left-6 right-6 h-px bg-gray-100 hidden lg:block" />
-
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {JOURNEY_STEPS.map((item, i) => (
                 <motion.div
@@ -273,7 +271,11 @@ export default function Partners() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
                 >
-                  <div className="w-12 h-12 rounded-full bg-brand-light text-brand flex items-center justify-center shrink-0 z-10 border-2 border-white ring-1 ring-brand/20">
+                  {/* Connector runs from this marker across the gap to the next one */}
+                  {i < JOURNEY_STEPS.length - 1 && (
+                    <div className="hidden lg:block absolute top-6 left-14 -right-8 h-px bg-gray-200" />
+                  )}
+                  <div className="w-12 h-12 rounded-full bg-brand-light text-brand-dark flex items-center justify-center shrink-0 z-10 border-2 border-white ring-1 ring-brand/20">
                     <span className="text-sm font-bold">{item.step}</span>
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -317,7 +319,7 @@ export default function Partners() {
             <motion.span
               variants={fadeUp}
               transition={{ duration: 0.5, ease: EASE }}
-              className="text-sm font-semibold text-brand uppercase tracking-widest"
+              className="text-sm font-semibold text-brand-dark uppercase tracking-widest"
             >
               Get Started
             </motion.span>

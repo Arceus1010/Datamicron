@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 import { EASE } from '@/lib/motion'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -12,26 +12,13 @@ function ScrollToTop() {
 }
 
 function ScrollProgressBar() {
-  const [progress, setProgress] = useState(0)
-
-  useEffect(() => {
-    const onScroll = () => {
-      const el = document.documentElement
-      const scrolled = el.scrollTop
-      const total = el.scrollHeight - el.clientHeight
-      setProgress(total > 0 ? (scrolled / total) * 100 : 0)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  // Driven by a motion value so scrolling never re-renders React
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, { stiffness: 300, damping: 40, restDelta: 0.001 })
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-60 h-1 bg-transparent">
-      <motion.div
-        className="h-full bg-brand origin-left"
-        style={{ scaleX: progress / 100 }}
-        transition={{ duration: 0.1, ease: 'linear' }}
-      />
+    <div className="fixed top-0 left-0 right-0 z-60 h-1 bg-transparent pointer-events-none">
+      <motion.div className="h-full bg-brand origin-left" style={{ scaleX }} />
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { fadeUp, stagger, EASE } from '@/lib/motion'
@@ -154,13 +154,17 @@ function ArrowIcon() {
 }
 
 function PulsingDot({ color = 'bg-emerald-400' }: { color?: string }) {
+  const reduceMotion = useReducedMotion()
+
   return (
     <span className="relative flex h-2.5 w-2.5">
-      <motion.span
-        className={`absolute inline-flex h-full w-full rounded-full ${color} opacity-75`}
-        animate={{ scale: [1, 1.8], opacity: [0.75, 0] }}
-        transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
-      />
+      {!reduceMotion && (
+        <motion.span
+          className={`absolute inline-flex h-full w-full rounded-full ${color} opacity-75`}
+          animate={{ scale: [1, 1.8], opacity: [0.75, 0] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
+        />
+      )}
       <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${color}`} />
     </span>
   )
@@ -185,9 +189,17 @@ function PipelineVisual() {
     { x: stageX.deliver, label: 'Deliver' },
   ]
 
+  const reduceMotion = useReducedMotion()
+
   return (
     <div className="relative w-full h-full">
-      <svg viewBox="0 0 580 330" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        viewBox="0 0 580 330"
+        className="w-full h-full"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Diagram: data from Kafka, PostgreSQL, REST API, S3 files and Salesforce flows through Connect, Ingest, Transform and Deliver stages, emerging as clean data."
+      >
         <defs>
           <filter id="df-glow">
             <feGaussianBlur stdDeviation="2" result="coloredBlur" />
@@ -236,26 +248,27 @@ function PipelineVisual() {
             </text>
 
             {/* Animated particles — 3 per lane, staggered */}
-            {[0, 1, 2].map((pi) => (
-              <motion.circle
-                key={`p-${li}-${pi}`}
-                r={3.5}
-                cy={lane.y}
-                fill={lane.color}
-                filter="url(#df-glow)"
-                animate={{
-                  cx: [stageX.connect - 20, 555],
-                  opacity: [0, 1, 1, 1, 0],
-                }}
-                transition={{
-                  duration: 2.8,
-                  delay: li * 0.22 + pi * 0.9,
-                  repeat: Infinity,
-                  repeatDelay: 0.2,
-                  ease: 'linear',
-                }}
-              />
-            ))}
+            {!reduceMotion &&
+              [0, 1, 2].map((pi) => (
+                <motion.circle
+                  key={`p-${li}-${pi}`}
+                  r={3.5}
+                  cy={lane.y}
+                  fill={lane.color}
+                  filter="url(#df-glow)"
+                  animate={{
+                    cx: [stageX.connect - 20, 555],
+                    opacity: [0, 1, 1, 1, 0],
+                  }}
+                  transition={{
+                    duration: 2.8,
+                    delay: li * 0.22 + pi * 0.9,
+                    repeat: Infinity,
+                    repeatDelay: 0.2,
+                    ease: 'linear',
+                  }}
+                />
+              ))}
 
             {/* Transform node — glowing dot at transform stage */}
             <motion.circle
@@ -266,7 +279,7 @@ function PipelineVisual() {
               stroke={lane.color}
               strokeWidth={1.5}
               filter="url(#df-glow)"
-              animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
+              animate={reduceMotion ? undefined : { scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
               transition={{ duration: 2, delay: li * 0.3, repeat: Infinity, ease: 'easeInOut' }}
             />
           </g>
@@ -336,7 +349,7 @@ export default function Dataforge() {
   return (
     <div className="bg-white">
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center bg-brand-navy">
+      <section className="relative overflow-hidden min-h-[calc(100dvh-4rem)] flex flex-col justify-center bg-brand-navy">
         {/* Emerald/green energy tones */}
         <div className="absolute -top-40 -right-40 w-125 h-125 rounded-full bg-emerald-500/8 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-green-600/8 blur-3xl pointer-events-none" />
@@ -355,7 +368,7 @@ export default function Dataforge() {
               <motion.h1
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
               >
                 Power Your Data
                 <span className="text-white/60">—</span>
@@ -365,7 +378,7 @@ export default function Dataforge() {
               <motion.p
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="text-xl text-white/60 leading-relaxed max-w-xl"
+                className="text-base sm:text-xl text-white/60 leading-relaxed max-w-xl"
               >
                 DataForge ingests, transforms, and activates your data at scale — delivering high-quality, real-time pipelines ready for AI and analytics.
               </motion.p>
@@ -430,7 +443,7 @@ export default function Dataforge() {
               viewport={{ once: true, amount: 0.3 }}
               variants={stagger()}
             >
-              <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-600 uppercase tracking-widest">
+              <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-700 uppercase tracking-widest">
                 The Problem
               </motion.span>
               <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl font-bold text-gray-900 leading-[1.1] tracking-tight">
@@ -490,7 +503,7 @@ export default function Dataforge() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-600 uppercase tracking-widest">
+            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-700 uppercase tracking-widest">
               What Is DataForge?
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
@@ -506,19 +519,29 @@ export default function Dataforge() {
               transition={{ duration: 0.6, ease: EASE }}
               className="mt-6 w-full max-w-2xl"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 {[
-                  { label: 'Raw Data', sub: 'Fragmented, inconsistent', color: 'bg-red-50 border-red-200 text-red-500', sub_color: 'text-red-400' },
-                  { label: 'DataForge', sub: 'Ingest · Transform · Enrich', color: 'bg-emerald-50 border-emerald-300 text-emerald-700', sub_color: 'text-emerald-500', highlight: true },
-                  { label: 'Refined Data', sub: 'Clean, reliable, AI-ready', color: 'bg-brand-light border-brand/20 text-brand', sub_color: 'text-brand/70' },
+                  { label: 'Raw Data', sub: 'Fragmented, inconsistent', color: 'bg-red-50 border-red-200 text-red-700', sub_color: 'text-red-600' },
+                  { label: 'DataForge', sub: 'Ingest · Transform · Enrich', color: 'bg-emerald-50 border-emerald-300 text-emerald-700', sub_color: 'text-emerald-700', highlight: true },
+                  { label: 'Refined Data', sub: 'Clean, reliable, AI-ready', color: 'bg-brand-light border-brand/20 text-brand-dark', sub_color: 'text-brand-dark/80' },
                 ].map((item, i) => (
-                  <div key={item.label} className="flex items-center gap-3 flex-1">
-                    <div className={`flex-1 rounded-xl border p-4 text-center ${item.color} ${item.highlight ? 'ring-2 ring-emerald-400/30' : ''}`}>
+                  <div
+                    key={item.label}
+                    className="flex flex-col sm:flex-row items-center gap-3 flex-1"
+                  >
+                    <div className={`w-full sm:flex-1 rounded-xl border p-4 text-center ${item.color} ${item.highlight ? 'ring-2 ring-emerald-400/30' : ''}`}>
                       <p className="text-xs font-semibold uppercase tracking-widest mb-1">{item.label}</p>
                       <p className={`text-xs ${item.sub_color}`}>{item.sub}</p>
                     </div>
                     {i < 2 && (
-                      <svg className="w-5 h-5 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg
+                        className="w-5 h-5 text-gray-400 shrink-0 rotate-90 sm:rotate-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                       </svg>
                     )}
@@ -538,8 +561,8 @@ export default function Dataforge() {
                 { label: 'Not just ingestion', sub: 'End-to-end data engineering' },
               ].map((item) => (
                 <div key={item.label} className="bg-gray-50 rounded-lg p-4 text-left border border-gray-100">
-                  <p className="text-xs text-gray-400 line-through mb-1">{item.label}</p>
-                  <p className="text-sm font-semibold text-emerald-600">{item.sub}</p>
+                  <p className="text-xs text-gray-500 line-through mb-1">{item.label}</p>
+                  <p className="text-sm font-semibold text-emerald-700">{item.sub}</p>
                 </div>
               ))}
             </motion.div>
@@ -557,7 +580,7 @@ export default function Dataforge() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-600 uppercase tracking-widest">
+            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-700 uppercase tracking-widest">
               Core Capabilities
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
@@ -594,30 +617,38 @@ export default function Dataforge() {
           <div className="relative">
             <div className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-white/10" />
 
-            <div className="grid lg:grid-cols-4 gap-8">
+            <div
+              className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+              role="tablist"
+              aria-label="How DataForge works"
+            >
               {HOW_IT_WORKS.map((step, i) => (
-                <motion.div
+                <motion.button
                   key={step.step}
-                  className="flex flex-col gap-4 cursor-pointer"
+                  type="button"
+                  role="tab"
+                  aria-selected={activeStep === i}
+                  aria-controls="dataforge-step-detail"
+                  className="flex flex-col gap-4 rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: i * 0.12, ease: EASE }}
                   onClick={() => setActiveStep(i)}
                 >
-                  <div className={`relative w-24 h-24 mx-auto rounded-2xl border flex items-center justify-center flex-col gap-1 transition-all duration-300 ${activeStep === i ? `${step.color} scale-105 shadow-lg` : 'bg-white/5 border-white/10 text-white/40'}`}>
+                  <div className={`relative w-24 h-24 mx-auto rounded-2xl border flex items-center justify-center flex-col gap-1 transition-all duration-300 ${activeStep === i ? `${step.color} scale-105 shadow-lg` : 'bg-white/5 border-white/10 text-white/60'}`}>
                     <span className="text-2xl font-bold font-display">{step.step}</span>
                     <span className="text-xs font-semibold uppercase tracking-wider">{step.label}</span>
-                    {i < HOW_IT_WORKS.length - 1 && (
-                      <div className="lg:hidden absolute -right-5 top-1/2 -translate-y-1/2 text-white/20 text-lg">→</div>
-                    )}
                   </div>
-                </motion.div>
+                </motion.button>
               ))}
             </div>
 
             <motion.div
               key={activeStep}
+              id="dataforge-step-detail"
+              role="tabpanel"
+              aria-live="polite"
               className="mt-10 max-w-xl mx-auto text-center"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -641,7 +672,7 @@ export default function Dataforge() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-600 uppercase tracking-widest">
+            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-700 uppercase tracking-widest">
               Key Use Cases
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
@@ -689,7 +720,7 @@ export default function Dataforge() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-600 uppercase tracking-widest">
+            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-700 uppercase tracking-widest">
               Business Outcomes
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
@@ -707,7 +738,9 @@ export default function Dataforge() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
               >
-                <span className="text-3xl">{o.icon}</span>
+                <span className="text-3xl" aria-hidden="true">
+                  {o.icon}
+                </span>
                 <span className="text-4xl font-bold text-emerald-600 font-display">{o.metric}</span>
                 <p className="text-sm text-gray-500 leading-snug">{o.label}</p>
               </motion.div>
@@ -727,7 +760,7 @@ export default function Dataforge() {
               viewport={{ once: true, amount: 0.3 }}
               variants={stagger()}
             >
-              <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-600 uppercase tracking-widest">
+              <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-700 uppercase tracking-widest">
                 Why DataForge
               </motion.span>
               <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl font-bold text-gray-900 leading-[1.1] tracking-tight">
@@ -744,7 +777,7 @@ export default function Dataforge() {
                   { before: 'Manual ingestion', after: 'End-to-end data engineering' },
                 ].map((row) => (
                   <motion.div key={row.before} variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="flex items-center gap-4">
-                    <span className="text-sm text-gray-400 line-through w-36 shrink-0">{row.before}</span>
+                    <span className="text-sm text-gray-500 line-through w-36 shrink-0">{row.before}</span>
                     <ArrowIcon />
                     <span className="text-sm font-semibold text-gray-800">{row.after}</span>
                   </motion.div>
@@ -765,7 +798,7 @@ export default function Dataforge() {
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                       <div>
                         <p className="text-sm font-semibold text-gray-800">{item.label}</p>
-                        <p className="text-xs text-gray-400">{item.sub}</p>
+                        <p className="text-xs text-gray-500">{item.sub}</p>
                       </div>
                     </div>
                   ))}
@@ -790,7 +823,7 @@ export default function Dataforge() {
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-lg">Security & Reliability</h3>
-                    <p className="text-xs text-white/40 mt-0.5">Production-grade from the first pipeline</p>
+                    <p className="text-xs text-white/60 mt-0.5">Production-grade from the first pipeline</p>
                   </div>
                 </div>
 
@@ -844,6 +877,7 @@ export default function Dataforge() {
               className="w-full aspect-video block"
               src={`https://www.youtube-nocookie.com/embed/${DATAFORGE_VIDEO_ID}`}
               title="DataForge product walkthrough"
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen

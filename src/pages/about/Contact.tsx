@@ -106,7 +106,39 @@ const FAQS = [
   },
 ]
 
-type FormState = 'idle' | 'submitting' | 'success'
+const faqPanelId = (q: string) => `faq-${q.replace(/\W+/g, '-').toLowerCase()}`
+
+type FormState = 'idle' | 'handoff'
+
+const CONTACT_EMAIL = 'info@datamicron.com'
+
+/**
+ * Builds the mailto: URL the form hands off to. There is no backend, so the
+ * message is composed into the visitor's own mail client rather than posted.
+ */
+function buildMailtoHref(form: {
+  name: string
+  email: string
+  phone: string
+  company: string
+  inquiry: string
+  message: string
+}) {
+  const subject = `${form.inquiry || 'General Inquiry'} — ${form.name}`
+  const body = [
+    `Name: ${form.name}`,
+    `Email: ${form.email}`,
+    form.phone && `Phone: ${form.phone}`,
+    form.company && `Company: ${form.company}`,
+    `Enquiry type: ${form.inquiry || 'General Inquiry'}`,
+    '',
+    form.message,
+  ]
+    .filter(Boolean)
+    .join('\n')
+
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+}
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -140,19 +172,17 @@ export default function Contact() {
       })
   }
 
-  const handleSubmit = async (evt: React.FormEvent) => {
+  const handleSubmit = (evt: React.FormEvent) => {
     evt.preventDefault()
     const e = validate()
     if (Object.keys(e).length) {
       setErrors(e)
       return
     }
-    setFormState('submitting')
-    await new Promise((r) => setTimeout(r, 1400))
-    setFormState('success')
+    // Hands the composed message to the visitor's mail client
+    window.location.href = buildMailtoHref(form)
+    setFormState('handoff')
   }
-
-  const isValid = form.name && form.email && form.message
 
   return (
     <main className="bg-white">
@@ -215,7 +245,7 @@ export default function Contact() {
                 className="text-white/70 hover:text-white text-sm transition-colors duration-200"
               >
                 Or email us directly at{' '}
-                <span className="text-brand hover:underline">info@datamicron.com</span>
+                <span className="text-brand-light hover:underline">info@datamicron.com</span>
               </a>
             </motion.div>
           </motion.div>
@@ -249,7 +279,7 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-gray-900 font-display">{opt.label}</p>
                   <p className="text-sm text-gray-500 mt-0.5 leading-snug">{opt.sublabel}</p>
-                  <p className="text-sm text-brand font-medium mt-2 group-hover:underline">
+                  <p className="text-sm text-brand-dark font-medium mt-2 group-hover:underline">
                     {opt.value}
                   </p>
                 </div>
@@ -313,24 +343,24 @@ export default function Contact() {
                 className="rounded-xl border border-gray-200 bg-white p-6 space-y-4"
               >
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-1">
+                  <p className="text-xs text-gray-600 uppercase tracking-widest font-semibold mb-1">
                     Office Hours
                   </p>
                   <p className="text-gray-700 font-medium">Mon – Fri: 9:00 AM – 6:00 PM</p>
                 </div>
                 <div className="h-px bg-gray-100" />
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-1">
+                  <p className="text-xs text-gray-600 uppercase tracking-widest font-semibold mb-1">
                     Support
                   </p>
                   <p className="text-gray-700 font-medium">Available via email 24/7</p>
                 </div>
                 <div className="h-px bg-gray-100" />
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-1">
+                  <p className="text-xs text-gray-600 uppercase tracking-widest font-semibold mb-1">
                     Phone
                   </p>
-                  <a href="tel:+60321633168" className="text-brand font-medium hover:underline">
+                  <a href="tel:+60321633168" className="text-brand-dark font-medium hover:underline">
                     +603 2163 3168
                   </a>
                 </div>
@@ -347,49 +377,72 @@ export default function Contact() {
             >
               <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 lg:p-10">
                 <AnimatePresence mode="wait">
-                  {formState === 'success' ? (
+                  {formState === 'handoff' ? (
                     <motion.div
-                      key="success"
+                      key="handoff"
+                      role="status"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.4, ease: EASE }}
                       className="flex flex-col items-center justify-center text-center py-16 gap-6"
                     >
-                      <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center">
-                        <svg className="w-8 h-8 text-green-500" viewBox="0 0 24 24" fill="none">
+                      <div className="w-16 h-16 rounded-full bg-brand-light flex items-center justify-center">
+                        <svg
+                          className="w-8 h-8 text-brand-dark"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.8}
+                          aria-hidden="true"
+                        >
                           <path
-                            d="M5 13l4 4L19 7"
-                            stroke="currentColor"
-                            strokeWidth={2}
                             strokeLinecap="round"
                             strokeLinejoin="round"
+                            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
                           />
                         </svg>
                       </div>
                       <div>
                         <h3 className="font-display text-2xl font-bold text-gray-900">
-                          Thanks! We'll be in touch shortly.
+                          Your message is ready to send
                         </h3>
-                        <p className="text-gray-500 mt-2">
-                          Our team will review your message and respond within 1 business day.
+                        <p className="text-gray-500 mt-2 max-w-md">
+                          We've opened your email app with the details filled in — press send there
+                          and it reaches us. If nothing opened, email us directly at{' '}
+                          <a
+                            href={`mailto:${CONTACT_EMAIL}`}
+                            className="text-brand-dark font-medium hover:underline"
+                          >
+                            {CONTACT_EMAIL}
+                          </a>
+                          .
                         </p>
                       </div>
-                      <button
-                        onClick={() => {
-                          setFormState('idle')
-                          setForm({
-                            name: '',
-                            email: '',
-                            phone: '',
-                            company: '',
-                            inquiry: '',
-                            message: '',
-                          })
-                        }}
-                        className="text-brand text-sm font-medium hover:underline"
-                      >
-                        Send another message
-                      </button>
+                      <div className="flex flex-col sm:flex-row items-center gap-4">
+                        <a
+                          href={buildMailtoHref(form)}
+                          className="text-brand-dark text-sm font-medium hover:underline"
+                        >
+                          Reopen my email app
+                        </a>
+                        <button
+                          onClick={() => {
+                            setFormState('idle')
+                            setErrors({})
+                            setForm({
+                              name: '',
+                              email: '',
+                              phone: '',
+                              company: '',
+                              inquiry: '',
+                              message: '',
+                            })
+                          }}
+                          className="text-gray-600 text-sm font-medium hover:underline"
+                        >
+                          Start a new message
+                        </button>
+                      </div>
                     </motion.div>
                   ) : (
                     <motion.form
@@ -403,17 +456,21 @@ export default function Contact() {
                     >
                       <div className="grid sm:grid-cols-2 gap-5">
                         <Field
+                          id="name"
                           label="Full Name"
                           required
+                          autoComplete="name"
                           value={form.name}
                           error={errors.name}
                           onChange={(v) => handleChange('name', v)}
                           placeholder="Jane Smith"
                         />
                         <Field
+                          id="email"
                           label="Work Email"
                           type="email"
                           required
+                          autoComplete="email"
                           value={form.email}
                           error={errors.email}
                           onChange={(v) => handleChange('email', v)}
@@ -423,14 +480,18 @@ export default function Contact() {
 
                       <div className="grid sm:grid-cols-2 gap-5">
                         <Field
+                          id="phone"
                           label="Phone Number"
                           type="tel"
+                          autoComplete="tel"
                           value={form.phone}
                           onChange={(v) => handleChange('phone', v)}
                           placeholder="+60 12 345 6789"
                         />
                         <Field
+                          id="company"
                           label="Company / Organisation"
+                          autoComplete="organization"
                           value={form.company}
                           onChange={(v) => handleChange('company', v)}
                           placeholder="Acme Corp"
@@ -438,10 +499,12 @@ export default function Contact() {
                       </div>
 
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-medium text-gray-700">
+                        <label htmlFor="inquiry" className="text-sm font-medium text-gray-700">
                           What can we help you with?
                         </label>
                         <select
+                          id="inquiry"
+                          name="inquiry"
                           value={form.inquiry}
                           onChange={(e) => handleChange('inquiry', e.target.value)}
                           className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-all duration-150 appearance-none"
@@ -456,56 +519,53 @@ export default function Contact() {
                       </div>
 
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-medium text-gray-700">
-                          Your Message <span className="text-red-400">*</span>
+                        <label htmlFor="message" className="text-sm font-medium text-gray-700">
+                          Your Message{' '}
+                          <span className="text-red-600" aria-hidden="true">
+                            *
+                          </span>
                         </label>
                         <textarea
+                          id="message"
+                          name="message"
                           rows={5}
+                          required
+                          aria-required="true"
+                          aria-invalid={errors.message ? true : undefined}
+                          aria-describedby={errors.message ? 'message-error' : undefined}
                           value={form.message}
                           onChange={(e) => handleChange('message', e.target.value)}
                           placeholder="Tell us about your project, challenge, or question…"
-                          className={`w-full px-4 py-3 rounded-lg border text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-all duration-150 resize-none ${
+                          className={`w-full px-4 py-3 rounded-lg border text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-all duration-150 resize-none ${
                             errors.message
-                              ? 'border-red-300 bg-red-50/30'
+                              ? 'border-red-400 bg-red-50/30'
                               : 'border-gray-200 bg-white'
                           }`}
                         />
-                        {errors.message && <p className="text-xs text-red-500">{errors.message}</p>}
+                        {errors.message && (
+                          <p id="message-error" className="text-xs text-red-600">
+                            {errors.message}
+                          </p>
+                        )}
                       </div>
+
+                      {Object.keys(errors).length > 0 && (
+                        <p role="alert" className="text-sm text-red-600">
+                          Please correct the highlighted fields and try again.
+                        </p>
+                      )}
 
                       <div className="pt-1">
                         <motion.button
                           type="submit"
-                          disabled={!isValid || formState === 'submitting'}
-                          whileHover={isValid ? { y: -1 } : {}}
-                          whileTap={isValid ? { scale: 0.98 } : {}}
-                          className="w-full bg-brand hover:bg-brand-dark disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold px-8 py-3.5 rounded-sm shadow-sm shadow-brand/30 transition-colors duration-200 flex items-center justify-center gap-2"
+                          whileHover={{ y: -1 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="w-full bg-brand hover:bg-brand-dark text-white font-semibold px-8 py-3.5 rounded-sm shadow-sm shadow-brand/30 transition-colors duration-200 flex items-center justify-center gap-2"
                         >
-                          {formState === 'submitting' ? (
-                            <>
-                              <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                                <circle
-                                  className="opacity-25"
-                                  cx="12"
-                                  cy="12"
-                                  r="10"
-                                  stroke="currentColor"
-                                  strokeWidth="4"
-                                />
-                                <path
-                                  className="opacity-75"
-                                  fill="currentColor"
-                                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                                />
-                              </svg>
-                              Sending…
-                            </>
-                          ) : (
-                            'Send Message'
-                          )}
+                          Compose Email
                         </motion.button>
-                        <p className="text-center text-xs text-gray-400 mt-3">
-                          We typically respond within 1 business day.
+                        <p className="text-center text-xs text-gray-600 mt-3">
+                          Opens in your email app. We typically respond within 1 business day.
                         </p>
                       </div>
                     </motion.form>
@@ -611,7 +671,7 @@ export default function Contact() {
                 Wisma UOA II, Lobby A, 11th Floor, No. 21 Jalan Pinang, 50450 Kuala Lumpur, Malaysia
               </p>
               <span className="hidden sm:block text-gray-300">·</span>
-              <p className="text-sm text-gray-400">Ample parking available in the building</p>
+              <p className="text-sm text-gray-600">Ample parking available in the building</p>
             </div>
           </motion.div>
         </div>
@@ -649,13 +709,16 @@ export default function Contact() {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === faq.q ? null : faq.q)}
+                  aria-expanded={openFaq === faq.q}
+                  aria-controls={faqPanelId(faq.q)}
                   className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-gray-50 transition-colors duration-150"
                 >
                   <span className="font-medium text-gray-900 font-display">{faq.q}</span>
                   <motion.span
                     animate={{ rotate: openFaq === faq.q ? 45 : 0 }}
                     transition={{ duration: 0.2 }}
-                    className="shrink-0 w-5 h-5 text-brand"
+                    className="shrink-0 w-5 h-5 text-brand-dark"
+                    aria-hidden="true"
                   >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                       <path
@@ -670,6 +733,7 @@ export default function Contact() {
                   {openFaq === faq.q && (
                     <motion.div
                       key="content"
+                      id={faqPanelId(faq.q)}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -740,6 +804,7 @@ export default function Contact() {
 
 /* ── Field helper component ──────────────────────────────────────── */
 function Field({
+  id,
   label,
   required,
   value,
@@ -747,7 +812,9 @@ function Field({
   onChange,
   placeholder,
   type = 'text',
+  autoComplete,
 }: {
+  id: string
   label: string
   required?: boolean
   value: string
@@ -755,23 +822,41 @@ function Field({
   onChange: (v: string) => void
   placeholder?: string
   type?: string
+  autoComplete?: string
 }) {
+  const errorId = `${id}-error`
+
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-medium text-gray-700">
-        {label} {required && <span className="text-red-400">*</span>}
+      <label htmlFor={id} className="text-sm font-medium text-gray-700">
+        {label}{' '}
+        {required && (
+          <span className="text-red-600" aria-hidden="true">
+            *
+          </span>
+        )}
       </label>
       <input
+        id={id}
+        name={id}
         type={type}
         value={value}
+        required={required}
+        aria-required={required || undefined}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? errorId : undefined}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        autoComplete={type === 'email' ? 'email' : type === 'tel' ? 'tel' : 'off'}
-        className={`w-full px-4 py-3 rounded-lg border text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-all duration-150 ${
-          error ? 'border-red-300 bg-red-50/30' : 'border-gray-200 bg-white'
+        autoComplete={autoComplete}
+        className={`w-full px-4 py-3 rounded-lg border text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-all duration-150 ${
+          error ? 'border-red-400 bg-red-50/30' : 'border-gray-200 bg-white'
         }`}
       />
-      {error && <p className="text-xs text-red-500">{error}</p>}
+      {error && (
+        <p id={errorId} className="text-xs text-red-600">
+          {error}
+        </p>
+      )}
     </div>
   )
 }

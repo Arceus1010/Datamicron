@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { fadeUp, stagger, EASE } from '@/lib/motion'
@@ -169,10 +169,17 @@ function AgentFlowDiagram() {
   ]
 
   const getNode = (id: string) => nodes.find((n) => n.id === id)!
+  const reduceMotion = useReducedMotion()
 
   return (
     <div className="relative w-full h-full">
-      <svg viewBox="0 0 640 360" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        viewBox="0 0 640 360"
+        className="w-full h-full"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Diagram: a data signal flows into an AI agent, which makes a decision that acts on CRM and ERP systems, and the outcomes feed back as learning."
+      >
         <defs>
           <filter id="glow">
             <feGaussianBlur stdDeviation="3" result="coloredBlur" />
@@ -215,30 +222,31 @@ function AgentFlowDiagram() {
         })}
 
         {/* Animated data packets */}
-        {edges.map((edge, i) => {
-          const from = getNode(edge.from)
-          const to = getNode(edge.to)
-          return (
-            <motion.circle
-              key={`packet-${i}`}
-              r={3}
-              fill={from.color}
-              filter="url(#glow)"
-              animate={{
-                cx: [from.x, to.x],
-                cy: [from.y, to.y],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 1.8,
-                delay: 1 + i * 0.4,
-                repeat: Infinity,
-                repeatDelay: 2,
-                ease: 'easeInOut',
-              }}
-            />
-          )
-        })}
+        {!reduceMotion &&
+          edges.map((edge, i) => {
+            const from = getNode(edge.from)
+            const to = getNode(edge.to)
+            return (
+              <motion.circle
+                key={`packet-${i}`}
+                r={3}
+                fill={from.color}
+                filter="url(#glow)"
+                animate={{
+                  cx: [from.x, to.x],
+                  cy: [from.y, to.y],
+                  opacity: [0, 1, 0],
+                }}
+                transition={{
+                  duration: 1.8,
+                  delay: 1 + i * 0.4,
+                  repeat: Infinity,
+                  repeatDelay: 2,
+                  ease: 'easeInOut',
+                }}
+              />
+            )
+          })}
 
         {/* Nodes */}
         {nodes.map((node, i) => (
@@ -250,18 +258,20 @@ function AgentFlowDiagram() {
           >
             <circle cx={node.x} cy={node.y} r={28} fill={`${node.color}22`} stroke={`${node.color}66`} strokeWidth={1.5} filter="url(#glow)" />
             <circle cx={node.x} cy={node.y} r={16} fill={`${node.color}33`} stroke={node.color} strokeWidth={1.5} />
-            <motion.circle
-              cx={node.x}
-              cy={node.y}
-              r={28}
-              fill="none"
-              stroke={node.color}
-              strokeWidth={1}
-              opacity={0.4}
-              animate={{ r: [28, 36], opacity: [0.4, 0] }}
-              transition={{ duration: 2, delay: i * 0.3, repeat: Infinity, ease: 'easeOut' }}
-            />
-            <text x={node.x} y={node.y + 44} textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize="10" fontFamily="'Source Sans 3', sans-serif">
+            {!reduceMotion && (
+              <motion.circle
+                cx={node.x}
+                cy={node.y}
+                r={28}
+                fill="none"
+                stroke={node.color}
+                strokeWidth={1}
+                opacity={0.4}
+                animate={{ r: [28, 36], opacity: [0.4, 0] }}
+                transition={{ duration: 2, delay: i * 0.3, repeat: Infinity, ease: 'easeOut' }}
+              />
+            )}
+            <text x={node.x} y={node.y + 44} textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize="11" fontFamily="'Source Sans 3', sans-serif">
               {node.label}
             </text>
           </motion.g>
@@ -273,13 +283,17 @@ function AgentFlowDiagram() {
 
 // Pulsing agent indicator used in section labels
 function PulsingDot() {
+  const reduceMotion = useReducedMotion()
+
   return (
     <span className="relative flex h-2.5 w-2.5">
-      <motion.span
-        className="absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"
-        animate={{ scale: [1, 1.8], opacity: [0.75, 0] }}
-        transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
-      />
+      {!reduceMotion && (
+        <motion.span
+          className="absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"
+          animate={{ scale: [1, 1.8], opacity: [0.75, 0] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
+        />
+      )}
       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand" />
     </span>
   )
@@ -327,7 +341,7 @@ export default function Cortexus() {
   return (
     <div className="bg-white">
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center bg-brand-navy">
+      <section className="relative overflow-hidden min-h-[calc(100dvh-4rem)] flex flex-col justify-center bg-brand-navy">
         {/* Ambient blobs */}
         <div className="absolute -top-40 -right-40 w-125 h-125 rounded-full bg-brand/10 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-purple-600/8 blur-3xl pointer-events-none" />
@@ -346,7 +360,7 @@ export default function Cortexus() {
               <motion.h1
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
               >
                 Turn Intelligence{' '}
                 <span className="text-brand">into Action</span>
@@ -356,7 +370,7 @@ export default function Cortexus() {
               <motion.p
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="text-xl text-white/60 leading-relaxed max-w-xl"
+                className="text-base sm:text-xl text-white/60 leading-relaxed max-w-xl"
               >
                 Cortexus is your enterprise execution engine, orchestrating AI agents, workflows, and systems to drive real-time, closed-loop operations.
               </motion.p>
@@ -502,8 +516,8 @@ export default function Cortexus() {
                 { label: 'Not just triggers', sub: 'Closed-loop learning' },
               ].map((item) => (
                 <div key={item.label} className="bg-brand-light rounded-lg p-4 text-left">
-                  <p className="text-xs text-gray-400 line-through mb-1">{item.label}</p>
-                  <p className="text-sm font-semibold text-brand">{item.sub}</p>
+                  <p className="text-xs text-gray-500 line-through mb-1">{item.label}</p>
+                  <p className="text-sm font-semibold text-brand-dark">{item.sub}</p>
                 </div>
               ))}
             </motion.div>
@@ -560,32 +574,39 @@ export default function Cortexus() {
             {/* Connecting line (desktop) */}
             <div className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-white/10" />
 
-            <div className="grid lg:grid-cols-4 gap-8">
+            <div
+              className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+              role="tablist"
+              aria-label="How Cortexus works"
+            >
               {HOW_IT_WORKS.map((step, i) => (
-                <motion.div
+                <motion.button
                   key={step.step}
-                  className="flex flex-col gap-4 cursor-pointer"
+                  type="button"
+                  role="tab"
+                  aria-selected={activeStep === i}
+                  aria-controls="cortexus-step-detail"
+                  className="flex flex-col gap-4 rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.55, delay: i * 0.12, ease: EASE }}
                   onClick={() => setActiveStep(i)}
                 >
-                  <div className={`relative w-24 h-24 mx-auto rounded-2xl border flex items-center justify-center flex-col gap-1 transition-all duration-300 ${activeStep === i ? `${step.color} scale-105 shadow-lg` : 'bg-white/5 border-white/10 text-white/40'}`}>
+                  <div className={`relative w-24 h-24 mx-auto rounded-2xl border flex items-center justify-center flex-col gap-1 transition-all duration-300 ${activeStep === i ? `${step.color} scale-105 shadow-lg` : 'bg-white/5 border-white/10 text-white/60'}`}>
                     <span className="text-2xl font-bold font-display">{step.step}</span>
                     <span className="text-xs font-semibold uppercase tracking-wider">{step.label}</span>
-                    {/* Arrow between steps */}
-                    {i < HOW_IT_WORKS.length - 1 && (
-                      <div className="lg:hidden absolute -right-5 top-1/2 -translate-y-1/2 text-white/20 text-lg">→</div>
-                    )}
                   </div>
-                </motion.div>
+                </motion.button>
               ))}
             </div>
 
             {/* Active step description */}
             <motion.div
               key={activeStep}
+              id="cortexus-step-detail"
+              role="tabpanel"
+              aria-live="polite"
               className="mt-10 max-w-xl mx-auto text-center"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -675,7 +696,9 @@ export default function Cortexus() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.55, delay: i * 0.1, ease: EASE }}
               >
-                <span className="text-3xl">{o.icon}</span>
+                <span className="text-3xl" aria-hidden="true">
+                  {o.icon}
+                </span>
                 <span className="text-4xl font-bold text-brand font-display">{o.metric}</span>
                 <p className="text-sm text-gray-500 leading-snug">{o.label}</p>
               </motion.div>
@@ -712,7 +735,7 @@ export default function Cortexus() {
                   { before: 'One-shot actions', after: 'Closed-loop learning' },
                 ].map((row) => (
                   <motion.div key={row.before} variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="flex items-center gap-4">
-                    <span className="text-sm text-gray-400 line-through w-36 shrink-0">{row.before}</span>
+                    <span className="text-sm text-gray-500 line-through w-36 shrink-0">{row.before}</span>
                     <ArrowIcon />
                     <span className="text-sm font-semibold text-gray-800">{row.after}</span>
                   </motion.div>
@@ -793,6 +816,7 @@ export default function Cortexus() {
               className="w-full aspect-video block"
               src={`https://www.youtube-nocookie.com/embed/${CORTEXUS_VIDEO_ID}`}
               title="Cortexus product walkthrough"
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen

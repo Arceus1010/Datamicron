@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { fadeUp, stagger, EASE } from '@/lib/motion'
 
@@ -10,8 +10,18 @@ const WHY_FORESIGHT = [
   {
     id: 'training',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"
+        />
       </svg>
     ),
     title: 'Automated Model Training',
@@ -21,8 +31,18 @@ const WHY_FORESIGHT = [
   {
     id: 'exploration',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+        />
       </svg>
     ),
     title: 'Advanced Data Exploration',
@@ -32,8 +52,18 @@ const WHY_FORESIGHT = [
   {
     id: 'ingestion',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"
+        />
       </svg>
     ),
     title: 'Seamless Data Ingestion',
@@ -43,32 +73,64 @@ const WHY_FORESIGHT = [
 ]
 
 const CAPABILITIES = [
-  { title: 'Feature Engineering', description: 'Transform raw data into the features that lift machine learning performance.' },
-  { title: 'Model Creation & Training', description: 'Create and train models efficiently, with or without writing code.' },
-  { title: 'Deploying', description: 'Integrate trained models into the production environment where they drive the business.' },
-  { title: 'Cluster Analysis', description: 'Dive into the hidden structure of your data and see the groupings it forms on its own.' },
-  { title: 'End-to-End Data Mining', description: 'Every task in the analytics life cycle handled on one automated platform.' },
-  { title: 'Predictive Outcomes', description: 'Predict outcomes for unforeseen data and solve real-world computation problems.' },
+  {
+    title: 'Feature Engineering',
+    description: 'Transform raw data into the features that lift machine learning performance.',
+  },
+  {
+    title: 'Model Creation & Training',
+    description: 'Create and train models efficiently, with or without writing code.',
+  },
+  {
+    title: 'Deploying',
+    description:
+      'Integrate trained models into the production environment where they drive the business.',
+  },
+  {
+    title: 'Cluster Analysis',
+    description:
+      'Dive into the hidden structure of your data and see the groupings it forms on its own.',
+  },
+  {
+    title: 'End-to-End Data Mining',
+    description: 'Every task in the analytics life cycle handled on one automated platform.',
+  },
+  {
+    title: 'Predictive Outcomes',
+    description: 'Predict outcomes for unforeseen data and solve real-world computation problems.',
+  },
 ]
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
 function ArrowIcon() {
   return (
-    <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="w-4 h-4"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M3 8h10M9 4l4 4-4 4" />
     </svg>
   )
 }
 
 function PulsingDot({ color = 'bg-brand' }: { color?: string }) {
+  const reduceMotion = useReducedMotion()
+
   return (
     <span className="relative flex h-2.5 w-2.5">
-      <motion.span
-        className={`absolute inline-flex h-full w-full rounded-full ${color} opacity-75`}
-        animate={{ scale: [1, 1.8], opacity: [0.75, 0] }}
-        transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
-      />
+      {!reduceMotion && (
+        <motion.span
+          className={`absolute inline-flex h-full w-full rounded-full ${color} opacity-75`}
+          animate={{ scale: [1, 1.8], opacity: [0.75, 0] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
+        />
+      )}
       <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${color}`} />
     </span>
   )
@@ -109,10 +171,11 @@ function StudioVisual() {
         transition={{ duration: 0.6, ease: EASE }}
       >
         <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-widest text-white/40">Cluster analysis</span>
-          <span className="flex items-center gap-1.5 text-xs text-white/40">
-            <PulsingDot color="bg-emerald-400" />
-            3 clusters found
+          <span className="text-xs font-semibold uppercase tracking-widest text-white/60">
+            Cluster analysis
+          </span>
+          <span className="flex items-center gap-1.5 text-xs text-white/60">
+            <PulsingDot color="bg-emerald-400" />3 clusters found
           </span>
         </div>
 
@@ -125,8 +188,14 @@ function StudioVisual() {
             {/* Cluster hulls */}
             {[
               { d: 'M36 62 L82 26 L96 70 L60 100 Z', tone: 'fill-brand/8 stroke-brand/25' },
-              { d: 'M148 32 L216 28 L204 104 L150 88 Z', tone: 'fill-cyan-400/8 stroke-cyan-400/25' },
-              { d: 'M86 112 L146 104 L164 144 L100 166 Z', tone: 'fill-sky-400/8 stroke-sky-400/25' },
+              {
+                d: 'M148 32 L216 28 L204 104 L150 88 Z',
+                tone: 'fill-cyan-400/8 stroke-cyan-400/25',
+              },
+              {
+                d: 'M86 112 L146 104 L164 144 L100 166 Z',
+                tone: 'fill-sky-400/8 stroke-sky-400/25',
+              },
             ].map((hull, i) => (
               <motion.path
                 key={hull.d}
@@ -170,7 +239,9 @@ function StudioVisual() {
                   transition={{ duration: 0.9, delay: 0.6 + i * 0.15, ease: EASE }}
                 />
               </div>
-              <span className="text-[10px] text-white/30 shrink-0 w-8 text-right">{step.value}%</span>
+              <span className="text-[10px] text-white/55 shrink-0 w-8 text-right">
+                {step.value}%
+              </span>
             </div>
           ))}
         </div>
@@ -183,7 +254,7 @@ function StudioVisual() {
         transition={{ duration: 0.6, delay: 1.1, ease: EASE }}
       >
         {['Explore', 'Engineer', 'Train', 'Deploy'].map((item) => (
-          <span key={item} className="flex items-center gap-1.5 text-xs text-white/35">
+          <span key={item} className="flex items-center gap-1.5 text-xs text-white/60">
             <span className="w-1 h-1 rounded-full bg-brand/70 shrink-0" />
             {item}
           </span>
@@ -199,14 +270,23 @@ export default function Foresight() {
   return (
     <div className="bg-white">
       {/* ── 01 · Hero ────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center bg-brand-navy">
+      <section className="relative overflow-hidden min-h-[calc(100dvh-4rem)] flex flex-col justify-center bg-brand-navy">
         <div className="absolute -top-40 -right-40 w-125 h-125 rounded-full bg-brand/10 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-cyan-500/8 blur-3xl pointer-events-none" />
 
         <div className="relative max-w-6xl mx-auto px-6 py-24 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div className="flex flex-col gap-8" variants={stagger()} initial="hidden" animate="show">
-              <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="flex items-center gap-2.5">
+            <motion.div
+              className="flex flex-col gap-8"
+              variants={stagger()}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.div
+                variants={fadeUp}
+                transition={{ duration: 0.5, ease: EASE }}
+                className="flex items-center gap-2.5"
+              >
                 <PulsingDot color="bg-brand" />
                 <span className="text-sm font-semibold text-brand uppercase tracking-widest">
                   Platforms — Foresight
@@ -216,7 +296,7 @@ export default function Foresight() {
               <motion.h1
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
               >
                 Foresight: <span className="text-brand">Data Science Studio.</span>
               </motion.h1>
@@ -224,9 +304,10 @@ export default function Foresight() {
               <motion.p
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="text-xl text-white/60 leading-relaxed max-w-xl"
+                className="text-base sm:text-xl text-white/60 leading-relaxed max-w-xl"
               >
-                A comprehensive visual and programming interface for artificial intelligence, machine learning and advanced analytics — for users of every skill level.
+                A comprehensive visual and programming interface for artificial intelligence,
+                machine learning and advanced analytics — for users of every skill level.
               </motion.p>
 
               <motion.div
@@ -252,6 +333,7 @@ export default function Foresight() {
 
             <motion.div
               className="hidden lg:flex items-center justify-center"
+              aria-hidden="true"
               initial={{ opacity: 0, x: 32 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: EASE, delay: 0.25 }}
@@ -267,7 +349,12 @@ export default function Foresight() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
           >
-            {['With or without coding', 'End-to-end data mining', 'Automated cluster analysis', 'Production deployment'].map((item) => (
+            {[
+              'With or without coding',
+              'End-to-end data mining',
+              'Automated cluster analysis',
+              'Production deployment',
+            ].map((item) => (
               <span key={item} className="flex items-center gap-2 text-sm text-white/50">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
                 {item}
@@ -287,14 +374,29 @@ export default function Foresight() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
               Why Foresight
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-              Data mining with automated analytics and <span className="text-brand">cluster analysis.</span>
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+            >
+              Data mining with automated analytics and{' '}
+              <span className="text-brand">cluster analysis.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-gray-500 leading-relaxed">
-              Equipped with AI and machine learning that supports end-to-end data mining, Foresight lets users dive into the hidden structure of their data — a simple, powerful, automated platform for every task in the analytics life cycle.
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-xl text-gray-500 leading-relaxed"
+            >
+              Equipped with AI and machine learning that supports end-to-end data mining, Foresight
+              lets users dive into the hidden structure of their data — a simple, powerful,
+              automated platform for every task in the analytics life cycle.
             </motion.p>
           </motion.div>
 
@@ -318,7 +420,9 @@ export default function Foresight() {
                 <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-brand-light text-brand shrink-0">
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 tracking-tight leading-snug">{item.title}</h3>
+                <h3 className="text-lg font-bold text-gray-900 tracking-tight leading-snug">
+                  {item.title}
+                </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
@@ -336,14 +440,27 @@ export default function Foresight() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
               Key Features
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+            >
               The whole analytics life cycle, <span className="text-brand">in one studio.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-gray-500 leading-relaxed">
-              From raw data to a model running in production — and predictions for the data you have not seen yet.
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-xl text-gray-500 leading-relaxed"
+            >
+              From raw data to a model running in production — and predictions for the data you have
+              not seen yet.
             </motion.p>
           </motion.div>
 
@@ -358,7 +475,9 @@ export default function Foresight() {
                 transition={{ duration: 0.45, delay: (i % 3) * 0.08, ease: EASE }}
               >
                 <span className="text-xs font-semibold text-brand tracking-widest">{`0${i + 1}`}</span>
-                <h3 className="text-base font-bold text-gray-900 tracking-tight leading-snug">{cap.title}</h3>
+                <h3 className="text-base font-bold text-gray-900 tracking-tight leading-snug">
+                  {cap.title}
+                </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{cap.description}</p>
               </motion.div>
             ))}
@@ -376,14 +495,27 @@ export default function Foresight() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
               Foresight in Action
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight">
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight"
+            >
               See the studio <span className="text-brand">at work.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-white/55 leading-relaxed">
-              Watch a dataset move through Foresight — ingested, explored and transformed, then trained into a model ready for production.
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-xl text-white/55 leading-relaxed"
+            >
+              Watch a dataset move through Foresight — ingested, explored and transformed, then
+              trained into a model ready for production.
             </motion.p>
           </motion.div>
 
@@ -398,6 +530,7 @@ export default function Foresight() {
               className="w-full aspect-video block"
               src={`https://www.youtube-nocookie.com/embed/${FORESIGHT_VIDEO_ID}`}
               title="Foresight product walkthrough"
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen

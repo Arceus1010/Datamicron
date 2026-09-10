@@ -1,23 +1,14 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-
-// ─── Animation Variants ───────────────────────────────────────────────────────
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0 },
-}
-
-const stagger = (delay = 0.12) => ({
-  show: { transition: { staggerChildren: delay } },
-})
-
-const EASE = [0.22, 1, 0.36, 1] as const
+import { EASE, fadeUp, stagger } from '@/lib/motion'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-const CYCLING_WORDS = ['Digital Brain.', 'Autonomous AI.', 'Digital Twin.']
+const CYCLING_WORDS = ['Digital Brain', 'Autonomous AI', 'Digital Twin']
+
+// Reserves the hero line width so the cycling word doesn't reflow mid-animation
+const LONGEST_CYCLING_WORD = CYCLING_WORDS.reduce((a, b) => (b.length > a.length ? b : a))
 
 const LAYERS: Array<{
   step: string
@@ -269,18 +260,22 @@ function ImagePlaceholder({ className = 'w-10 h-10' }: { className?: string }) {
 
 function CyclingWord() {
   const [index, setIndex] = useState(0)
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
+    if (reduceMotion) return
     const timer = setInterval(() => {
       setIndex((i) => (i + 1) % CYCLING_WORDS.length)
     }, 5000)
     return () => clearInterval(timer)
-  }, [])
+  }, [reduceMotion])
 
   return (
     <span className="relative inline-grid" style={{ gridTemplateColumns: '1fr' }}>
       {/* Invisible longest word to hold the width */}
-      <span className="invisible col-start-1 row-start-1 whitespace-nowrap">Autonomous AI.</span>
+      <span className="invisible col-start-1 row-start-1 whitespace-nowrap">
+        {LONGEST_CYCLING_WORD}
+      </span>
       <AnimatePresence mode="wait">
         <motion.span
           key={index}
@@ -300,28 +295,40 @@ function CyclingWord() {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function Home() {
+  const reduceMotion = useReducedMotion()
+
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center bg-brand-navy">
-        {/* Background video loop */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-          src="/Homepage%20Background.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-        />
+      <section className="relative overflow-hidden min-h-[calc(100dvh-4rem)] flex flex-col justify-center bg-brand-navy">
+        {/* Background loop — poster stands in when motion is reduced */}
+        {reduceMotion ? (
+          <img
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            src="/homepage-bg-poster.jpg"
+            alt=""
+            aria-hidden="true"
+          />
+        ) : (
+          <video
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            src="/homepage-bg-720.mp4"
+            poster="/homepage-bg-poster.jpg"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+          />
+        )}
         <div className="absolute inset-0 bg-brand-navy/60 pointer-events-none" />
         <div className="absolute -top-40 -right-40 w-125 h-125 rounded-full bg-brand/10 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-brand/8 blur-3xl pointer-events-none" />
 
         <div className="relative max-w-6xl mx-auto px-6 py-16 w-full">
           <motion.div
-            className="flex flex-col gap-8 max-w-6xl mr-auto backdrop-blur-sm bg-black/30 rounded-xl px-10 py-10 border border-white/10 shadow-2xl"
+            className="flex flex-col gap-6 sm:gap-8 max-w-6xl mr-auto backdrop-blur-sm bg-black/30 rounded-xl px-6 py-8 sm:px-10 sm:py-10 border border-white/10 shadow-2xl"
             variants={stagger()}
             initial="hidden"
             animate="show"
@@ -329,7 +336,7 @@ export default function Home() {
             <motion.h1
               variants={fadeUp}
               transition={{ duration: 0.55, ease: EASE }}
-              className="text-6xl lg:text-8xl font-bold text-white leading-[1.05] tracking-tight"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-white leading-[1.05] tracking-tight"
             >
               The Enterprise <CyclingWord />
             </motion.h1>
@@ -337,7 +344,7 @@ export default function Home() {
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.55, ease: EASE }}
-              className="text-xl text-white/90 leading-relaxed"
+              className="text-base sm:text-xl text-white/90 leading-relaxed"
             >
               Transform your organization into an autonomous, AI-driven enterprise — from raw data
               to closed-loop intelligence.
@@ -458,7 +465,7 @@ export default function Home() {
               >
                 <div className="flex items-center gap-3">
                   <span
-                    className={`text-xs font-bold uppercase tracking-widest ${s.dimmed ? 'text-gray-400' : 'text-brand'}`}
+                    className={`text-xs font-bold uppercase tracking-widest ${s.dimmed ? 'text-gray-500' : 'text-brand'}`}
                   >
                     0{i + 1}
                   </span>
@@ -467,12 +474,12 @@ export default function Home() {
                   />
                 </div>
                 <h3
-                  className={`text-xl font-bold ${s.dimmed ? 'text-gray-400' : 'text-white'}`}
+                  className={`text-xl font-bold ${s.dimmed ? 'text-gray-500' : 'text-white'}`}
                 >
                   {s.stage}
                 </h3>
                 <p
-                  className={`text-sm leading-relaxed ${s.dimmed ? 'text-gray-400' : 'text-gray-300'}`}
+                  className={`text-sm leading-relaxed ${s.dimmed ? 'text-gray-500' : 'text-gray-300'}`}
                 >
                   {s.description}
                 </p>
@@ -545,7 +552,7 @@ export default function Home() {
               className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
             >
               Built in layers.{' '}
-              <span className="text-brand whitespace-nowrap">Intelligent end-to-end.</span>
+              <span className="text-brand lg:whitespace-nowrap">Intelligent end-to-end.</span>
             </motion.h2>
             <motion.p
               variants={fadeUp}
@@ -580,6 +587,7 @@ export default function Home() {
                           className="w-full h-full block"
                           src={`https://www.youtube-nocookie.com/embed/${layer.videoId}`}
                           title={`${layer.name} overview`}
+                          loading="lazy"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                           referrerPolicy="strict-origin-when-cross-origin"
                           allowFullScreen
@@ -593,7 +601,7 @@ export default function Home() {
                   <div
                     className={`flex flex-col gap-4 ${isEven ? 'lg:order-2 lg:pl-8' : 'lg:order-1 lg:pr-8 lg:text-right'}`}
                   >
-                    <span className="text-xs font-bold text-gray-300 tracking-widest uppercase">
+                    <span className="text-xs font-bold text-gray-500 tracking-widest uppercase">
                       {layer.step}
                     </span>
                     <div className={`flex flex-col gap-1 ${isEven ? '' : 'lg:items-end'}`}>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { fadeUp, stagger, EASE } from '@/lib/motion'
@@ -155,13 +155,17 @@ function ArrowIcon() {
 }
 
 function PulsingDot({ color = 'bg-indigo-400' }: { color?: string }) {
+  const reduceMotion = useReducedMotion()
+
   return (
     <span className="relative flex h-2.5 w-2.5">
-      <motion.span
-        className={`absolute inline-flex h-full w-full rounded-full ${color} opacity-75`}
-        animate={{ scale: [1, 1.8], opacity: [0.75, 0] }}
-        transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
-      />
+      {!reduceMotion && (
+        <motion.span
+          className={`absolute inline-flex h-full w-full rounded-full ${color} opacity-75`}
+          animate={{ scale: [1, 1.8], opacity: [0.75, 0] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
+        />
+      )}
       <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${color}`} />
     </span>
   )
@@ -190,7 +194,7 @@ function AppComposerVisual() {
           <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
           <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
           <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-          <span className="ml-2 text-xs font-semibold uppercase tracking-widest text-white/40">Your App</span>
+          <span className="ml-2 text-xs font-semibold uppercase tracking-widest text-white/60">Your App</span>
         </div>
 
         {/* Composed blocks */}
@@ -211,7 +215,7 @@ function AppComposerVisual() {
         {/* Live activity line */}
         <div className="flex items-center gap-2 pt-1">
           <PulsingDot color="bg-indigo-400" />
-          <span className="text-xs text-white/40">Running on Phoenix AIP</span>
+          <span className="text-xs text-white/60">Running on Phoenix AIP</span>
         </div>
       </motion.div>
 
@@ -223,7 +227,7 @@ function AppComposerVisual() {
         transition={{ duration: 0.6, delay: 0.95, ease: EASE }}
       >
         {['Cortexus', 'Phoenix Insights', 'Spotlight Data Fabrics', 'DataForge'].map((item) => (
-          <span key={item} className="flex items-center gap-1.5 text-xs text-white/35">
+          <span key={item} className="flex items-center gap-1.5 text-xs text-white/60">
             <span className="w-1 h-1 rounded-full bg-indigo-400/70 shrink-0" />
             {item}
           </span>
@@ -274,7 +278,7 @@ export default function PhoenixStudio() {
   return (
     <div className="bg-white">
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center bg-brand-navy">
+      <section className="relative overflow-hidden min-h-[calc(100dvh-4rem)] flex flex-col justify-center bg-brand-navy">
         {/* Indigo/violet composition tones */}
         <div className="absolute -top-40 -right-40 w-125 h-125 rounded-full bg-indigo-500/8 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-violet-600/8 blur-3xl pointer-events-none" />
@@ -293,17 +297,16 @@ export default function PhoenixStudio() {
               <motion.h1
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
               >
-                Turn Insight Into
-                <span className="text-white/60">—</span>
+                Turn Insight Into{' '}
                 <span className="text-indigo-400">Working Software.</span>
               </motion.h1>
 
               <motion.p
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="text-xl text-white/60 leading-relaxed max-w-xl"
+                className="text-base sm:text-xl text-white/60 leading-relaxed max-w-xl"
               >
                 Phoenix Studio lets your teams compose governed, AI-native business applications on top of Phoenix AIP — in weeks, not quarters, and without a bespoke build for every idea.
               </motion.p>
@@ -440,19 +443,29 @@ export default function PhoenixStudio() {
 
             {/* Insight → App → Action flow */}
             <motion.div variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="mt-6 w-full max-w-2xl">
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 {[
-                  { label: 'Insight', sub: 'Trapped in dashboards', color: 'bg-red-50 border-red-200 text-red-500', sub_color: 'text-red-400' },
-                  { label: 'Phoenix Studio', sub: 'Compose · Automate · Deploy', color: 'bg-indigo-50 border-indigo-300 text-indigo-700', sub_color: 'text-indigo-500', highlight: true },
-                  { label: 'Action', sub: 'Taken in the workflow', color: 'bg-brand-light border-brand/20 text-brand', sub_color: 'text-brand/70' },
+                  { label: 'Insight', sub: 'Trapped in dashboards', color: 'bg-red-50 border-red-200 text-red-700', sub_color: 'text-red-600' },
+                  { label: 'Phoenix Studio', sub: 'Compose · Automate · Deploy', color: 'bg-indigo-50 border-indigo-300 text-indigo-700', sub_color: 'text-indigo-600', highlight: true },
+                  { label: 'Action', sub: 'Taken in the workflow', color: 'bg-brand-light border-brand/20 text-brand-dark', sub_color: 'text-brand-dark/80' },
                 ].map((item, i) => (
-                  <div key={item.label} className="flex items-center gap-3 flex-1">
-                    <div className={`flex-1 rounded-xl border p-4 text-center ${item.color} ${item.highlight ? 'ring-2 ring-indigo-400/30' : ''}`}>
+                  <div
+                    key={item.label}
+                    className="flex flex-col sm:flex-row items-center gap-3 flex-1"
+                  >
+                    <div className={`w-full sm:flex-1 rounded-xl border p-4 text-center ${item.color} ${item.highlight ? 'ring-2 ring-indigo-400/30' : ''}`}>
                       <p className="text-xs font-semibold uppercase tracking-widest mb-1">{item.label}</p>
                       <p className={`text-xs ${item.sub_color}`}>{item.sub}</p>
                     </div>
                     {i < 2 && (
-                      <svg className="w-5 h-5 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg
+                        className="w-5 h-5 text-gray-400 shrink-0 rotate-90 sm:rotate-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                       </svg>
                     )}
@@ -472,7 +485,7 @@ export default function PhoenixStudio() {
                 { label: 'Not just prototypes', sub: 'Governed production software' },
               ].map((item) => (
                 <div key={item.label} className="bg-gray-50 rounded-lg p-4 text-left border border-gray-100">
-                  <p className="text-xs text-gray-400 line-through mb-1">{item.label}</p>
+                  <p className="text-xs text-gray-500 line-through mb-1">{item.label}</p>
                   <p className="text-sm font-semibold text-indigo-600">{item.sub}</p>
                 </div>
               ))}
@@ -521,7 +534,7 @@ export default function PhoenixStudio() {
                 className="bg-white rounded-xl border border-gray-100 px-4 py-5 text-center"
               >
                 <p className="text-sm font-semibold text-gray-800">{block.label}</p>
-                <p className="text-xs text-gray-400 mt-1">{block.hint}</p>
+                <p className="text-xs text-gray-500 mt-1">{block.hint}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -549,30 +562,34 @@ export default function PhoenixStudio() {
           <div className="relative">
             <div className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-white/10" />
 
-            <div className="grid lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8" role="tablist" aria-label="How it works">
               {HOW_IT_WORKS.map((step, i) => (
-                <motion.div
+                <motion.button
                   key={step.step}
-                  className="flex flex-col gap-4 cursor-pointer"
+                  type="button"
+                  role="tab"
+                  aria-selected={activeStep === i}
+                  aria-controls="how-it-works-detail"
+                  className="flex flex-col gap-4 rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-400"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: i * 0.12, ease: EASE }}
                   onClick={() => setActiveStep(i)}
                 >
-                  <div className={`relative w-24 h-24 mx-auto rounded-2xl border flex items-center justify-center flex-col gap-1 transition-all duration-300 ${activeStep === i ? `${step.color} scale-105 shadow-lg` : 'bg-white/5 border-white/10 text-white/40'}`}>
+                  <div className={`relative w-24 h-24 mx-auto rounded-2xl border flex items-center justify-center flex-col gap-1 transition-all duration-300 ${activeStep === i ? `${step.color} scale-105 shadow-lg` : 'bg-white/5 border-white/10 text-white/60'}`}>
                     <span className="text-2xl font-bold font-display">{step.step}</span>
                     <span className="text-xs font-semibold uppercase tracking-wider">{step.label}</span>
-                    {i < HOW_IT_WORKS.length - 1 && (
-                      <div className="lg:hidden absolute -right-5 top-1/2 -translate-y-1/2 text-white/20 text-lg">→</div>
-                    )}
                   </div>
-                </motion.div>
+                </motion.button>
               ))}
             </div>
 
             <motion.div
               key={activeStep}
+              id="how-it-works-detail"
+              role="tabpanel"
+              aria-live="polite"
               className="mt-10 max-w-xl mx-auto text-center"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -662,7 +679,7 @@ export default function PhoenixStudio() {
                   { before: 'Bolted-on AI', after: 'Agents native to the workflow' },
                 ].map((row) => (
                   <motion.div key={row.before} variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="flex items-center gap-4">
-                    <span className="text-sm text-gray-400 line-through w-36 shrink-0">{row.before}</span>
+                    <span className="text-sm text-gray-500 line-through w-36 shrink-0">{row.before}</span>
                     <ArrowIcon />
                     <span className="text-sm font-semibold text-gray-800">{row.after}</span>
                   </motion.div>
@@ -683,7 +700,7 @@ export default function PhoenixStudio() {
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0" />
                       <div>
                         <p className="text-sm font-semibold text-gray-800">{item.label}</p>
-                        <p className="text-xs text-gray-400">{item.sub}</p>
+                        <p className="text-xs text-gray-500">{item.sub}</p>
                       </div>
                     </div>
                   ))}
@@ -708,7 +725,7 @@ export default function PhoenixStudio() {
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-lg">Security & Governance</h3>
-                    <p className="text-xs text-white/40 mt-0.5">Enterprise controls on every app you ship</p>
+                    <p className="text-xs text-white/60 mt-0.5">Enterprise controls on every app you ship</p>
                   </div>
                 </div>
 

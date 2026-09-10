@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { fadeUp, stagger, EASE } from '@/lib/motion'
@@ -145,13 +145,17 @@ function ArrowIcon() {
 }
 
 function PulsingDot({ color = 'bg-orange-400' }: { color?: string }) {
+  const reduceMotion = useReducedMotion()
+
   return (
     <span className="relative flex h-2.5 w-2.5">
-      <motion.span
-        className={`absolute inline-flex h-full w-full rounded-full ${color} opacity-75`}
-        animate={{ scale: [1, 1.8], opacity: [0.75, 0] }}
-        transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
-      />
+      {!reduceMotion && (
+        <motion.span
+          className={`absolute inline-flex h-full w-full rounded-full ${color} opacity-75`}
+          animate={{ scale: [1, 1.8], opacity: [0.75, 0] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
+        />
+      )}
       <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${color}`} />
     </span>
   )
@@ -195,7 +199,7 @@ function InsightVisual() {
         {/* Header row */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex flex-col gap-0.5">
-            <span className="text-xs font-semibold text-white/40 uppercase tracking-widest">Revenue Intelligence</span>
+            <span className="text-xs font-semibold text-white/60 uppercase tracking-widest">Revenue Intelligence</span>
             <span className="text-2xl font-bold text-white font-display">$4.2M</span>
           </div>
           <div className="flex items-center gap-1.5 bg-emerald-500/15 text-emerald-400 text-xs font-semibold px-2.5 py-1 rounded-full">
@@ -207,7 +211,13 @@ function InsightVisual() {
         </div>
 
         {/* Chart */}
-        <svg viewBox={`0 0 ${W} ${H}`} className="w-full" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          viewBox={`0 0 ${W} ${H}`}
+          className="w-full"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Revenue chart: actual revenue trending upward, with an AI forecast line projecting continued growth."
+        >
           <defs>
             <linearGradient id="gradA" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#117EC2" stopOpacity="0.3" />
@@ -299,7 +309,7 @@ function InsightVisual() {
           </div>
           <div>
             <p className="text-xs font-semibold text-gray-800 leading-snug">AI Recommendation</p>
-            <p className="text-xs text-gray-400 mt-0.5 leading-snug">Increase Q3 inventory by 12% in Western region</p>
+            <p className="text-xs text-gray-500 mt-0.5 leading-snug">Increase Q3 inventory by 12% in Western region</p>
           </div>
         </motion.div>
       </div>
@@ -323,7 +333,7 @@ function CapabilityCard({ cap, index }: { cap: typeof CAPABILITIES[0]; index: nu
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.3 + index * 0.1, ease: EASE }}
       />
-      <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-orange-50 text-orange-500 shrink-0">
+      <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-orange-50 text-orange-600 shrink-0">
         {cap.icon}
       </div>
       <h3 className="text-lg font-bold text-gray-900 tracking-tight leading-snug">{cap.title}</h3>
@@ -348,7 +358,7 @@ export default function PhoenixInsights() {
   return (
     <div className="bg-white">
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center bg-brand-navy">
+      <section className="relative overflow-hidden min-h-[calc(100dvh-4rem)] flex flex-col justify-center bg-brand-navy">
         {/* Ambient blobs — warmer orange tint to differentiate from Cortexus */}
         <div className="absolute -top-40 -right-40 w-125 h-125 rounded-full bg-orange-500/8 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-brand/10 blur-3xl pointer-events-none" />
@@ -367,7 +377,7 @@ export default function PhoenixInsights() {
               <motion.h1
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
               >
                 From Data to{' '}
                 <span className="text-orange-400">Decisions</span>
@@ -377,7 +387,7 @@ export default function PhoenixInsights() {
               <motion.p
                 variants={fadeUp}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="text-xl text-white/60 leading-relaxed max-w-xl"
+                className="text-base sm:text-xl text-white/60 leading-relaxed max-w-xl"
               >
                 Phoenix Insights transforms enterprise data into actionable intelligence using AI reasoning, predictive analytics, and knowledge-driven insights.
               </motion.p>
@@ -442,11 +452,11 @@ export default function PhoenixInsights() {
               viewport={{ once: true, amount: 0.3 }}
               variants={stagger()}
             >
-              <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-orange-500 uppercase tracking-widest">
+              <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-orange-700 uppercase tracking-widest">
                 The Problem
               </motion.span>
               <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-                Drowning in data, starving for <span className="text-orange-500">decisions.</span>
+                Drowning in data, starving for <span className="text-orange-600">decisions.</span>
               </motion.h2>
               <motion.ul variants={stagger(0.1)} className="flex flex-col gap-3 mt-2">
                 {PROBLEMS.map((p, i) => (
@@ -502,11 +512,11 @@ export default function PhoenixInsights() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-orange-500 uppercase tracking-widest">
+            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-orange-700 uppercase tracking-widest">
               What Is Phoenix Insights?
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-              An AI-powered <span className="text-orange-500">decision intelligence</span> platform.
+              An AI-powered <span className="text-orange-600">decision intelligence</span> platform.
             </motion.h2>
             <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-gray-500 leading-relaxed max-w-2xl">
               Phoenix Insights combines predictive analytics, LLM reasoning, and knowledge graphs to help organisations understand, predict, and act with confidence.
@@ -518,19 +528,29 @@ export default function PhoenixInsights() {
               transition={{ duration: 0.6, ease: EASE }}
               className="mt-6 w-full max-w-2xl"
             >
-              <div className="flex items-center justify-between gap-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
                 {[
-                  { label: 'Raw Data', sub: 'Fragmented signals', color: 'bg-gray-100 text-gray-500 border-gray-200' },
-                  { label: 'Insight', sub: 'Context & meaning', color: 'bg-orange-50 text-orange-600 border-orange-200' },
-                  { label: 'Decision', sub: 'Confident action', color: 'bg-brand-light text-brand border-brand/20' },
+                  { label: 'Raw Data', sub: 'Fragmented signals', color: 'bg-gray-100 text-gray-600 border-gray-200' },
+                  { label: 'Insight', sub: 'Context & meaning', color: 'bg-orange-50 text-orange-700 border-orange-200' },
+                  { label: 'Decision', sub: 'Confident action', color: 'bg-brand-light text-brand-dark border-brand/20' },
                 ].map((item, i) => (
-                  <div key={item.label} className="flex items-center gap-2 flex-1">
-                    <div className={`flex-1 rounded-lg p-4 border text-center ${item.color}`}>
+                  <div
+                    key={item.label}
+                    className="flex flex-col sm:flex-row items-center gap-2 flex-1"
+                  >
+                    <div className={`w-full sm:flex-1 rounded-lg p-4 border text-center ${item.color}`}>
                       <p className="text-xs font-semibold uppercase tracking-widest mb-1">{item.label}</p>
-                      <p className="text-xs opacity-70">{item.sub}</p>
+                      <p className="text-xs opacity-80">{item.sub}</p>
                     </div>
                     {i < 2 && (
-                      <svg className="w-5 h-5 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg
+                        className="w-5 h-5 text-gray-400 shrink-0 rotate-90 sm:rotate-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                       </svg>
                     )}
@@ -550,8 +570,8 @@ export default function PhoenixInsights() {
                 { label: 'Not just data', sub: 'Contextual understanding' },
               ].map((item) => (
                 <div key={item.label} className="bg-gray-50 rounded-lg p-4 text-left border border-gray-100">
-                  <p className="text-xs text-gray-400 line-through mb-1">{item.label}</p>
-                  <p className="text-sm font-semibold text-orange-500">{item.sub}</p>
+                  <p className="text-xs text-gray-500 line-through mb-1">{item.label}</p>
+                  <p className="text-sm font-semibold text-orange-700">{item.sub}</p>
                 </div>
               ))}
             </motion.div>
@@ -569,11 +589,11 @@ export default function PhoenixInsights() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-orange-500 uppercase tracking-widest">
+            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-orange-700 uppercase tracking-widest">
               Core Capabilities
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-              Intelligence that goes beyond <span className="text-orange-500">the dashboard.</span>
+              Intelligence that goes beyond <span className="text-orange-600">the dashboard.</span>
             </motion.h2>
           </motion.div>
 
@@ -606,30 +626,38 @@ export default function PhoenixInsights() {
           <div className="relative">
             <div className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-white/10" />
 
-            <div className="grid lg:grid-cols-4 gap-8">
+            <div
+              className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+              role="tablist"
+              aria-label="How Phoenix Insights works"
+            >
               {HOW_IT_WORKS.map((step, i) => (
-                <motion.div
+                <motion.button
                   key={step.step}
-                  className="flex flex-col gap-4 cursor-pointer"
+                  type="button"
+                  role="tab"
+                  aria-selected={activeStep === i}
+                  aria-controls="insights-step-detail"
+                  className="flex flex-col gap-4 rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-400"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.55, delay: i * 0.12, ease: EASE }}
                   onClick={() => setActiveStep(i)}
                 >
-                  <div className={`relative w-24 h-24 mx-auto rounded-2xl border flex items-center justify-center flex-col gap-1 transition-all duration-300 ${activeStep === i ? `${step.color} scale-105 shadow-lg` : 'bg-white/5 border-white/10 text-white/40'}`}>
+                  <div className={`relative w-24 h-24 mx-auto rounded-2xl border flex items-center justify-center flex-col gap-1 transition-all duration-300 ${activeStep === i ? `${step.color} scale-105 shadow-lg` : 'bg-white/5 border-white/10 text-white/60'}`}>
                     <span className="text-2xl font-bold font-display">{step.step}</span>
                     <span className="text-xs font-semibold uppercase tracking-wider">{step.label}</span>
-                    {i < HOW_IT_WORKS.length - 1 && (
-                      <div className="lg:hidden absolute -right-5 top-1/2 -translate-y-1/2 text-white/20 text-lg">→</div>
-                    )}
                   </div>
-                </motion.div>
+                </motion.button>
               ))}
             </div>
 
             <motion.div
               key={activeStep}
+              id="insights-step-detail"
+              role="tabpanel"
+              aria-live="polite"
               className="mt-10 max-w-xl mx-auto text-center"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -653,11 +681,11 @@ export default function PhoenixInsights() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-orange-500 uppercase tracking-widest">
+            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-orange-700 uppercase tracking-widest">
               Key Use Cases
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-              Intelligence across every <span className="text-orange-500">business function.</span>
+              Intelligence across every <span className="text-orange-600">business function.</span>
             </motion.h2>
           </motion.div>
 
@@ -672,7 +700,7 @@ export default function PhoenixInsights() {
                 transition={{ duration: 0.55, delay: i * 0.1, ease: EASE }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-orange-50 text-orange-500 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center shrink-0">
                     {uc.icon}
                   </div>
                   <h3 className="font-bold text-gray-900 text-lg tracking-tight">{uc.title}</h3>
@@ -701,11 +729,11 @@ export default function PhoenixInsights() {
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger()}
           >
-            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-orange-500 uppercase tracking-widest">
+            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-orange-700 uppercase tracking-widest">
               Business Outcomes
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-              Intelligence that <span className="text-orange-500">moves the needle.</span>
+              Intelligence that <span className="text-orange-600">moves the needle.</span>
             </motion.h2>
           </motion.div>
 
@@ -719,8 +747,10 @@ export default function PhoenixInsights() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.55, delay: i * 0.1, ease: EASE }}
               >
-                <span className="text-3xl">{o.icon}</span>
-                <span className="text-4xl font-bold text-orange-500 font-display">{o.metric}</span>
+                <span className="text-3xl" aria-hidden="true">
+                  {o.icon}
+                </span>
+                <span className="text-4xl font-bold text-orange-600 font-display">{o.metric}</span>
                 <p className="text-sm text-gray-500 leading-snug">{o.label}</p>
               </motion.div>
             ))}
@@ -739,11 +769,11 @@ export default function PhoenixInsights() {
               viewport={{ once: true, amount: 0.3 }}
               variants={stagger()}
             >
-              <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-orange-500 uppercase tracking-widest">
+              <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-orange-700 uppercase tracking-widest">
                 Why Phoenix Insights
               </motion.span>
               <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-                The intelligence layer that powers <span className="text-orange-500">autonomous enterprises.</span>
+                The intelligence layer that powers <span className="text-orange-600">autonomous enterprises.</span>
               </motion.h2>
               <motion.p variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-gray-500 leading-relaxed">
                 Most analytics platforms tell you what happened. Phoenix Insights tells you what will happen — and what to do about it. Grounded in knowledge graphs and powered by LLM reasoning, every insight is traceable, explainable, and ready to act on.
@@ -756,7 +786,7 @@ export default function PhoenixInsights() {
                   { before: 'Raw data', after: 'Contextual knowledge' },
                 ].map((row) => (
                   <motion.div key={row.before} variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="flex items-center gap-4">
-                    <span className="text-sm text-gray-400 line-through w-36 shrink-0">{row.before}</span>
+                    <span className="text-sm text-gray-500 line-through w-36 shrink-0">{row.before}</span>
                     <ArrowIcon />
                     <span className="text-sm font-semibold text-gray-800">{row.after}</span>
                   </motion.div>
@@ -785,7 +815,7 @@ export default function PhoenixInsights() {
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
                       <div>
                         <p className="text-sm font-semibold text-gray-800">{item.label}</p>
-                        <p className="text-xs text-gray-400">{item.sub}</p>
+                        <p className="text-xs text-gray-500">{item.sub}</p>
                       </div>
                     </div>
                   ))}
@@ -845,6 +875,7 @@ export default function PhoenixInsights() {
               className="w-full aspect-video block"
               src={`https://www.youtube-nocookie.com/embed/${PHOENIX_INSIGHTS_VIDEO_ID}`}
               title="Phoenix Insights product walkthrough"
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen

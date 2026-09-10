@@ -29,7 +29,7 @@ function MenuItem({ item, onClose }: { item: NavSection['items'][number]; onClos
         </span>
         {item.description && (
           <motion.span
-            className="text-xs text-gray-400 mt-0.5"
+            className="text-xs text-gray-500 mt-0.5"
             variants={{ rest: { paddingLeft: 0 }, hover: { paddingLeft: 18 } }}
             transition={{ duration: 0.18, ease: 'easeOut' }}
           >
