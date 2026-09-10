@@ -37,3 +37,6 @@ public/*.mp4
 .eslintcache
 .env.local
 .env.*.local
+
+# Local video masters kept out of the build output
+assets-src/
