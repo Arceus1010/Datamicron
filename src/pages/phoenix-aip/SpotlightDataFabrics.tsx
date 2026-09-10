@@ -20,6 +20,17 @@ const CAPABILITIES = [
     points: ['All data types in one place', 'Eliminate warehouse + lake sprawl', 'Simplified data architecture'],
   },
   {
+    id: 'etl',
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+      </svg>
+    ),
+    title: 'Built-In ETL & Transformation Engine',
+    description: 'A full ETL runtime inside the platform — build visual or code-based pipelines, schedule and orchestrate them, and execute scripts directly against lakehouse tables with no data movement.',
+    points: ['Visual & code-based pipelines', 'Scheduling & orchestration', 'Native script execution in-place'],
+  },
+  {
     id: 'vector',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -42,6 +53,17 @@ const CAPABILITIES = [
     points: ['Sub-second query performance', 'Real-time & batch processing', 'Elastic, scalable compute'],
   },
   {
+    id: 'ml',
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z" />
+      </svg>
+    ),
+    title: 'Machine Learning & MLOps',
+    description: 'Develop, train, deploy, and monitor models without leaving the fabric — versioned experiments, a governed model registry, and drift detection on data that never has to be copied out.',
+    points: ['Model development & training', 'Versioned registry & deployment', 'Monitoring & drift detection'],
+  },
+  {
     id: 'governance',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -58,7 +80,7 @@ const HOW_IT_WORKS = [
   {
     step: '01',
     label: 'Ingest',
-    description: 'Data streams in from any source — structured databases, document stores, APIs, streaming platforms, and legacy systems — via the DataForge pipeline layer.',
+    description: 'Data streams in from any source — structured databases, document stores, APIs, streaming platforms, and legacy systems — via DataForge for enterprise integration, or loaded directly by the built-in ETL engine.',
     color: 'bg-brand/10 text-brand border-brand/20',
   },
   {
@@ -69,12 +91,18 @@ const HOW_IT_WORKS = [
   },
   {
     step: '03',
-    label: 'Organise',
-    description: 'Data is structured, indexed, enriched with metadata, and stored as vectors or tables — ready for semantic retrieval, analytics, or AI model consumption.',
+    label: 'Transform',
+    description: 'Built-in ETL pipelines clean, reshape, and enrich data in place — visual or code-based, orchestrated on a schedule — landing it indexed, catalogued, and stored as vectors or tables.',
     color: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
   },
   {
     step: '04',
+    label: 'Model',
+    description: 'Models are developed, trained, and deployed directly against governed data — with versioned experiments, a model registry, and continuous monitoring for drift and performance.',
+    color: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
+  },
+  {
+    step: '05',
     label: 'Serve',
     description: 'Clean, governed data is delivered to Phoenix Insights for reasoning, Cortexus for execution, and any downstream application or BI tool.',
     color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
@@ -90,6 +118,24 @@ const USE_CASES = [
     ),
     title: 'AI & LLM Enablement',
     items: ['Vector databases for retrieval-augmented generation', 'Context-aware AI applications', 'Knowledge store for enterprise LLMs'],
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+      </svg>
+    ),
+    title: 'Data Engineering',
+    items: ['Pipeline development & orchestration', 'In-platform script execution', 'Scheduled, monitored data workflows'],
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+      </svg>
+    ),
+    title: 'Predictive ML at Scale',
+    items: ['Model training on governed data', 'Deployment and serving in-platform', 'Drift monitoring & retraining'],
   },
   {
     icon: (
@@ -121,9 +167,9 @@ const USE_CASES = [
 ]
 
 const OUTCOMES = [
-  { icon: '📦', metric: '1', label: 'Single source of truth for all data' },
+  { icon: '📦', metric: '1', label: 'Platform for storage, pipelines, and models' },
   { icon: '⚡', metric: '8×', label: 'Faster data access and query performance' },
-  { icon: '🤖', metric: '100%', label: 'AI-ready data foundation, out of the box' },
+  { icon: '🤖', metric: '100%', label: 'AI-ready — from ingestion to deployed model' },
   { icon: '🔐', metric: 'Zero', label: 'Governance blind spots' },
 ]
 
@@ -132,6 +178,8 @@ const PROBLEMS = [
   'Structured and unstructured data aren\'t unified',
   'AI systems lack clean, accessible data to reason over',
   'Governance and security are inconsistent across systems',
+  'Pipelines, storage, and ML tooling live in three disconnected platforms',
+  'Models stall between notebook and production',
 ]
 
 const GOVERNANCE_ITEMS = [
@@ -431,7 +479,7 @@ export default function SpotlightDataFabrics() {
                 transition={{ duration: 0.6, ease: EASE }}
                 className="text-base sm:text-xl text-white/60 leading-relaxed max-w-xl"
               >
-                Spotlight Data Fabrics brings all your structured and unstructured data into a single, AI-ready platform — secure, governed, and built for scale.
+                Spotlight Data Fabrics brings all your structured and unstructured data into a single, AI-ready platform — with a built-in ETL engine and integrated ML and MLOps, so you can store, transform, and model in one place.
               </motion.p>
 
               <motion.div
@@ -473,7 +521,7 @@ export default function SpotlightDataFabrics() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
           >
-            {['Structured + unstructured data', 'Native vector & semantic storage', 'Enterprise governance built-in', 'Real-time & batch analytics'].map((item) => (
+            {['Structured + unstructured data', 'Built-in ETL & pipeline runtime', 'Integrated ML & MLOps', 'Native vector & semantic storage', 'Enterprise governance built-in'].map((item) => (
               <span key={item} className="flex items-center gap-2 text-sm text-white/50">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
                 {item}
@@ -558,10 +606,10 @@ export default function SpotlightDataFabrics() {
               What Is Spotlight Data Fabrics?
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-              The flexibility of a lake. The performance of a <span className="text-brand">warehouse.</span>
+              The flexibility of a lake. The performance of a warehouse. <span className="text-brand">The workbench to build on both.</span>
             </motion.h2>
             <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-gray-500 leading-relaxed max-w-2xl">
-              A unified data platform optimised for AI, analytics, and real-time access — combining the openness of a data lake with the governance and performance of a data warehouse.
+              A unified data platform optimised for AI, analytics, and real-time access — combining the openness of a data lake with the governance and performance of a data warehouse, plus a built-in ETL engine and the full ML lifecycle on top.
             </motion.p>
 
             {/* Lake + Warehouse → Lakehouse visual */}
@@ -592,13 +640,34 @@ export default function SpotlightDataFabrics() {
               </div>
             </motion.div>
 
+            {/* One platform, three layers */}
+            <motion.div
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="w-full max-w-2xl"
+            >
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">One platform, three layers</p>
+              <div className="grid sm:grid-cols-3 gap-3">
+                {[
+                  { layer: 'Storage', sub: 'Lakehouse for structured, unstructured and vector data' },
+                  { layer: 'ETL Runtime', sub: 'Pipelines, transformations and script execution' },
+                  { layer: 'ML & MLOps', sub: 'Training, deployment, registry and monitoring' },
+                ].map((l) => (
+                  <div key={l.layer} className="rounded-xl border border-gray-200 bg-white p-4 text-left">
+                    <p className="text-sm font-semibold text-brand mb-1">{l.layer}</p>
+                    <p className="text-xs text-gray-500 leading-relaxed">{l.sub}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
             <motion.div
               variants={fadeUp}
               transition={{ duration: 0.6, ease: EASE }}
               className="grid sm:grid-cols-3 gap-4 mt-4 w-full max-w-2xl"
             >
               {[
-                { label: 'Not just storage', sub: 'AI-ready data platform' },
+                { label: 'Not just a place to store', sub: 'A place to build, train, and ship' },
                 { label: 'Not just a lake', sub: 'Structured + semantic intelligence' },
                 { label: 'Not just centralised', sub: 'Governed and secure by design' },
               ].map((item) => (
@@ -657,10 +726,10 @@ export default function SpotlightDataFabrics() {
           </motion.div>
 
           <div className="relative">
-            <div className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-white/10" />
+            <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-px bg-white/10" />
 
             <div
-              className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+              className="grid grid-cols-2 lg:grid-cols-5 gap-8"
               role="tablist"
               aria-label="How Spotlight Data Fabrics works"
             >
@@ -810,7 +879,7 @@ export default function SpotlightDataFabrics() {
                 The foundation that powers <span className="text-brand">intelligence and execution.</span>
               </motion.h2>
               <motion.p variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-gray-500 leading-relaxed">
-                Most data platforms force a trade-off between flexibility and governance. Spotlight Data Fabrics was designed so you never have to choose — every dataset is open, structured, secured, and AI-ready from the moment it lands.
+                Most data platforms force a trade-off between flexibility and governance — then leave pipelines and modelling to separate tools. Spotlight Data Fabrics was designed so you never have to choose: every dataset is open, structured, secured, and AI-ready from the moment it lands, with the ETL engine and ML workbench already built in.
               </motion.p>
 
               <motion.div variants={stagger(0.1)} className="flex flex-col gap-4 mt-2">
@@ -832,7 +901,7 @@ export default function SpotlightDataFabrics() {
                 <h3 className="font-bold text-gray-900">Integration & Ecosystem</h3>
                 <div className="flex flex-col gap-3">
                   {[
-                    { label: 'DataForge', sub: 'Receives ingested data from all pipeline sources' },
+                    { label: 'DataForge', sub: 'Brings external systems in; Spotlight transforms once landed' },
                     { label: 'Phoenix Insights', sub: 'Serves clean data to the intelligence & reasoning layer' },
                     { label: 'Cortexus', sub: 'Supplies context and state to the execution engine' },
                     { label: 'BI & Analytics tools', sub: 'Feeds dashboards, reports, and downstream apps' },
