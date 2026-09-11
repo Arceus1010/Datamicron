@@ -42,15 +42,15 @@ const CAPABILITIES = [
     points: ['Native vector embeddings', 'Semantic search & retrieval', 'LLM-ready context store'],
   },
   {
-    id: 'analytics',
+    id: 'speeddb',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6.75v6.75" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
       </svg>
     ),
-    title: 'High-Performance Analytics',
-    description: 'Fast querying across datasets of any scale — real-time and batch processing side by side, on scalable infrastructure built for enterprise throughput.',
-    points: ['Sub-second query performance', 'Real-time & batch processing', 'Elastic, scalable compute'],
+    title: 'SpeedDB Warehouse Engine',
+    description: 'SpeedDB is our own columnar analytical database, included with the platform — purpose-built for data warehousing, with real-time ingestion that makes records queryable the moment they arrive.',
+    points: ['Columnar analytical storage', 'Real-time ingestion & query', 'Sub-second queries at any scale'],
   },
   {
     id: 'ml',
@@ -86,7 +86,7 @@ const HOW_IT_WORKS = [
   {
     step: '02',
     label: 'Unify',
-    description: 'All data is stored in a single lakehouse layer — no more isolated data lakes or disconnected warehouses. One place, one schema, one truth.',
+    description: 'All data lands in a single lakehouse layer, with analytical tables served by the SpeedDB columnar engine — no more isolated data lakes or disconnected warehouses. One place, one schema, one truth.',
     color: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
   },
   {
@@ -168,7 +168,7 @@ const USE_CASES = [
 
 const OUTCOMES = [
   { icon: '📦', metric: '1', label: 'Platform for storage, pipelines, and models' },
-  { icon: '⚡', metric: '8×', label: 'Faster data access and query performance' },
+  { icon: '⚡', metric: '8×', label: 'Faster queries on the SpeedDB engine' },
   { icon: '🤖', metric: '100%', label: 'AI-ready — from ingestion to deployed model' },
   { icon: '🔐', metric: 'Zero', label: 'Governance blind spots' },
 ]
@@ -180,6 +180,22 @@ const PROBLEMS = [
   'Governance and security are inconsistent across systems',
   'Pipelines, storage, and ML tooling live in three disconnected platforms',
   'Models stall between notebook and production',
+]
+
+const SPEEDDB_REASONS = [
+  'Columnar storage tuned for analytical scans, not row lookups',
+  'Streaming ingestion — no waiting for a nightly batch window',
+  'Sub-second response across billions of rows',
+  'Included with Spotlight Data Fabrics, not licensed separately',
+]
+
+const SPEEDDB_SPECS = [
+  'Vectorised columnar query execution',
+  'Real-time ingestion with immediate visibility',
+  'Massively parallel, elastic scale-out',
+  'Star-schema and dimensional modelling support',
+  'Compression that shrinks the storage footprint',
+  'Standard SQL interface for every BI tool',
 ]
 
 const GOVERNANCE_ITEMS = [
@@ -521,7 +537,7 @@ export default function SpotlightDataFabrics() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
           >
-            {['Structured + unstructured data', 'Built-in ETL & pipeline runtime', 'Integrated ML & MLOps', 'Native vector & semantic storage', 'Enterprise governance built-in'].map((item) => (
+            {['Structured + unstructured data', 'SpeedDB columnar warehouse engine', 'Real-time ingestion & analytics', 'Built-in ETL & pipeline runtime', 'Integrated ML & MLOps', 'Enterprise governance built-in'].map((item) => (
               <span key={item} className="flex items-center gap-2 text-sm text-white/50">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
                 {item}
@@ -609,7 +625,7 @@ export default function SpotlightDataFabrics() {
               The flexibility of a lake. The performance of a warehouse. <span className="text-brand">The workbench to build on both.</span>
             </motion.h2>
             <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-gray-500 leading-relaxed max-w-2xl">
-              A unified data platform optimised for AI, analytics, and real-time access — combining the openness of a data lake with the governance and performance of a data warehouse, plus a built-in ETL engine and the full ML lifecycle on top.
+              A unified data platform optimised for AI, analytics, and real-time access — combining the openness of a data lake with the governance and performance of a data warehouse, powered by our own SpeedDB columnar engine, with a built-in ETL runtime and the full ML lifecycle on top.
             </motion.p>
 
             {/* Lake + Warehouse → Lakehouse visual */}
@@ -646,10 +662,11 @@ export default function SpotlightDataFabrics() {
               transition={{ duration: 0.6, ease: EASE }}
               className="w-full max-w-2xl"
             >
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">One platform, three layers</p>
-              <div className="grid sm:grid-cols-3 gap-3">
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">One platform, four layers</p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {[
                   { layer: 'Storage', sub: 'Lakehouse for structured, unstructured and vector data' },
+                  { layer: 'SpeedDB', sub: 'Columnar warehouse engine with real-time ingestion' },
                   { layer: 'ETL Runtime', sub: 'Pipelines, transformations and script execution' },
                   { layer: 'ML & MLOps', sub: 'Training, deployment, registry and monitoring' },
                 ].map((l) => (
@@ -703,6 +720,77 @@ export default function SpotlightDataFabrics() {
             {CAPABILITIES.map((cap, i) => (
               <CapabilityCard key={cap.id} cap={cap} index={i} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SpeedDB ──────────────────────────────────────────────────────────── */}
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div
+              className="flex flex-col gap-6"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={stagger()}
+            >
+              <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-brand uppercase tracking-widest">
+                The Engine Inside
+              </motion.span>
+              <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl font-bold text-gray-900 leading-[1.1] tracking-tight">
+                Warehouse-grade speed, <span className="text-brand">already included.</span>
+              </motion.h2>
+              <motion.p variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-gray-500 leading-relaxed">
+                SpeedDB is our own analytical database — a columnar engine built for data warehousing, where records become queryable the moment they arrive rather than after the next batch load. It ships as part of Spotlight Data Fabrics, so the warehouse layer is something you configure, not something you buy and integrate.
+              </motion.p>
+              <motion.ul variants={stagger(0.1)} className="flex flex-col gap-3 mt-1">
+                {SPEEDDB_REASONS.map((r, i) => (
+                  <motion.li
+                    key={r}
+                    variants={fadeUp}
+                    transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
+                    className="flex items-start gap-3 text-gray-600"
+                  >
+                    <span className="mt-1 w-5 h-5 rounded-full bg-brand-light text-brand flex items-center justify-center shrink-0 text-xs font-bold">✓</span>
+                    {r}
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.65, ease: EASE, delay: 0.2 }}
+            >
+              <div className="bg-brand-navy rounded-2xl p-8 border border-brand-navy-border flex flex-col gap-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-brand/20 text-brand flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white text-lg">SpeedDB</h3>
+                    <p className="text-white/50 text-xs">Columnar analytical database</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 gap-3">
+                  {SPEEDDB_SPECS.map((item) => (
+                    <div key={item} className="flex items-center gap-3 bg-white/5 rounded-lg px-4 py-3 border border-white/8">
+                      <div className="w-6 h-6 rounded-md bg-brand/20 flex items-center justify-center shrink-0">
+                        <svg className="w-3.5 h-3.5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                      </div>
+                      <span className="text-white/70 text-sm">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -879,7 +967,7 @@ export default function SpotlightDataFabrics() {
                 The foundation that powers <span className="text-brand">intelligence and execution.</span>
               </motion.h2>
               <motion.p variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-gray-500 leading-relaxed">
-                Most data platforms force a trade-off between flexibility and governance — then leave pipelines and modelling to separate tools. Spotlight Data Fabrics was designed so you never have to choose: every dataset is open, structured, secured, and AI-ready from the moment it lands, with the ETL engine and ML workbench already built in.
+                Most data platforms force a trade-off between flexibility and governance — then leave the warehouse engine, the pipelines, and the modelling to separate tools you have to buy and join together. Spotlight Data Fabrics was designed so you never have to choose: every dataset is open, structured, secured, and AI-ready from the moment it lands, with SpeedDB, the ETL engine, and the ML workbench already in the box.
               </motion.p>
 
               <motion.div variants={stagger(0.1)} className="flex flex-col gap-4 mt-2">
