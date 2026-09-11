@@ -9,6 +9,28 @@ const PHOENIX_INSIGHTS_VIDEO_ID = 'wYqkoDpz-B8'
 
 const CAPABILITIES = [
   {
+    id: 'dashboards',
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+      </svg>
+    ),
+    title: 'Dashboards & Visualisation',
+    description: 'Everything you expect from an enterprise BI platform — interactive dashboards, self-service exploration, and the full visualisation library your teams already work in.',
+    points: ['Interactive enterprise dashboards', 'Self-service exploration', 'Full visualisation library'],
+  },
+  {
+    id: 'modelling',
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+      </svg>
+    ),
+    title: 'Dimensional Modelling',
+    description: 'Define the semantic model your business actually speaks in — measures, hierarchies, and dimensions — so every dashboard, query, and agent answer resolves against one agreed definition.',
+    points: ['Measures, dimensions & hierarchies', 'One consistent semantic layer', 'Reusable across every consumer'],
+  },
+  {
     id: 'predictive',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -20,15 +42,15 @@ const CAPABILITIES = [
     points: ['Trend and outcome forecasting', 'Early risk & opportunity detection', 'Proactive decision support'],
   },
   {
-    id: 'llm',
+    id: 'agents',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
       </svg>
     ),
-    title: 'LLM Reasoning',
-    description: 'Ask questions in natural language and receive contextual answers grounded in your enterprise data — no SQL, no dashboards, just instant intelligence.',
-    points: ['Natural language data querying', 'Context-aware answer generation', 'Instant insight synthesis'],
+    title: 'Business Agents',
+    description: 'Agents that act as business experts — grounded in your data, your company SOPs, and your data catalogs — analysing operations and process from several angles to answer questions a dashboard cannot.',
+    points: ['Grounded in data, SOPs & catalogs', 'Analysis from multiple angles', 'Answers to open business questions'],
   },
   {
     id: 'knowledge',
@@ -37,9 +59,9 @@ const CAPABILITIES = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253M3 12a8.959 8.959 0 0 0 .284 2.253" />
       </svg>
     ),
-    title: 'Knowledge Graph',
-    description: 'Connect data across systems into a web of meaning — building contextual relationships between business entities so every insight is grounded in full context.',
-    points: ['Cross-system entity linking', 'Contextual relationship mapping', 'Deeper business understanding'],
+    title: 'Knowledge Graph & Causal Reasoning',
+    description: 'Connect data across systems into a web of meaning, then trace the cause-and-effect relationships hidden inside it — so an answer explains why something happened, not just that it did.',
+    points: ['Cross-system entity linking', 'Cause-and-effect discovery', 'Reasoning you can follow and audit'],
   },
   {
     id: 'simulation',
@@ -58,25 +80,25 @@ const HOW_IT_WORKS = [
   {
     step: '01',
     label: 'Ingest',
-    description: 'Pulls structured and unstructured data from across your enterprise — databases, documents, streams, and APIs — into a unified context layer.',
+    description: 'Pulls structured and unstructured data from across your enterprise — databases, documents, streams, APIs — together with your company SOPs and data catalogs, into a unified context layer.',
     color: 'bg-brand/10 text-brand border-brand/20',
   },
   {
     step: '02',
     label: 'Understand',
-    description: 'Builds a knowledge graph from raw data, connecting entities, relationships, and meaning so every insight has full context behind it.',
+    description: 'Builds a knowledge graph from raw data and documented process, connecting entities, relationships, and meaning — including the cause-and-effect links between them.',
     color: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
   },
   {
     step: '03',
-    label: 'Predict',
-    description: 'Applies AI models, predictive analytics, and LLM reasoning to surface trends, risks, and opportunities before they become visible.',
+    label: 'Reason',
+    description: 'Business agents interrogate the graph from several angles — applying predictive models, testing hypotheses, and following causes through to effects.',
     color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
   },
   {
     step: '04',
-    label: 'Recommend',
-    description: 'Generates clear, explainable insight cards and decision options — ready to act on directly or pass to Cortexus for autonomous execution.',
+    label: 'Answer',
+    description: 'Returns a direct answer with the reasoning shown — as a dashboard, an insight card, or a decision option ready to act on or pass to Cortexus for autonomous execution.',
     color: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
   },
 ]
@@ -118,19 +140,38 @@ const USE_CASES = [
     title: 'Operations',
     items: ['Demand forecasting', 'Process optimisation', 'Capacity planning intelligence'],
   },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+      </svg>
+    ),
+    title: 'Root Cause Analysis',
+    items: ['Trace a metric move back to its driver', 'Separate correlation from cause', 'Follow effects across functions'],
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+      </svg>
+    ),
+    title: 'Process & SOP Intelligence',
+    items: ['Compare practice against documented SOPs', 'Surface process deviation and its impact', 'Answers grounded in your own procedures'],
+  },
 ]
 
 const OUTCOMES = [
   { icon: '🧠', metric: '5×', label: 'Faster decision-making cycles' },
   { icon: '🔮', metric: '40%', label: 'Improvement in forecast accuracy' },
   { icon: '📊', metric: '360°', label: 'Unified view of enterprise data' },
-  { icon: '🚀', metric: '2×', label: 'Competitive advantage through insight' },
+  { icon: '💬', metric: 'Any', label: 'Deep business question, answered on demand' },
 ]
 
 const PROBLEMS = [
-  'Insights are fragmented across disconnected tools',
+  'Dashboards report what happened, never why it happened',
+  'Every new business question needs an analyst and another report',
+  'Process knowledge and SOPs sit outside the BI tool entirely',
   'Analytics are reactive, not predictive',
-  'Data lacks context and business meaning',
   'Decision-making is slow and inconsistent',
 ]
 
@@ -389,7 +430,7 @@ export default function PhoenixInsights() {
                 transition={{ duration: 0.6, ease: EASE }}
                 className="text-base sm:text-xl text-white/60 leading-relaxed max-w-xl"
               >
-                Phoenix Insights transforms enterprise data into actionable intelligence using AI reasoning, predictive analytics, and knowledge-driven insights.
+                Phoenix Insights is the next generation of business intelligence — the dashboards, dimensional modelling and visualisation you already rely on, plus business agents that answer deep questions from your data, SOPs and data catalogs.
               </motion.p>
 
               <motion.div
@@ -431,7 +472,7 @@ export default function PhoenixInsights() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
           >
-            {['Predictive & prescriptive analytics', 'LLM-powered reasoning', 'Knowledge graph intelligence', 'Explainable AI outputs'].map((item) => (
+            {['Dashboards & dimensional modelling', 'Business agents as domain experts', 'Grounded in your data, SOPs & catalogs', 'Cause-and-effect reasoning', 'Explainable AI outputs'].map((item) => (
               <span key={item} className="flex items-center gap-2 text-sm text-white/50">
                 <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
                 {item}
@@ -489,7 +530,7 @@ export default function PhoenixInsights() {
                   <span className="text-white font-semibold">Phoenix Insights closes the gap</span>
                 </div>
                 <p className="text-white/60 leading-relaxed text-sm">
-                  Raw data has no voice. Phoenix Insights gives it one — turning fragmented signals into clear, contextual, and predictive intelligence your teams can act on immediately.
+                  A dashboard tells you a number moved. It rarely tells you why, and never what your own procedures say to do about it. Phoenix Insights keeps the dashboards and adds a business expert behind them — one that reasons over data, process, and context, and shows its working.
                 </p>
                 <div className="pt-2 border-t border-white/10">
                   <p className="text-orange-400 text-sm font-semibold italic">
@@ -516,10 +557,10 @@ export default function PhoenixInsights() {
               What Is Phoenix Insights?
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-              An AI-powered <span className="text-orange-600">decision intelligence</span> platform.
+              The next generation of <span className="text-orange-600">business intelligence.</span>
             </motion.h2>
             <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-xl text-gray-500 leading-relaxed max-w-2xl">
-              Phoenix Insights combines predictive analytics, LLM reasoning, and knowledge graphs to help organisations understand, predict, and act with confidence.
+              A full BI platform — dashboards, dimensional modelling, and visualisation — with business agents layered over it: domain experts that reason across your data, SOPs, and data catalogs to answer questions no report was built to answer.
             </motion.p>
 
             {/* Transformation visual: raw → insight → decision */}
@@ -559,15 +600,39 @@ export default function PhoenixInsights() {
               </div>
             </motion.div>
 
+            {/* What the agents are grounded in */}
+            <motion.div
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="w-full max-w-2xl"
+            >
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">What the business agents reason over</p>
+              <div className="grid sm:grid-cols-3 gap-3">
+                {[
+                  { source: 'Enterprise Data', sub: 'Every governed table, document and stream in the estate' },
+                  { source: 'Company SOPs', sub: 'How your business is actually meant to operate' },
+                  { source: 'Data Catalogs', sub: 'What each field means, and which definition is authoritative' },
+                ].map((g) => (
+                  <div key={g.source} className="rounded-xl border border-gray-200 bg-white p-4 text-left">
+                    <p className="text-sm font-semibold text-orange-700 mb-1">{g.source}</p>
+                    <p className="text-xs text-gray-500 leading-relaxed">{g.sub}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-gray-400 leading-relaxed mt-3">
+                Grounding an agent in process and meaning — not data alone — is what lets it reason about the business rather than just summarise a table.
+              </p>
+            </motion.div>
+
             <motion.div
               variants={fadeUp}
               transition={{ duration: 0.6, ease: EASE }}
               className="grid sm:grid-cols-3 gap-4 mt-4 w-full max-w-2xl"
             >
               {[
-                { label: 'Not just dashboards', sub: 'Intelligent reasoning' },
-                { label: 'Not just analytics', sub: 'Predictive + prescriptive' },
-                { label: 'Not just data', sub: 'Contextual understanding' },
+                { label: 'Not just dashboards', sub: 'Dashboards, plus an expert behind them' },
+                { label: 'Not just analytics', sub: 'Predictive, prescriptive and causal' },
+                { label: 'Not just queries', sub: 'Reasoning over data, SOPs and catalogs' },
               ].map((item) => (
                 <div key={item.label} className="bg-gray-50 rounded-lg p-4 text-left border border-gray-100">
                   <p className="text-xs text-gray-500 line-through mb-1">{item.label}</p>
@@ -593,7 +658,7 @@ export default function PhoenixInsights() {
               Core Capabilities
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-              Intelligence that goes beyond <span className="text-orange-600">the dashboard.</span>
+              Everything BI does, <span className="text-orange-600">and an expert on top.</span>
             </motion.h2>
           </motion.div>
 
@@ -619,7 +684,7 @@ export default function PhoenixInsights() {
               How It Works
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight">
-              Four steps from raw data to <span className="text-orange-400">clear decisions.</span>
+              Four steps from raw data to <span className="text-orange-400">answered questions.</span>
             </motion.h2>
           </motion.div>
 
@@ -776,7 +841,7 @@ export default function PhoenixInsights() {
                 The intelligence layer that powers <span className="text-orange-600">autonomous enterprises.</span>
               </motion.h2>
               <motion.p variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-gray-500 leading-relaxed">
-                Most analytics platforms tell you what happened. Phoenix Insights tells you what will happen — and what to do about it. Grounded in knowledge graphs and powered by LLM reasoning, every insight is traceable, explainable, and ready to act on.
+                Most BI platforms stop at the dashboard: they report what happened and leave the why to whichever analyst is free. Phoenix Insights keeps the dashboards and puts a business expert behind them — agents that reason over your data, SOPs, and catalogs, trace cause to effect, and take the follow-up question too. Every answer stays traceable and explainable.
               </motion.p>
 
               <motion.div variants={stagger(0.1)} className="flex flex-col gap-4 mt-2">
@@ -806,9 +871,9 @@ export default function PhoenixInsights() {
                 <h3 className="font-bold text-gray-900 text-lg">Integration & Ecosystem</h3>
                 <div className="flex flex-col gap-3">
                   {[
-                    { label: 'Spotlight Data Fabrics', sub: 'Pulls from your semantic & vector storage layer' },
+                    { label: 'Spotlight Data Fabrics', sub: 'Reads the lakehouse and SpeedDB warehouse directly' },
                     { label: 'Cortexus', sub: 'Feeds decisions into the autonomous execution engine' },
-                    { label: 'DataForge', sub: 'Works across structured + unstructured data pipelines' },
+                    { label: 'DataForge', sub: 'Its agents build the datasets every answer rests on' },
                     { label: 'External sources', sub: 'REST APIs, cloud DWs, SaaS, and streaming data' },
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-3">
@@ -903,7 +968,7 @@ export default function PhoenixInsights() {
               <span className="text-orange-400">Decisions at Scale?</span>
             </motion.h2>
             <motion.p variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="text-lg text-white/55 leading-relaxed">
-              See Phoenix Insights turn your enterprise data into clear, predictive, and actionable intelligence in a live demo.
+              See the dashboards, then ask the agent a question they were never built to answer — in a live demo run against your own business.
             </motion.p>
             <motion.div variants={fadeUp} transition={{ duration: 0.6, ease: EASE }} className="flex flex-col sm:flex-row gap-4 pt-2">
               <Link
