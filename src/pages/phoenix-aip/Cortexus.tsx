@@ -200,21 +200,24 @@ function ArrowIcon() {
 // Animated agent node graph for the hero
 function AgentFlowDiagram() {
   const nodes = [
-    { id: 'source', label: 'Data Signal', x: 50, y: 160, color: '#117EC2' },
-    { id: 'agent', label: 'AI Agent', x: 220, y: 80, color: '#8B5CF6' },
-    { id: 'decide', label: 'Decision', x: 390, y: 160, color: '#10B981' },
-    { id: 'crm', label: 'CRM', x: 290, y: 270, color: '#F59E0B' },
-    { id: 'erp', label: 'ERP', x: 490, y: 80, color: '#EF4444' },
-    { id: 'feedback', label: 'Learn', x: 560, y: 210, color: '#117EC2' },
+    { id: 'signal', label: 'Signal', x: 48, y: 180, color: '#117EC2', gate: false },
+    { id: 'agent', label: 'Agent', x: 158, y: 100, color: '#8B5CF6', gate: false },
+    { id: 'finding', label: 'Finding', x: 268, y: 180, color: '#10B981', gate: false },
+    { id: 'approve', label: 'You approve', x: 378, y: 180, color: '#FFFFFF', gate: true },
+    { id: 'crm', label: 'CRM', x: 488, y: 105, color: '#F59E0B', gate: false },
+    { id: 'erp', label: 'ERP', x: 488, y: 255, color: '#EF4444', gate: false },
+    { id: 'learn', label: 'Learn', x: 592, y: 180, color: '#117EC2', gate: false },
   ]
 
+  // Edges downstream of the gate draw solid — nothing flows until it is approved.
   const edges = [
-    { from: 'source', to: 'agent' },
-    { from: 'agent', to: 'decide' },
-    { from: 'decide', to: 'crm' },
-    { from: 'decide', to: 'erp' },
-    { from: 'crm', to: 'feedback' },
-    { from: 'erp', to: 'feedback' },
+    { from: 'signal', to: 'agent', authorised: false },
+    { from: 'agent', to: 'finding', authorised: false },
+    { from: 'finding', to: 'approve', authorised: false },
+    { from: 'approve', to: 'crm', authorised: true },
+    { from: 'approve', to: 'erp', authorised: true },
+    { from: 'crm', to: 'learn', authorised: false },
+    { from: 'erp', to: 'learn', authorised: false },
   ]
 
   const getNode = (id: string) => nodes.find((n) => n.id === id)!
@@ -227,7 +230,7 @@ function AgentFlowDiagram() {
         className="w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
-        aria-label="Diagram: a data signal flows into an AI agent, which makes a decision that acts on CRM and ERP systems, and the outcomes feed back as learning."
+        aria-label="Diagram: a signal flows into an agent, which investigates and produces a finding. Nothing reaches the CRM or ERP systems until you approve it, and the outcomes then feed back as learning."
       >
         <defs>
           <filter id="glow">
@@ -261,7 +264,7 @@ function AgentFlowDiagram() {
               y2={to.y}
               stroke="rgba(255,255,255,0.15)"
               strokeWidth="1.5"
-              strokeDasharray="4 3"
+              strokeDasharray={edge.authorised ? undefined : '4 3'}
               markerEnd="url(#arrowhead)"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -288,7 +291,7 @@ function AgentFlowDiagram() {
                 }}
                 transition={{
                   duration: 1.8,
-                  delay: 1 + i * 0.4,
+                  delay: 1 + i * 0.4 + (edge.authorised ? 0.7 : 0),
                   repeat: Infinity,
                   repeatDelay: 2,
                   ease: 'easeInOut',
@@ -305,8 +308,27 @@ function AgentFlowDiagram() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 + i * 0.12, duration: 0.5, ease: EASE }}
           >
-            <circle cx={node.x} cy={node.y} r={28} fill={`${node.color}22`} stroke={`${node.color}66`} strokeWidth={1.5} filter="url(#glow)" />
+            <circle
+              cx={node.x}
+              cy={node.y}
+              r={28}
+              fill={`${node.color}22`}
+              stroke={`${node.color}66`}
+              strokeWidth={1.5}
+              strokeDasharray={node.gate ? '5 4' : undefined}
+              filter="url(#glow)"
+            />
             <circle cx={node.x} cy={node.y} r={16} fill={`${node.color}33`} stroke={node.color} strokeWidth={1.5} />
+            {node.gate && (
+              <path
+                d={`M ${node.x - 6} ${node.y} L ${node.x - 1.5} ${node.y + 4.5} L ${node.x + 6.5} ${node.y - 5}`}
+                fill="none"
+                stroke={node.color}
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            )}
             {!reduceMotion && (
               <motion.circle
                 cx={node.x}
@@ -320,7 +342,15 @@ function AgentFlowDiagram() {
                 transition={{ duration: 2, delay: i * 0.3, repeat: Infinity, ease: 'easeOut' }}
               />
             )}
-            <text x={node.x} y={node.y + 44} textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize="11" fontFamily="'Source Sans 3', sans-serif">
+            <text
+              x={node.x}
+              y={node.y + 44}
+              textAnchor="middle"
+              fill={node.gate ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.75)'}
+              fontSize="11"
+              fontWeight={node.gate ? 600 : 400}
+              fontFamily="'Source Sans 3', sans-serif"
+            >
               {node.label}
             </text>
           </motion.g>
