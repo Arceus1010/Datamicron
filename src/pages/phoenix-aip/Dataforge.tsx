@@ -175,6 +175,53 @@ const PROBLEMS = [
   'Poor data quality cascades into broken AI and bad decisions',
 ]
 
+const MEDALLION_ICON = (
+  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+  </svg>
+)
+
+const MEDALLION_LAYERS = [
+  {
+    step: '01',
+    name: 'Bronze',
+    tag: 'exact copy + audit trail',
+    points: ['Raw landing zone', 'Immutable records', 'Lineage captured'],
+    border: 'border-orange-200',
+    bg: 'bg-orange-50/40',
+    badge: 'bg-orange-600 text-white',
+    iconBg: 'bg-orange-100 text-orange-600',
+    dot: 'bg-orange-500',
+    tagColor: 'border-orange-200 text-orange-600',
+  },
+  {
+    step: '02',
+    name: 'Silver',
+    tag: 'standardized + trusted',
+    points: ['Cleaned and conformed', 'Quality rules applied', 'Common entities'],
+    border: 'border-slate-200',
+    bg: 'bg-slate-50/60',
+    badge: 'bg-slate-500 text-white',
+    iconBg: 'bg-slate-200 text-slate-600',
+    dot: 'bg-slate-500',
+    tagColor: 'border-slate-200 text-slate-600',
+  },
+  {
+    step: '03',
+    name: 'Gold',
+    tag: 'ready for BI + AI',
+    points: ['Business metrics', 'Curated models', 'Semantic layer'],
+    border: 'border-amber-300',
+    bg: 'bg-amber-50/50',
+    badge: 'bg-amber-500 text-white',
+    iconBg: 'bg-amber-100 text-amber-600',
+    dot: 'bg-amber-500',
+    tagColor: 'border-amber-200 text-amber-700',
+  },
+]
+
+const FOUNDATION_ITEMS = ['Governance', 'Catalog', 'Metadata', 'Ontology', 'Security', 'Orchestration', 'Observability', 'Self-service access']
+
 const RELIABILITY_ITEMS = [
   'Fault-tolerant, self-healing pipeline architecture',
   'Real-time data validation and quality monitoring',
@@ -346,6 +393,16 @@ function PipelineVisual() {
         <text x={498} y={314} fill="rgba(16,185,129,0.5)" fontSize="9" fontFamily="'Source Sans 3', sans-serif">Refined</text>
         <line x1={stageX.connect + 14} y1={310} x2={490} y2={310} stroke="rgba(255,255,255,0.08)" strokeWidth={1} />
         <path d="M488,307 L494,310 L488,313" fill="none" stroke="rgba(16,185,129,0.4)" strokeWidth={1.2} />
+      </svg>
+    </div>
+  )
+}
+
+function FlowArrow() {
+  return (
+    <div className="flex items-center justify-center shrink-0 py-1 lg:py-0">
+      <svg className="w-5 h-5 text-gray-300 rotate-90 lg:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
       </svg>
     </div>
   )
@@ -726,6 +783,106 @@ export default function Dataforge() {
               </p>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Medallion Architecture ────────────────────────────────────────────── */}
+      <section className="bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <motion.div
+            className="max-w-2xl mx-auto text-center flex flex-col gap-4 mb-12"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={stagger()}
+          >
+            <motion.span variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="text-sm font-semibold text-emerald-700 uppercase tracking-widest">
+              Medallion Architecture
+            </motion.span>
+            <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
+              Every dataset moves through <span className="text-emerald-600">Bronze, Silver, and Gold.</span>
+            </motion.h2>
+            <motion.div variants={fadeUp} transition={{ duration: 0.55, ease: EASE }}>
+              <span className="inline-block rounded-full bg-emerald-50 border border-emerald-200 px-6 py-3 text-sm font-semibold text-emerald-700">
+                DataForge activates data fabrics into trusted insights, simulations, AI agents and enterprise decisions.
+              </span>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="flex flex-col lg:flex-row items-stretch gap-3"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={stagger(0.08)}
+          >
+            <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="lg:w-40 shrink-0 flex flex-col gap-2 justify-center text-center lg:text-left">
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Source Systems</p>
+              <p className="text-sm text-gray-600 leading-relaxed">ERP · CRM · IoT · Files</p>
+            </motion.div>
+
+            <FlowArrow />
+
+            {MEDALLION_LAYERS.map((layer, i) => (
+              <motion.div
+                key={layer.name}
+                variants={fadeUp}
+                transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
+                className={`flex-1 rounded-xl border p-6 flex flex-col gap-3 ${layer.border} ${layer.bg}`}
+              >
+                <span className={`self-start text-xs font-bold px-2 py-0.5 rounded ${layer.badge}`}>{layer.step}</span>
+                <div className={`w-11 h-11 rounded-lg flex items-center justify-center ${layer.iconBg}`}>
+                  {MEDALLION_ICON}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 font-display tracking-tight">{layer.name}</h3>
+                <ul className="flex flex-col gap-1.5">
+                  {layer.points.map((pt) => (
+                    <li key={pt} className="flex items-center gap-2 text-sm text-gray-600">
+                      <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${layer.dot}`} />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+                <p className={`text-xs font-semibold pt-3 border-t ${layer.tagColor}`}>{layer.tag}</p>
+              </motion.div>
+            ))}
+
+            <FlowArrow />
+
+            <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: EASE }} className="lg:w-44 shrink-0 flex flex-col gap-3 justify-center">
+              <p className="text-xs font-semibold text-emerald-700 uppercase tracking-widest text-center lg:text-left">Business Outcomes</p>
+              <ul className="flex flex-col gap-1.5">
+                {['Dashboards', 'Forecasts', 'Digital Twins', 'AI Agents'].map((o) => (
+                  <li key={o} className="flex items-center gap-2 text-sm text-gray-600 justify-center lg:justify-start">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                    {o}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="mt-8 rounded-xl border border-gray-200 bg-white px-6 py-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6"
+          >
+            <p className="text-sm font-bold text-gray-900 shrink-0">Data Fabrics Foundation</p>
+            <div className="hidden sm:block w-px h-5 bg-gray-200 shrink-0" />
+            <p className="text-sm text-gray-500 leading-relaxed">{FOUNDATION_ITEMS.join(' · ')}</p>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.15, ease: EASE }}
+            className="mt-6 text-center text-sm text-gray-400 italic"
+          >
+            Design principle: every layer adds trust, context, governance and reusability — turning raw data into AI-ready outcomes.
+          </motion.p>
         </div>
       </section>
 

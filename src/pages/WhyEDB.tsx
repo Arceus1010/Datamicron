@@ -112,25 +112,78 @@ const PILLARS = [
   },
 ]
 
-const ERAS = [
+const WHY_NOW_SYSTEMS = [
   {
-    years: '1980–2005',
-    name: 'Systems of Record',
-    systems: 'ERP, CRM, Finance, HR, SCM',
-    verbs: 'Store, process, record.',
+    key: 'record',
+    label: 'Systems of Record',
+    sub: 'Transactional Data',
+    caption: 'What happened',
+    items: ['ERP', 'CRM', 'MES', 'PLM', 'Other'],
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"
+        />
+      </svg>
+    ),
   },
   {
-    years: '2005–2022',
-    name: 'Systems of Insight',
-    systems: 'BI, analytics, dashboards, ML, reports',
-    verbs: 'Explain, analyse, understand.',
+    key: 'intelligence',
+    label: 'Systems of Intelligence',
+    sub: 'Connected Understanding',
+    caption: 'Why it matters',
+    items: ['Data', 'Ontology', 'Knowledge', 'Digital Twins', 'AI Agents', 'Workflows'],
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M8.25 3v1.5M15.75 3v1.5M8.25 19.5V21M15.75 19.5V21M3 8.25H1.5M3 12H1.5M3 15.75H1.5M22.5 8.25H21M22.5 12H21M22.5 15.75H21M6.75 19.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v10.5a2.25 2.25 0 0 0 2.25 2.25Zm3-13.5h4.5v4.5h-4.5v-4.5Z"
+        />
+      </svg>
+    ),
+    highlight: true,
   },
   {
-    years: '2023–Future',
-    name: 'Enterprise Digital Brain',
-    systems: 'AI reasoning, enterprise knowledge graph, digital twin, multi-agent AI',
-    verbs: 'Predict, simulate, recommend, execute.',
-    current: true,
+    key: 'action',
+    label: 'Systems of Autonomous Action',
+    sub: 'Real-World Outcomes',
+    caption: 'Decide and act',
+    items: ['Operations', 'Supply Chain', 'R&D', 'Service', 'Sustainability'],
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
+        />
+      </svg>
+    ),
+  },
+]
+
+const MARKET_MOMENTUM = [
+  {
+    title: 'AI adoption is accelerating.',
+    detail: 'Frontier models are now widely available, dramatically lowering the barrier to enterprise AI.',
+  },
+  {
+    title: 'Enterprise data remains fragmented.',
+    detail: 'Valuable data is spread across systems, silos and geographies, limiting decision speed and impact.',
+  },
+  {
+    title: 'Leaders need real-time decisions.',
+    detail: 'Volatility and complexity demand more accurate, context-aware decisions.',
+  },
+  {
+    title: 'Regulated industries require trusted AI.',
+    detail: 'Compliance, safety and explainability are essential for responsible and scalable adoption.',
+  },
+  {
+    title: 'Autonomous agents need enterprise context.',
+    detail: 'Agents can only deliver meaningful value when grounded in real enterprise data, knowledge and business rules.',
   },
 ]
 
@@ -434,7 +487,7 @@ const COLLAB_OUTCOMES = [
   'Stronger ecosystem and regional scale',
 ]
 
-const EDB_VIDEO_ID = '1oA85TZUke0'
+const EDB_VIDEO_ID = '4rCh7xqoVnk'
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -836,6 +889,134 @@ export default function WhyEDB() {
         </div>
       </section>
 
+      {/* ── Why Now ──────────────────────────────────────────────────────────── */}
+      <section className="bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <SectionHeading eyebrow="Why Now" center>
+            AI models are becoming available to everyone. Enterprise advantage will come from{' '}
+            <span className="text-brand">context, decisions and execution.</span>
+          </SectionHeading>
+
+          {/* Record → Intelligence → Action */}
+          <div className="relative mb-20">
+            <div
+              className="hidden lg:block absolute top-7 left-[16.6%] right-[16.6%] h-px bg-gray-200"
+              aria-hidden="true"
+            />
+
+            <div className="grid lg:grid-cols-3 gap-8 items-start">
+              {WHY_NOW_SYSTEMS.map((sys, i) => (
+                <motion.div
+                  key={sys.key}
+                  className="flex flex-col h-full"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: i * 0.12, ease: EASE }}
+                >
+                  <div className="relative flex justify-center">
+                    <span
+                      className={`relative z-10 w-14 h-14 rounded-full flex items-center justify-center border-2 ${
+                        sys.highlight
+                          ? 'bg-brand text-white border-brand shadow-lg shadow-brand/25'
+                          : 'bg-white text-gray-400 border-gray-200'
+                      }`}
+                    >
+                      {sys.icon}
+                    </span>
+                  </div>
+
+                  <div
+                    className={`mt-4 rounded-xl border p-6 flex flex-col gap-4 text-center h-full ${
+                      sys.highlight
+                        ? 'bg-brand-navy border-brand/30 shadow-sm'
+                        : 'bg-white border-gray-100'
+                    }`}
+                  >
+                    <h3 className={`text-lg font-bold tracking-tight ${sys.highlight ? 'text-white' : 'text-gray-900'}`}>
+                      {sys.label}
+                    </h3>
+
+                    <div className="flex flex-wrap justify-center gap-1.5">
+                      {sys.items.map((it) => (
+                        <span
+                          key={it}
+                          className={`text-[11px] font-medium leading-snug rounded-md px-2 py-1 border ${
+                            sys.highlight
+                              ? 'bg-white/10 border-white/15 text-white/80'
+                              : 'bg-gray-50 border-gray-100 text-gray-600'
+                          }`}
+                        >
+                          {it}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className={`mt-auto pt-3 border-t flex flex-col gap-0.5 ${sys.highlight ? 'border-white/15' : 'border-gray-100'}`}>
+                      <span className={`text-xs font-semibold uppercase tracking-widest ${sys.highlight ? 'text-brand-light' : 'text-brand'}`}>
+                        {sys.sub}
+                      </span>
+                      <span className={`text-xs ${sys.highlight ? 'text-white/60' : 'text-gray-500'}`}>{sys.caption}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Market momentum */}
+          <div>
+            <motion.h3
+              className="text-2xl font-bold text-gray-900 tracking-tight text-center mb-12"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.55, ease: EASE }}
+            >
+              The market momentum
+            </motion.h3>
+
+            <div className="relative">
+              <div className="hidden lg:block absolute top-6 left-[10%] right-[10%] h-px bg-gray-200" />
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                {MARKET_MOMENTUM.map((m, i) => (
+                  <motion.div
+                    key={m.title}
+                    className="flex flex-col gap-3 text-center items-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
+                  >
+                    <span className="relative z-10 w-12 h-12 rounded-full bg-brand-light text-brand border-2 border-white ring-1 ring-brand/20 flex items-center justify-center text-sm font-bold shrink-0">
+                      {i + 1}
+                    </span>
+                    <h4 className="font-bold text-gray-900 text-sm tracking-tight">{m.title}</h4>
+                    <p className="text-xs text-gray-500 leading-relaxed">{m.detail}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Closing statement */}
+          <motion.div
+            className="mt-16 rounded-2xl bg-brand-navy border border-brand-navy-border p-8 sm:p-10 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.6, ease: EASE }}
+          >
+            <p className="text-xl sm:text-2xl font-bold text-white leading-snug tracking-tight">
+              The next enterprise software layer is intelligence that
+              <br className="hidden sm:block" />{' '}
+              <span className="text-brand-light">understands, simulates, decides and acts.</span>
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── What Is EDB ──────────────────────────────────────────────────────── */}
       <section className="bg-white">
         <div className="max-w-6xl mx-auto px-6 py-24">
@@ -993,65 +1174,6 @@ export default function WhyEDB() {
               so the system learns.
             </p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* ── How We Got Here ──────────────────────────────────────────────────── */}
-      <section className="bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6 py-24">
-          <SectionHeading eyebrow="How We Got Here" center>
-            Transition of <span className="text-brand">enterprise systems.</span>
-          </SectionHeading>
-
-          <div className="relative">
-            <div className="hidden lg:block absolute top-7 left-[16.6%] right-[16.6%] h-px bg-gray-200" />
-
-            <div className="grid lg:grid-cols-3 gap-8">
-              {ERAS.map((era, i) => (
-                <motion.div
-                  key={era.name}
-                  className="flex flex-col gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: i * 0.12, ease: EASE }}
-                >
-                  <div className="relative flex justify-center">
-                    <span
-                      className={`relative z-10 w-14 h-14 rounded-full flex items-center justify-center text-sm font-bold border-2 ${
-                        era.current
-                          ? 'bg-brand text-white border-brand shadow-lg shadow-brand/25'
-                          : 'bg-white text-gray-400 border-gray-200'
-                      }`}
-                    >
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-
-                  <div
-                    className={`rounded-xl border p-6 flex flex-col gap-3 h-full text-center ${
-                      era.current
-                        ? 'bg-white border-brand/30 shadow-sm'
-                        : 'bg-white border-gray-100'
-                    }`}
-                  >
-                    <span
-                      className={`text-xs font-semibold uppercase tracking-widest ${era.current ? 'text-brand' : 'text-gray-400'}`}
-                    >
-                      {era.years}
-                    </span>
-                    <h3 className="text-xl font-bold text-gray-900 tracking-tight">{era.name}</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">{era.systems}</p>
-                    <p
-                      className={`text-sm font-semibold mt-auto pt-3 border-t ${era.current ? 'text-brand border-brand/15' : 'text-gray-600 border-gray-100'}`}
-                    >
-                      {era.verbs}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

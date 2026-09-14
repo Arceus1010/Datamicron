@@ -5,6 +5,8 @@ import { fadeUp, stagger, EASE } from '@/lib/motion'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
+const PHOENIX_STUDIO_VIDEO_ID = 'wAzkC5slnNU'
+
 const CAPABILITIES = [
   {
     id: 'composer',
@@ -1060,6 +1062,60 @@ export default function PhoenixStudio() {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Phoenix Studio in Action ──────────────────────────────────────────── */}
+      <section className="bg-gray-50">
+        <div className="max-w-5xl mx-auto px-6 py-24">
+          <motion.div
+            className="max-w-2xl mx-auto text-center flex flex-col gap-4 mb-12"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={stagger()}
+          >
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
+              Phoenix Studio in Action
+            </motion.span>
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
+            >
+              See an app <span className="text-brand">come together.</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-xl text-gray-500 leading-relaxed"
+            >
+              Watch Phoenix Studio compose data views, forms, workflows, and Cortexus agents into a
+              governed, production-ready application.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="relative rounded-2xl overflow-hidden border border-brand-navy-border shadow-xl"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7, ease: EASE }}
+          >
+            <iframe
+              className="w-full aspect-video block"
+              src={`https://www.youtube-nocookie.com/embed/${PHOENIX_STUDIO_VIDEO_ID}`}
+              title="Phoenix Studio product walkthrough"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </motion.div>
         </div>
       </section>
 
