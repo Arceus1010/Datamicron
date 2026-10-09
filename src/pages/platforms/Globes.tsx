@@ -4,7 +4,7 @@ import { fadeUp, stagger, EASE } from '@/lib/motion'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-const GLOBES_VIDEO_ID = '8Ul-MqZPB1M'
+const GLOBES_VIDEO_ID = 'BRGebK1nAuo'
 
 const WHY_GLOBES = [
   {

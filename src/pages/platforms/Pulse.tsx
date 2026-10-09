@@ -4,6 +4,8 @@ import { fadeUp, stagger, EASE } from '@/lib/motion'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
+const PULSE_VIDEO_ID = 'mBv9ZlqlJW8'
+
 // Listed descriptively as coverage — plain text only, no platform logos or marks.
 const PLATFORMS = ['Facebook', 'Instagram', 'X', 'YouTube', 'TikTok', 'News portals']
 
@@ -722,7 +724,61 @@ export default function Pulse() {
         </div>
       </section>
 
-      {/* ── 06 · Who it's for ────────────────────────────────────────────────── */}
+      {/* ── 06 · Pulse in Action ─────────────────────────────────────────────── */}
+      <section className="bg-brand-navy">
+        <div className="max-w-5xl mx-auto px-6 py-24">
+          <motion.div
+            className="max-w-2xl mx-auto text-center flex flex-col gap-4 mb-12"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={stagger()}
+          >
+            <motion.span
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-sm font-semibold text-brand uppercase tracking-widest"
+            >
+              Pulse in Action
+            </motion.span>
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight"
+            >
+              See public opinion <span className="text-brand">take shape.</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="text-lg sm:text-xl text-white/55 leading-relaxed"
+            >
+              Watch Pulse collect conversations across social media and news, then turn them into
+              sentiment, topics and risks.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="relative rounded-2xl overflow-hidden border border-brand-navy-border shadow-xl"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7, ease: EASE }}
+          >
+            <iframe
+              className="w-full aspect-video block"
+              src={`https://www.youtube-nocookie.com/embed/${PULSE_VIDEO_ID}`}
+              title="Pulse product walkthrough"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── 07 · Who it's for ────────────────────────────────────────────────── */}
       <section className="bg-gray-50">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <motion.div
@@ -769,7 +825,7 @@ export default function Pulse() {
         </div>
       </section>
 
-      {/* ── 07 · CTA ─────────────────────────────────────────────────────────── */}
+      {/* ── 08 · CTA─────────────────────────────────────────────────────────── */}
       <section className="bg-brand-navy">
         <div className="max-w-6xl mx-auto px-6 py-24 flex flex-col items-center text-center">
           <motion.div

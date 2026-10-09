@@ -235,10 +235,10 @@ const AIP_LAYERS = [
     role: 'Unified Data. Everywhere.',
     summary: 'One governed data layer across every source, structured, unstructured and semantic.',
     capabilities: [
-      'Structured & Unstructured',
-      'Vector & Semantic Data',
-      'Governance & Quality',
-      'Enterprise Ontology',
+      'Machine Learning',
+      'Pipeline Execution',
+      'Realtime Screening',
+      'Change Data Management',
     ],
     emits: 'Governed, semantic context',
     icon: (
@@ -314,6 +314,7 @@ const AIP_STUDIO = {
   href: '/phoenix-aip/phoenix-studio',
   role: 'Applications people work in',
   plane: 'Experience Plane',
+  category: 'Solutions',
   icon: (
     <svg
       className="w-5 h-5"
@@ -336,6 +337,8 @@ const AIP_STUDIO = {
     'Financial Performance',
     'Risk & Compliance',
     'Strategy & Planning',
+    'Simulation & Digital Twin',
+    'What-If Scenarios',
   ],
 }
 
@@ -363,8 +366,8 @@ const AIP_INSIGHTS = {
     'AI Reasoning & Decision Intelligence',
     'Predictive Analytics',
     'Knowledge Graph',
-    'Simulation & Digital Twin',
-    'What-If Scenarios',
+    'Persona Analytics',
+    'AI Dashboards',
   ],
 }
 
@@ -1271,7 +1274,10 @@ export default function WhyEDB() {
                     </div>
                   </div>
 
-                  <ul className="flex flex-col gap-1.5">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-indigo-300">
+                    {AIP_STUDIO.category}
+                  </span>
+                  <ul className="flex flex-col gap-1.5 -mt-2">
                     {AIP_STUDIO.items.map((item) => (
                       <li
                         key={item}
@@ -1281,6 +1287,9 @@ export default function WhyEDB() {
                         {item}
                       </li>
                     ))}
+                    <li className="text-sm text-indigo-200/70 italic rounded-md border border-dashed border-white/15 px-2.5 py-1.5 text-center">
+                      and more…
+                    </li>
                   </ul>
                 </motion.div>
 
