@@ -708,7 +708,7 @@ export default function Dataforge() {
               Core Capabilities
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.55, ease: EASE }} className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-              Every stage of the pipeline, <span className="text-emerald-600">covered.</span>
+              Every stage of the pipeline, <span className="text-emerald-600">covered</span> and <span className="text-emerald-600">orchestrated</span> by <span className="text-emerald-600">AI agents</span>.
             </motion.h2>
           </motion.div>
 

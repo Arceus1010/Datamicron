@@ -21,7 +21,7 @@ const LAYERS: Array<{
   {
     step: '01',
     name: 'Phoenix Studio',
-    tag: 'Business Applications & Workflows',
+    tag: 'AI Solution Builder',
     href: '/phoenix-aip/phoenix-studio',
     description:
       'Governed, AI-native business applications composed from ready-made blocks — putting data, reasoning, and agent actions directly in the screens your teams work in every day.',
@@ -30,7 +30,7 @@ const LAYERS: Array<{
   {
     step: '02',
     name: 'Cortexus',
-    tag: 'Autonomous Agents & Orchestration',
+    tag: 'Enterprise AI Orchestration and Cognition Engine',
     href: '/phoenix-aip/cortexus',
     description:
       'AI agents that plan, reason, and act — orchestrating workflows across systems without human intervention, continuously optimising toward business outcomes.',
@@ -39,7 +39,7 @@ const LAYERS: Array<{
   {
     step: '03',
     name: 'Phoenix Insights',
-    tag: 'Business Intelligence & Decision Layer',
+    tag: 'AI Powered Decision Intelligence',
     href: '/phoenix-aip/phoenix-insights',
     description:
       'Surfaces decisions, forecasts, and recommendations directly to business users — closing the loop from raw data to measurable enterprise action.',
@@ -48,7 +48,7 @@ const LAYERS: Array<{
   {
     step: '04',
     name: 'Spotlight Data Fabrics',
-    tag: 'Semantic & Vector Storage',
+    tag: 'Unified Enterprise Data Fabrics',
     href: '/phoenix-aip/spotlight-data-fabrics',
     description:
       'A unified lakehouse combining semantic search, vector embeddings, and a knowledge graph — turning stored data into contextually queryable intelligence.',
@@ -57,7 +57,7 @@ const LAYERS: Array<{
   {
     step: '05',
     name: 'DataForge',
-    tag: 'Data Ingestion & Pipelines',
+    tag: 'Autonomous AI Data Engineering',
     href: '/phoenix-aip/dataforge',
     description:
       'Connects and normalises data from any source — structured, unstructured, streaming or batch — into a unified, governed pipeline ready for intelligence.',

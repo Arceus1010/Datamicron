@@ -36,6 +36,14 @@ const DOMAINS = [
   { label: 'Risk Assessment Engine', href: '/domain/risk-assessment-engine' },
 ]
 
+const PHOENIX_AIP = [
+  { label: 'Phoenix Studio', href: '/phoenix-aip/phoenix-studio' },
+  { label: 'Cortexus', href: '/phoenix-aip/cortexus' },
+  { label: 'Phoenix Insights', href: '/phoenix-aip/phoenix-insights' },
+  { label: 'Spotlight Data Fabrics', href: '/phoenix-aip/spotlight-data-fabrics' },
+  { label: 'Dataforge', href: '/phoenix-aip/dataforge' },
+]
+
 const PLATFORMS = [
   { label: 'InstaBI', href: '/platforms/instabi' },
   { label: 'Eagle Eye', href: '/platforms/eagle-eye' },
@@ -50,7 +58,8 @@ const PLATFORMS = [
 ]
 
 const FOOTER_COLS = [
-  { heading: 'Platforms', links: PLATFORMS },
+  { heading: 'Phoenix AIP', links: PHOENIX_AIP },
+  { heading: 'Products', links: PLATFORMS },
   { heading: 'Industries', links: INDUSTRIES },
   { heading: 'Department', links: DEPARTMENTS },
   { heading: 'Domain', links: DOMAINS },
@@ -140,7 +149,7 @@ export default function Footer() {
 
           {/* Right — Link columns */}
           <motion.div
-            className="flex-1 grid grid-cols-2 lg:grid-cols-4 gap-8"
+            className="flex-1 grid grid-cols-2 lg:grid-cols-5 gap-8"
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
