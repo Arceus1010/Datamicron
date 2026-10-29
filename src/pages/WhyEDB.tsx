@@ -314,7 +314,7 @@ const AIP_STUDIO = {
   href: '/phoenix-aip/phoenix-studio',
   role: 'Applications people work in',
   plane: 'Experience Plane',
-  category: 'Solutions',
+  category: 'Ontology Solutions',
   icon: (
     <svg
       className="w-5 h-5"
@@ -897,7 +897,7 @@ export default function WhyEDB() {
         <div className="max-w-6xl mx-auto px-6 py-24">
           <SectionHeading eyebrow="Why Now" center>
             AI models are becoming available to everyone. Enterprise advantage will come from{' '}
-            <span className="text-brand">context, decisions and execution.</span>
+            <span className="text-brand">context, ontology, decisions and execution.</span>
           </SectionHeading>
 
           {/* Record → Intelligence → Action */}
@@ -1042,7 +1042,7 @@ export default function WhyEDB() {
               transition={{ duration: 0.55, ease: EASE }}
               className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
             >
-              One cognitive system for <span className="text-brand">the whole enterprise.</span>
+              One cognitive system grounded with ontology, for the <span className="text-brand">whole enterprise.</span>
             </motion.h2>
             <motion.p
               variants={fadeUp}

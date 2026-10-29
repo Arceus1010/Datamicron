@@ -24,7 +24,7 @@ const LAYERS: Array<{
     tag: 'AI Solution Builder',
     href: '/phoenix-aip/phoenix-studio',
     description:
-      'Governed, AI-native business applications composed from ready-made blocks — putting data, reasoning, and agent actions directly in the screens your teams work in every day.',
+      'Governed, AI-native business applications composed from ready-made blocks — putting data, reasoning, ontology and agent actions directly in the screens your teams work in every day.',
     videoId: 'wAzkC5slnNU',
   },
   {

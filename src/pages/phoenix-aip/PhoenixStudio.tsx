@@ -112,6 +112,32 @@ const CAPABILITIES = [
       'Full audit trail on every action',
     ],
   },
+  {
+    id: 'ontology',
+    icon: (
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75"
+        />
+      </svg>
+    ),
+    title: 'Operational Ontology, Built for Action',
+    description:
+      'Model your enterprise as connected business objects, relationships, and actions — creating a shared operational foundation that powers applications, workflows, and AI agents.',
+    points: [
+      'Unified business objects and relationships',
+      'Reusable business logic and actions',
+      'Shared context for applications and AI',
+    ],
+  },
 ]
 
 const HOW_IT_WORKS = [
@@ -258,7 +284,7 @@ const RELIABILITY_ITEMS = [
 
 const APP_BLOCKS = [
   { label: 'Data Views', hint: 'Tables, charts, maps' },
-  { label: 'Forms', hint: 'Capture and validation' },
+  { label: 'Ontology', hint: 'Grounding and semantics' },
   { label: 'Workflows', hint: 'Rules and approvals' },
   { label: 'Agents', hint: 'Cortexus actions' },
   { label: 'Insights', hint: 'In-context reasoning' },
@@ -317,6 +343,11 @@ const COMPOSER_TILES = [
     label: 'Workflow',
     span: 'col-span-2',
     tone: 'bg-indigo-500/15 border-indigo-400/30 text-indigo-200',
+  },
+  {
+    label: 'Ontology',
+    span: 'col-span-3',
+    tone: 'bg-violet-500/15 border-violet-400/30 text-violet-200',
   },
 ]
 
@@ -383,7 +414,7 @@ function AppComposerVisual() {
 function CapabilityCard({ cap, index }: { cap: (typeof CAPABILITIES)[0]; index: number }) {
   return (
     <motion.div
-      className="group bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-indigo-300/50 transition-all duration-300 flex flex-col gap-4 relative overflow-hidden"
+      className={`group bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-indigo-300/50 transition-all duration-300 flex flex-col gap-4 relative overflow-hidden ${cap.id === 'ontology' ? 'md:col-span-2' : ''}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -451,7 +482,7 @@ export default function PhoenixStudio() {
                 transition={{ duration: 0.6, ease: EASE }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight"
               >
-                Turn Insight Into <span className="text-indigo-400">Working Software.</span>
+                Turn Insights Into <span className="text-indigo-400">Working AI Software.</span>
               </motion.h1>
 
               <motion.p
@@ -625,7 +656,7 @@ export default function PhoenixStudio() {
               transition={{ duration: 0.6, ease: EASE }}
               className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
             >
-              An application layer for <span className="text-indigo-600">the whole platform.</span>
+              An intelligent application layer grounded with ontology, for <span className="text-indigo-600">the whole platform.</span>
             </motion.h2>
             <motion.p
               variants={fadeUp}
@@ -743,7 +774,7 @@ export default function PhoenixStudio() {
               transition={{ duration: 0.55, ease: EASE }}
               className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
             >
-              Everything an enterprise app needs,{' '}
+              Everything an intelligent enterprise app needs,{' '}
               <span className="text-indigo-600">already built.</span>
             </motion.h2>
           </motion.div>
@@ -799,7 +830,7 @@ export default function PhoenixStudio() {
               transition={{ duration: 0.55, ease: EASE }}
               className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight"
             >
-              From idea to production app, <span className="text-indigo-400">in four steps.</span>
+              From idea to intelligent production app, <span className="text-indigo-400">in four steps.</span>
             </motion.h2>
           </motion.div>
 
