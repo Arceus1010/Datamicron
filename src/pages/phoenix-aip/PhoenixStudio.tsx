@@ -656,16 +656,14 @@ export default function PhoenixStudio() {
               transition={{ duration: 0.6, ease: EASE }}
               className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
             >
-              An intelligent application layer grounded with ontology, for <span className="text-indigo-600">the whole platform.</span>
+              Phoenix Studio helps FDEs build enterprise AI with <span className="text-indigo-600">ontology and autonomous agents in Phoenix AIP.</span>
             </motion.h2>
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.6, ease: EASE }}
               className="text-xl text-gray-500 leading-relaxed max-w-2xl"
             >
-              Phoenix Studio is where governed data, AI reasoning, and autonomous agents are
-              assembled into the everyday applications your teams work in — built once on Phoenix
-              AIP, deployed everywhere.
+              Turn business knowledge into powerful AI working solutions - with enterprise ontology providing the context, autonomous AI agents doing the engineering, and Forward-Deployed Engineers (FDEs) directing delivery.
             </motion.p>
 
             {/* Insight → App → Action flow */}

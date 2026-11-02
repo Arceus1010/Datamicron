@@ -21,8 +21,8 @@ const CONTACT_OPTIONS = [
     ),
     label: 'Call Us',
     sublabel: 'Speak directly with our team',
-    value: '+603 2163 3168',
-    href: 'tel:+60321633168',
+    value: '+603 5020 8311',
+    href: 'tel:+60350208311',
   },
   {
     icon: (
@@ -361,10 +361,10 @@ export default function Contact() {
                     Phone
                   </p>
                   <a
-                    href="tel:+60321633168"
+                    href="tel:+60350208311"
                     className="text-brand-dark font-medium hover:underline"
                   >
-                    +603 2163 3168
+                    +603 5020 8311
                   </a>
                 </div>
               </motion.div>

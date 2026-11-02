@@ -856,7 +856,7 @@ export default function WhyEDB() {
                 transition={{ duration: 0.6, ease: EASE }}
                 className="text-xl font-bold text-white border-l-2 border-brand pl-5"
               >
-                Datamicron is building that system for Asia.
+                Datamicron is building that system for global enterprises and governments.
               </motion.p>
 
               <motion.div

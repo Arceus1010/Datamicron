@@ -607,16 +607,15 @@ export default function Home() {
               transition={{ duration: 0.55, ease: EASE }}
               className="text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight"
             >
-              Built in layers.{' '}
-              <span className="text-brand lg:whitespace-nowrap">Intelligent end-to-end.</span>
+              Build Enterprise AI with{' '}
+              <span className="text-brand lg:whitespace-nowrap">context, control and confidence.</span>
             </motion.h2>
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.55, ease: EASE }}
               className="text-lg text-gray-500"
             >
-              Five integrated modules that take your enterprise from raw data to autonomous
-              decisions — and into the applications your teams use.
+              Phoenix AIP empowers Forward-Deployed Engineers (FDEs) with an end-to-end intelligent platform - where ontology grounds AI in enterprise knowledge, guardrails constrain its actions, and security governs access.
             </motion.p>
           </motion.div>
 
